@@ -1,0 +1,20 @@
+###Create Profile
+POST localhost:8080/profile/adm
+#admin
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDgzNjA0MjgsImVtYWlsIjoic2FuamFyZGFzdHVyY2hpQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNzA4NDQ2ODI4LCJpc3MiOiJLdW5VelRlc3QifQ.cLlepkJ3YNV_MWcv1uBKnqJiru7Tto5x4_4yG3ulMpw-75xgUsh67ESYYLAcFcGtwdA8L99hLIbQLG1mPl9JoA
+Content-Type: application/json
+
+{
+  "name": "Moderator",
+  "surname": "Moderatorov",
+  "email": "moderator@gmail.com",
+  "password": "$1Moderator1$",
+  "role": "ROLE_MODERATOR"
+}
+
+###Change Password
+POST localhost:8080/profile/any/@1Moderator1@
+#moderator
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDgzNjAxNjAsImVtYWlsIjoibW9kZXJhdG9yQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODQ0NjU2MCwiaXNzIjoiS3VuVXpUZXN0In0.rKHnsJYuyNtvmS5BAW67wpLhpapSomAt1IYnsMfEFYaFFbF1M5sYKPEykX6y6TiD0Xpbh3Rb6b4hEaL2WQtsBA
+
+

@@ -18,4 +18,5 @@ public class ProfileDTO {
     private String password;
     private ProfileRole role;
     private ProfileStatus status;
+    private String jwt;
 }
