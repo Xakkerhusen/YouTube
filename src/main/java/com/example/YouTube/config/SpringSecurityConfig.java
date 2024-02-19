@@ -22,7 +22,7 @@ public class SpringSecurityConfig {
     @Autowired
     private JWTTokenFilter jwtTokenFilter;
     public static String[] AUTH_WHITELIST = {
-
+            "/attach/**"
     };
 
     @Bean
@@ -60,9 +60,7 @@ public class SpringSecurityConfig {
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.csrf(AbstractHttpConfigurer::disable);
         http.cors(AbstractHttpConfigurer::disable);
-
         return http.build();
-
     }
 
 }

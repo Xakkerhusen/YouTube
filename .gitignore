@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+**/talablar.txt
+/src/main/resources/talablar.txt
+logs/log-file.log

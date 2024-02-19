@@ -1,0 +1,21 @@
+### Create
+POST http://localhost:8080/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
+
+< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
+
+### Get by id
+GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
+
+### Download
+GET http://localhost:8080/attach/download/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
+
+
+### Pagination
+GET http://localhost:8080/attach/attachPagination
+
+### Delete
+DELETE http://localhost:8080/attach/delete/016513df-e3f4-4f79-8076-5bc2f7941e4e
