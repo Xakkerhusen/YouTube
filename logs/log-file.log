@@ -1,0 +1,62 @@
+19 Feb 2024 - 16:09:30.429 INFO  c.example.YouTube.YouTubeApplication - Starting YouTubeApplication using Java 20.0.2.1 with PID 15612 (D:\Asosiy modul(JAVA)\Youtobe\YouTube\target\classes started by user in D:\Asosiy modul(JAVA)\Youtobe\YouTube)
+19 Feb 2024 - 16:09:30.438 INFO  c.example.YouTube.YouTubeApplication - No active profile set, falling back to 1 default profile: "default"
+19 Feb 2024 - 16:09:30.988 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19 Feb 2024 - 16:09:31.000 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+19 Feb 2024 - 16:09:31.389 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+19 Feb 2024 - 16:09:31.425 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19 Feb 2024 - 16:09:31.425 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+19 Feb 2024 - 16:09:31.469 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19 Feb 2024 - 16:09:31.469 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 998 ms
+19 Feb 2024 - 16:09:31.568 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19 Feb 2024 - 16:09:31.603 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+19 Feb 2024 - 16:09:31.627 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19 Feb 2024 - 16:09:31.799 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19 Feb 2024 - 16:09:31.820 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19 Feb 2024 - 16:09:31.950 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@631bc9f4
+19 Feb 2024 - 16:09:31.952 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19 Feb 2024 - 16:09:32.245 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19 Feb 2024 - 16:09:32.250 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19 Feb 2024 - 16:09:32.382 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19 Feb 2024 - 16:09:32.860 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: c036b764-516f-46a2-9873-878450cb037a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19 Feb 2024 - 16:09:32.929 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1add3e03, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d28a235, org.springframework.security.web.context.SecurityContextHolderFilter@17e8c38c, org.springframework.security.web.header.HeaderWriterFilter@35efd12c, org.springframework.web.filter.CorsFilter@43e30f15, org.springframework.security.web.csrf.CsrfFilter@177302d6, org.springframework.security.web.authentication.logout.LogoutFilter@4b9dc62f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@340c7479, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@556843a5, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4fc2933e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@848d9bc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17ea3bc0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d93e5bf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c9c91e3, org.springframework.security.web.access.ExceptionTranslationFilter@7a92827f, org.springframework.security.web.access.intercept.AuthorizationFilter@79e9c14]
+19 Feb 2024 - 16:09:32.975 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+19 Feb 2024 - 16:09:32.982 INFO  c.example.YouTube.YouTubeApplication - Started YouTubeApplication in 2.849 seconds (process running for 3.283)
+19 Feb 2024 - 16:09:50.041 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19 Feb 2024 - 16:09:50.042 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19 Feb 2024 - 16:09:50.045 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19 Feb 2024 - 16:09:52.694 INFO  c.example.YouTube.YouTubeApplication - Starting YouTubeApplication using Java 20.0.2.1 with PID 17240 (D:\Asosiy modul(JAVA)\Youtobe\YouTube\target\classes started by user in D:\Asosiy modul(JAVA)\Youtobe\YouTube)
+19 Feb 2024 - 16:09:52.706 INFO  c.example.YouTube.YouTubeApplication - No active profile set, falling back to 1 default profile: "default"
+19 Feb 2024 - 16:09:53.290 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19 Feb 2024 - 16:09:53.302 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+19 Feb 2024 - 16:09:53.699 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+19 Feb 2024 - 16:09:53.706 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19 Feb 2024 - 16:09:53.707 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+19 Feb 2024 - 16:09:53.743 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19 Feb 2024 - 16:09:53.743 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1003 ms
+19 Feb 2024 - 16:09:53.840 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19 Feb 2024 - 16:09:53.872 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+19 Feb 2024 - 16:09:53.894 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19 Feb 2024 - 16:09:54.055 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19 Feb 2024 - 16:09:54.072 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19 Feb 2024 - 16:09:54.190 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@10b67f54
+19 Feb 2024 - 16:09:54.191 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19 Feb 2024 - 16:09:54.458 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19 Feb 2024 - 16:09:54.463 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19 Feb 2024 - 16:09:54.566 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19 Feb 2024 - 16:09:54.951 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 7a237823-ffc0-4b7b-8065-64612e2b47cd
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19 Feb 2024 - 16:09:55.014 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6ab826bb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@219db855, org.springframework.security.web.context.SecurityContextHolderFilter@575e862c, org.springframework.security.web.header.HeaderWriterFilter@21bd6fd1, org.springframework.web.filter.CorsFilter@3702d0ed, org.springframework.security.web.csrf.CsrfFilter@58647985, org.springframework.security.web.authentication.logout.LogoutFilter@bd09a26, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@52d181ed, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@448a6d00, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5b7b0ada, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6a2057e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e5af973, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@39a2e77d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@705d72f0, org.springframework.security.web.access.ExceptionTranslationFilter@6c2be147, org.springframework.security.web.access.intercept.AuthorizationFilter@563392e5]
+19 Feb 2024 - 16:09:55.057 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+19 Feb 2024 - 16:09:55.066 INFO  c.example.YouTube.YouTubeApplication - Started YouTubeApplication in 2.659 seconds (process running for 3.063)
+19 Feb 2024 - 16:10:28.318 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19 Feb 2024 - 16:10:28.321 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19 Feb 2024 - 16:10:28.324 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
