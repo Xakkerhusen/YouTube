@@ -1,0 +1,21 @@
+### Create
+POST http://localhost:8080/tagName/adm
+Content-Type: application/json
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+### Update
+PUT http://localhost:8080/tagName/update/adm/3
+Content-Type: application/json
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+### Delete
+DELETE http://localhost:8080/tagName/delete/adm/4
+
+### Get all
+GET http://localhost:8080/tagName/getAll

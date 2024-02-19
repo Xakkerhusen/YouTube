@@ -4,6 +4,7 @@ import com.example.YouTube.dto.AttachDTO;
 import com.example.YouTube.entity.AttachEntity;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.AttachRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -27,7 +28,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-
+@Slf4j
 @Service
 public class AttachService {
 
@@ -45,13 +46,12 @@ public class AttachService {
             if (!folder.exists()) {
                 folder.mkdirs();
             }
-            String key = UUID.randomUUID().toString(); // dasdasd-dasdasda-asdasda-asdasd
-            String extension = getExtension(file.getOriginalFilename()); // mp3/jpg/npg/mp4
+            String key = UUID.randomUUID().toString();
+            String extension = getExtension(file.getOriginalFilename());
 
             byte[] bytes = file.getBytes();
             Path path = Paths.get("uploads/" + pathFolder + "/" + key + "." + extension);
-            //                         uploads/2022/04/23/dasdasd-dasdasda-asdasda-asdasd.jpg
-            //                         uploads/ + Path + id + extension
+
             Files.write(path, bytes);
 
             AttachEntity entity = new AttachEntity();
@@ -70,6 +70,7 @@ public class AttachService {
         }
         return null;
     }
+
 
     public byte[] loadImage(String attachId) {
         String id = attachId.substring(0, attachId.lastIndexOf("."));
@@ -99,9 +100,11 @@ public class AttachService {
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                         "attachment; filename=\"" + entity.getOriginalName() + "\"").body(resource);
             } else {
+                log.warn("Could not read the file!");
                 throw new RuntimeException("Could not read the file!");
             }
         } catch (MalformedURLException e) {
+            log.warn("Error {}",e.getMessage());
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
@@ -158,8 +161,12 @@ public class AttachService {
         return dto;
     }
 
+
     public AttachEntity get(String id) {
-        return attachRepository.findById(id).orElseThrow(() -> new AppBadException("File not found"));
+        return attachRepository.findById(id).orElseThrow(() -> {
+            log.warn("File not found{}", id);
+            return new AppBadException("File not found");
+        });
     }
 
 }
