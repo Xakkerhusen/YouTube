@@ -1,7 +1,7 @@
 package com.example.YouTube.utils;
 
-import com.example.kun_Uz_Lesson_1.dto.JWTDTO;
-import com.example.kun_Uz_Lesson_1.enums.ProfileRole;
+import com.example.YouTube.dto.JWTDTO;
+import com.example.YouTube.enums.ProfileRole;
 import io.jsonwebtoken.*;
 
 import javax.crypto.spec.SecretKeySpec;

@@ -1,7 +1,7 @@
 package com.example.YouTube.utils;
 
 
-import com.example.kun_Uz_Lesson_1.config.CustomUserDetails;
+import com.example.YouTube.config.CustomUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

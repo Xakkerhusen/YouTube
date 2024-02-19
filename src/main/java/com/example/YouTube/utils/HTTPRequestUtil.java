@@ -1,8 +1,8 @@
 package com.example.YouTube.utils;
 
-import com.example.kun_Uz_Lesson_1.dto.JWTDTO;
-import com.example.kun_Uz_Lesson_1.enums.ProfileRole;
-import com.example.kun_Uz_Lesson_1.exp.ForbiddenException;
+import com.example.YouTube.dto.JWTDTO;
+import com.example.YouTube.enums.ProfileRole;
+import com.example.YouTube.exp.ForbiddenException;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class HTTPRequestUtil {
@@ -16,6 +16,7 @@ public class HTTPRequestUtil {
             }
         }
         throw new ForbiddenException("Method not allowed");
+
     }
 
     public static JWTDTO getJWTDTO(HttpServletRequest request, ProfileRole... requiredRoleList) {
