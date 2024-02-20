@@ -1,5 +1,5 @@
 package com.example.YouTube.enums;
 
 public enum ProfileStatus {
-    ACTIVE,NOT_ACTIVE,REGISTRATION
+    ACTIVE,BLOCK,REGISTRATION
 }
