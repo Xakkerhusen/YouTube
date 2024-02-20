@@ -1,0 +1,10 @@
+### Creat
+POST http://localhost:8080/channel/creat
+Content-Type: application/json
+
+{
+  "name": "Yangiliklar",
+  "description": "Barcha turdagi yangiliklar",
+  "photoId": "2ff306e6-6286-4022-9f5e-229ec470a680",
+  "bannerId": "2ff306e6-6286-4022-9f5e-229ec470a680"
+}
