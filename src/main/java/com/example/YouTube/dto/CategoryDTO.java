@@ -11,5 +11,6 @@ public class CategoryDTO {
     private Integer id;
     private String name;
     private LocalDateTime createdDate;
+    private LocalDateTime updateDate;
 
 }

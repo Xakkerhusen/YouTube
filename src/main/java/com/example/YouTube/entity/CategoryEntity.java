@@ -19,5 +19,8 @@ public class CategoryEntity {
     @Column(name = "created_date")
     private LocalDateTime createdDate;
 
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
+
 
 }

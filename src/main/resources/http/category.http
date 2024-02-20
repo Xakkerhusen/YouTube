@@ -6,3 +6,18 @@ Content-Type: application/json
 {
   "name": "News"
 }
+
+### UpdateCategory
+POST localhost:8080/category/adm/update/2
+#Authorization:
+Content-Type: application/json
+
+{
+  "name": "news"
+}
+
+
+
+### DelteCategory
+DELETE localhost:8080/category/adm/delete/1
+#Authorization:
