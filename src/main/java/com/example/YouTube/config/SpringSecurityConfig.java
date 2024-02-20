@@ -21,7 +21,13 @@ public class SpringSecurityConfig {
     private UserDetailsService userDetailsService;
     @Autowired
     private JWTTokenFilter jwtTokenFilter;
-    public static String[] AUTH_WHITELIST = {"/profile/adm","/auth/*","/attach/**"
+    public static String[] AUTH_WHITELIST = {"" +
+            "/profile/adm",
+            "/auth/*",
+            "category/adm/*",
+            "category/adm/**",
+            "category/any/*",
+            "/attach/**"
 
     };
 
