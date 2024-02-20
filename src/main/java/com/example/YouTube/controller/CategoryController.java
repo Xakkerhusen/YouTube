@@ -2,8 +2,10 @@
 package com.example.YouTube.controller;
 
 import com.example.YouTube.dto.CategoryDTO;
+import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,27 +24,30 @@ public class CategoryController {
 
     @PostMapping("/adm/create")
     @Operation(summary = "Api for create", description = "this api is used to create category")
-//    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> create(@RequestBody CategoryDTO dto) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> create(@Valid @RequestBody CategoryDTO dto) {
         log.info("Create category {}", dto.getName());
         return ResponseEntity.ok(categoryService.create(dto));
     }
 
     @PostMapping("/adm/update/{id}")
     @Operation(summary = "Api for update", description = "this api is used to update category")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> update(@PathVariable(value = "id") Integer categoryId,
-                                    @RequestBody CategoryDTO dto) {
+                                    @Valid @RequestBody CategoryDTO dto,
+                                    @RequestHeader(value = "Accept-Language",defaultValue = "EN")
+                                    AppLanguage language) {
         log.info("Update category{}", dto.getName());
-        return ResponseEntity.ok(categoryService.update(categoryId, dto));
+        return ResponseEntity.ok(categoryService.update(categoryId, dto,language));
     }
 
     @DeleteMapping("/adm/delete/{id}")
     @Operation(summary = "Api for delete", description = "this api is used to delete category")
-//    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> delete(@PathVariable(value = "id") Integer categoryId) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Integer categoryId,
+                                    @RequestHeader(value = "Accept-Language",defaultValue = "EN")AppLanguage language) {
         log.info("delete category");
-        return ResponseEntity.ok(categoryService.delete(categoryId));
+        return ResponseEntity.ok(categoryService.delete(categoryId,language));
     }
 
     @GetMapping("/any/categoryList")

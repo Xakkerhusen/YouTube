@@ -1,23 +1,25 @@
 ### Create
 POST http://localhost:8080/category/adm/create
-#Authorization:
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MjYwMzUsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1MTI0MzUsImlzcyI6Ikt1blV6VGVzdCJ9.1rgcR99gup6mdUT71ODxxT_727_yQr9QIQ4V9_Rc7eRutuluBhUVqm9xT7fIig0LP0ah5mdS__fSotXDO0t2vg
 Content-Type: application/json
 
 {
-  "name": "News"
+  "name": "WORLD"
 }
 
 ### UpdateCategory
-POST localhost:8080/category/adm/update/2
-#Authorization:
+POST localhost:8080/category/adm/update/6
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MjYwMzUsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1MTI0MzUsImlzcyI6Ikt1blV6VGVzdCJ9.1rgcR99gup6mdUT71ODxxT_727_yQr9QIQ4V9_Rc7eRutuluBhUVqm9xT7fIig0LP0ah5mdS__fSotXDO0t2vg
 Content-Type: application/json
+Accept-Language: EN
 
 {
-  "name": "news"
+  "name": "world"
 }
 
 
 
 ### DelteCategory
-DELETE localhost:8080/category/adm/delete/1
-#Authorization:
+DELETE localhost:8080/category/adm/delete/12
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MjYwMzUsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1MTI0MzUsImlzcyI6Ikt1blV6VGVzdCJ9.1rgcR99gup6mdUT71ODxxT_727_yQr9QIQ4V9_Rc7eRutuluBhUVqm9xT7fIig0LP0ah5mdS__fSotXDO0t2vg
+Accept-Language: EN
