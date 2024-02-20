@@ -9,7 +9,7 @@ Content-Type: application/json
   "surname": "Moderatorov",
   "email": "moderator@gmail.com",
   "password": "$1Moderator1$",
-  "role": "ROLE_MODERATOR"
+  "role": "ROLE_USER"
 }
 
 ###Change Password
