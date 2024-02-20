@@ -99,6 +99,13 @@
 		<artifactId>spring-security-test</artifactId>
 		<scope>test</scope>
 	</dependency>
+
+	<dependency>
+		<groupId>org.bytedeco</groupId>
+		<artifactId>javacv-platform</artifactId>
+		<version>1.5.5</version> <!-- Versiyani o'zgartiring -->
+
+	</dependency>
 </dependencies>
 
 <build>
