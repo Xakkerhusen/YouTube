@@ -1,0 +1,8 @@
+### Create
+POST http://localhost:8080/category/adm/create
+#Authorization:
+Content-Type: application/json
+
+{
+  "name": "News"
+}
