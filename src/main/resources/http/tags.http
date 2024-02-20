@@ -1,21 +1,24 @@
 ### Create
 POST http://localhost:8080/tagName/adm
 Content-Type: application/json
+Accept-Language: UZ
 
 {
   "tagName": "#SIYOSAT"
 }
 
 ### Update
-PUT http://localhost:8080/tagName/update/adm/3
+PUT http://localhost:8080/tagName/update/adm/92
 Content-Type: application/json
+Accept-Language: UZ
 
 {
-  "tagName": "#SIYOSAT"
+  "tagName": "#cook"
 }
 
 ### Delete
-DELETE http://localhost:8080/tagName/delete/adm/4
+DELETE http://localhost:8080/tagName/delete/adm/200
+Accept-Language: UZ
 
 ### Get all
 GET http://localhost:8080/tagName/getAll

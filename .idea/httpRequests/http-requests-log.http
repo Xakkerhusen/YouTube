@@ -1,3 +1,560 @@
+GET http://localhost:8080/attach/download/a12c91fe-0949-4027-b1c2-5beb783f996a.jpg
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> kunuz-2.jpg
+
+###
+
+GET http://localhost:8080/attach/attachPagination
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T205641.200.json
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T205457.200.json
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88.jpg
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T205359.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88.jpg
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204934.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88.jpg
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204841.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88.jpg
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204835.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88.jpg
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204750.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88.jpg
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204241.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/9fbb4fa7-39ce-46f9-94b4-556a5fd94914
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204228.400.txt
+
+###
+
+GET http://localhost:8080/attach/open/a12c91fe-0949-4027-b1c2-5beb783f996a.jpg
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T204155.200.png
+
+###
+
+DELETE http://localhost:8080/attach/delete/9fbb4fa7-39ce-46f9-94b4-556a5fd94914
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T203617.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/9fbb4fa7-39ce-46f9-94b4-556a5fd94914.mp4
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T203514.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/9fbb4fa7-39ce-46f9-94b4-556a5fd94914.mp4
+Accept-Language: uz
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T203456.400.txt
+
+###
+
+DELETE http://localhost:8080/attach/delete/9fbb4fa7-39ce-46f9-94b4-556a5fd94914.mp4
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T203435.400.txt
+
+###
+
+POST http://localhost:8080/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Content-Length: 80909
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
+
+< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
+--WebAppBoundary--
+
+<> 2024-02-20T203115.200.json
+
+###
+
+GET http://localhost:8080/attach/open/a12c91fe-0949-4027-b1c2-5beb783f996a.jpg
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T201953.200.png
+
+###
+
+GET http://localhost:8080/attach/download/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> kunuz-1.jpg
+
+###
+
+GET http://localhost:8080/attach/download/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> kunuz.jpg
+
+###
+
+GET http://localhost:8080/attach/download/9fbb4fa7-39ce-46f9-94b4-556a5fd94914.mp4
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> metro.mp4
+
+###
+
+GET http://localhost:8080/attach/attachPagination
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T201453.200.json
+
+###
+
+POST http://localhost:8080/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Content-Length: 627820
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="metro.mp4"
+
+< C:\Users\asadb\OneDrive\Desktop\img\metro.mp4
+--WebAppBoundary--
+
+<> 2024-02-20T200205.200.json
+
+###
+
+GET http://localhost:8080/tagName/getAll
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T174032.200.json
+
+###
+
+POST http://localhost:8080/tagName/adm
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 27
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+<> 2024-02-20T170156.400.txt
+
+###
+
+POST http://localhost:8080/tagName/adm
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 27
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+<> 2024-02-20T170052.400.txt
+
+###
+
+POST http://localhost:8080/tagName/adm
+Content-Type: application/json
+Content-Length: 27
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+<> 2024-02-20T165635.400.txt
+
+###
+
+DELETE http://localhost:8080/tagName/delete/adm/200
+Accept-Language: UZ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-20T165619.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language:
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165549.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: uz
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165541.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165537.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: EN
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165532.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: RU
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165526.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: RU
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165348.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165333.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: RU
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165321.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: RU
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T165044.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T164945.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T164827.400.txt
+
+###
+
+PUT http://localhost:8080/tagName/update/adm/92
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#cook"
+}
+
+<> 2024-02-20T163440.400.txt
+
+###
+
+POST http://localhost:8080/tagName/adm
+Content-Type: application/json
+Content-Length: 27
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=AAD79D9596A7E3C0C139EE5E8FF83744
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+<> 2024-02-20T163344.200.json
+
+###
+
+POST http://localhost:8080/tagName/adm
+Content-Type: application/json
+Content-Length: 27
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=089A6F8D7F952ED04370DF3E84F4F040
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "tagName": "#SIYOSAT"
+}
+
+###
+
 GET http://localhost:8080/tagName/getAll
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
@@ -119,395 +676,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 {
   "tagName": "#SPORT"
 }
-
-###
-
-POST http://localhost:8080/tagName/adm
-Content-Type: application/json
-Content-Length: 25
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "tagName": "#SPORT"
-}
-
-###
-
-POST http://localhost:8080/attach/upload
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-Content-Length: 80909
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
---WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
-
-< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
---WebAppBoundary--
-
-<> 2024-02-20T021352.200.json
-
-###
-
-GET http://localhost:8080/attach/open/c9170b72-30be-49f3-96ed-94eebcae4b60.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T021050.200.png
-
-###
-
-GET http://localhost:8080/attach/open/salom
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/attach/open/
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T020950.404.json
-
-###
-
-GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b7028.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b7029
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T014953.200.json
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T014343.200.json
-
-###
-
-GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T014340.200.png
-
-###
-
-GET http://localhost:8080/attach/open_general/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T014309.200.octet-stream
-
-###
-
-POST http://localhost:8080/attach/upload
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-Content-Length: 80909
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
---WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
-
-< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
---WebAppBoundary--
-
-<> 2024-02-20T014015.200.json
-
-###
-
-GET http://localhost:8080/attach/open_general/a12c91fe-0949-4027-b1c2-5beb783f996a.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T014001.200.octet-stream
-
-###
-
-GET http://localhost:8080/attach/open_general/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T013940.200.octet-stream
-
-###
-
-GET http://localhost:8080/attach/open_general/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T013937.200.octet-stream
-
-###
-
-GET http://localhost:8080/attach/open_general/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T013907.200.octet-stream
-
-###
-
-GET http://localhost:8080/attach/open_general/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T013353.200.png
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T013334.200.json
-
-###
-
-GET http://localhost:8080/attach/open/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T013252.200.png
-
-###
-
-GET http://localhost:8080/attach/download/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> kunuz.jpg
-
-###
-
-GET http://localhost:8080/attach/download/uploads/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T012824.404.json
-
-###
-
-GET http://localhost:8080/attach/download/uploads/2024/2/20/9177ddf6-7745-4898-8444-15fbae2b7029.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T012808.404.json
-
-###
-
-GET http://localhost:8080/attach/download/774eb30c-242e-48fb-9e49-2357999843ca
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T012753.400.txt
-
-###
-
-GET http://localhost:8080/attach/download/774eb30c-242e-48fb-9e49-2357999843ca.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T012719.400.txt
-
-###
-
-POST http://localhost:8080/attach/upload
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-Content-Length: 80909
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
---WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
-
-< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
---WebAppBoundary--
-
-<> 2024-02-20T011657.200.json
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T011635.200.json
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T011531.400.txt
-
-###
-
-GET http://localhost:8080/attach/open_general/kunuz.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/attach/upload
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-Content-Length: 80909
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
---WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
-
-< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
---WebAppBoundary--
-
-<> 2024-02-20T011432.200.json
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T011339.400.txt
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T011249.200.json
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T010907.200.json
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T010706.400.txt
-
-###
-
-GET http://localhost:8080/attach/open_general/kunuz.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T010223.400.txt
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T010152.400.txt
-
-###
-
-GET http://localhost:8080/attach/attachPagination
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T010101.400.txt
-
-###
-
-GET http://localhost:8080/attach/open/774eb30c-242e-48fb-9e49-2357999843ca.jpg
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-20T010041.200.png
-
-###
-
-GET http://localhost:8080/attach/open/774eb30c-242e-48fb-9e49-2357999843ca
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Accept-Encoding: br,deflate,gzip,x-gzip
 
 ###
 

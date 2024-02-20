@@ -27,7 +27,8 @@ public class SpringSecurityConfig {
             "category/adm/*",
             "category/adm/**",
             "category/any/*",
-            "/attach/**"
+            "/attach/**",
+            "/tagName/**"
 
     };
 

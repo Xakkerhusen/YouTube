@@ -2,6 +2,7 @@ package com.example.YouTube.service;
 
 import com.example.YouTube.dto.AttachDTO;
 import com.example.YouTube.entity.AttachEntity;
+import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.AttachRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,14 @@ public class AttachService {
     @Value("${server.url}")
     private String serverUrl;
 
+    @Autowired
+    private ResourceBundleService resourceBundleService;
 
+
+    /**
+     * This method sends the image, video, or audio to the device with its address and name,
+     * and throws an exception if the address is incorrect
+     */
     public AttachDTO save(MultipartFile file) {
         try {
             String pathFolder = getYmDString();
@@ -72,9 +80,12 @@ public class AttachService {
     }
 
 
-    public byte[] loadImage(String attachId) {
+    /**
+     * This method finds and returns the attachment by id, throws an exception if not found
+     */
+    public byte[] loadImage(String attachId, AppLanguage language) {
         String id = attachId.substring(0, attachId.lastIndexOf("."));
-        AttachEntity entity = get(id);
+        AttachEntity entity = get(id, language);
         byte[] data;
         try {
             Path file = Paths.get("uploads/" + entity.getPath() + "/" + attachId);
@@ -86,11 +97,15 @@ public class AttachService {
         return new byte[0];
     }
 
-    public ResponseEntity download(String attachId) {
+
+    /**
+     * This method is used to find the attachment by id and download it into the device memory
+     */
+    public ResponseEntity download(String attachId, AppLanguage language) {
         try {
             String id = attachId.substring(0, attachId.lastIndexOf("."));
 
-            AttachEntity entity = get(id);
+            AttachEntity entity = get(id, language);
 
             Path file = Paths.get("uploads/" + entity.getPath() + "/" + attachId);
 
@@ -100,15 +115,19 @@ public class AttachService {
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                         "attachment; filename=\"" + entity.getOriginalName() + "\"").body(resource);
             } else {
-                log.warn("Could not read the file!");
-                throw new RuntimeException("Could not read the file!");
+                log.warn("Could not read the file{}", attachId);
+                throw new RuntimeException(resourceBundleService.getMessage("Could.not.read.the.file", language));
             }
         } catch (MalformedURLException e) {
-            log.warn("Error {}",e.getMessage());
-            throw new RuntimeException("Error: " + e.getMessage());
+            log.warn("Url wrong{}", e.getMessage());
+            throw new RuntimeException(resourceBundleService.getMessage("Url.wrong", language));
         }
     }
 
+
+    /**
+     * This method used attach for pagination
+     */
     public PageImpl<AttachDTO> getAttachPagination(Integer page, Integer size) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdData");
 
@@ -125,12 +144,33 @@ public class AttachService {
         return new PageImpl<>(dtoList, paging, totalElement);
     }
 
-    public Boolean delete(String id) {
-        AttachEntity attachEntity = get(id);
-        attachRepository.delete(attachEntity);
+
+    /**
+     * This method searches the database by attach id.
+     * If found, it deletes the found object, otherwise it throws an exception
+     */
+    public Boolean delete(String id, AppLanguage language) {
+        get(id, language);
+        attachRepository.deleteById(id);
         return true;
     }
 
+
+    /**
+     * This method creates a separate directory for each day based on
+     * the year, month, day based on the current time.
+     * for example   ∨ year 2024
+     * ∨ month 02
+     * > day 1
+     * > day 2
+     * > day 3
+     * ∨ month 03
+     * ∨ day 1
+     * photo1.jpg
+     * photo2.jpg
+     * > day 2
+     * > day 3
+     */
     public String getYmDString() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
@@ -139,12 +179,21 @@ public class AttachService {
         return year + "/" + month + "/" + day;
     }
 
+
+    /**
+     * This method is used to get the file extension
+     * if the filename is photo.jpg this method will return you "jpg"
+     */
     public String getExtension(String fileName) {
         int lastIndex = fileName.lastIndexOf(".");
         return fileName.substring(lastIndex + 1);
-
     }
 
+
+    /**
+     * This method takes the data from the entity to the dto
+     * sets id and url and returns
+     */
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
@@ -152,6 +201,11 @@ public class AttachService {
         return dto;
     }
 
+
+    /**
+     * This method takes the data from the entity to the dto
+     * sets id,url,size and original name and returns for the pagination
+     */
     public AttachDTO toDTOPagination(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
@@ -162,11 +216,16 @@ public class AttachService {
     }
 
 
-    public AttachEntity get(String id) {
+    /**
+     * this method looks up the input ID from the database.
+     * If found, it returns the found object, otherwise it throws an exception
+     */
+    public AttachEntity get(String id, AppLanguage language) {
         return attachRepository.findById(id).orElseThrow(() -> {
             log.warn("File not found{}", id);
-            return new AppBadException("File not found");
+            return new AppBadException(resourceBundleService.getMessage("File.not.found", language));
         });
     }
+
 
 }
