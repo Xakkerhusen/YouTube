@@ -34,3 +34,4 @@ build/
 **/talablar.txt
 /src/main/resources/talablar.txt
 logs/log-file.log
+/logs/
