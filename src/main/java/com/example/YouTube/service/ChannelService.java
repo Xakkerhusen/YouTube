@@ -119,7 +119,7 @@ public class ChannelService {
      * This method is used to get the list of channels
      */
     public List<ChannelDTO> getChannelList() {
-        return channelRepository.findByProfileId(getUserDetails().getId());
+        return toDTOList(channelRepository.findByProfileId(getUserDetails().getId()));
     }
 
     /**
