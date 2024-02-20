@@ -2,6 +2,7 @@ package com.example.YouTube.service;
 
 import com.example.YouTube.dto.CategoryDTO;
 import com.example.YouTube.entity.CategoryEntity;
+import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -20,11 +21,18 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ResourceBundleService bundleService;
+
+
+
+
+
+
     /**
      * This method is structured to create category,
      * and the category can only be created by Admin.
      */
-
     public CategoryDTO create(CategoryDTO dto) {
         CategoryEntity entity = new CategoryEntity();
         entity.setCreatedDate(LocalDateTime.now());
@@ -37,16 +45,18 @@ public class CategoryService {
     }
 
 
+
     /**
      * This method was compiled to change the name of the created category .
      * For this method to work, a Category id must be given, and this work is only done by Admin.
      */
-    public String update(Integer categoryId, CategoryDTO dto) {
+    public String update(Integer categoryId, CategoryDTO dto,AppLanguage lan) {
         Optional<CategoryEntity> optional = categoryRepository.findById(categoryId);
 
         if (optional.isEmpty()) {
             log.warn("There is no category with such an id.Please check categoryId");
-            throw new AppBadException("There is no category with such an id.");
+            String message = bundleService.getMessage("category.not.found",lan);
+            throw new AppBadException(message);
         }
         CategoryEntity entity = optional.get();
         entity.setName(dto.getName());
@@ -55,16 +65,17 @@ public class CategoryService {
         return "update successful";
     }
 
+
     /**
      * This method is configured to delete an existing directory via categoryId ,
      * and the category can only be deleted by Admin.
      */
-    public Boolean delete(Integer categoryId) {
+    public Boolean delete(Integer categoryId,AppLanguage language) {
         Optional<CategoryEntity> optional = categoryRepository.findById(categoryId);
-
         if (optional.isEmpty()) {
             log.warn("There is no category with such an id.Please check categoryId");
-            throw new AppBadException("There is no category with such an id.");
+            String message = bundleService.getMessage("category.not.found", language);
+            throw new AppBadException(message);
         }
         categoryRepository.deleteById(categoryId);
         return true;
@@ -78,6 +89,7 @@ public class CategoryService {
      */
     public List<CategoryDTO> getList() {
         Iterable<CategoryEntity> categoryList = categoryRepository.findAll();
+
         List<CategoryDTO> list = new LinkedList<>();
         for (CategoryEntity entity : categoryList) {
             CategoryDTO dto = new CategoryDTO();
