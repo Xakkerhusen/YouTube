@@ -24,14 +24,9 @@ public class CategoryService {
     @Autowired
     private ResourceBundleService bundleService;
 
-
-
-
-
-
     /**
      * This method is structured to create category,
-     * and the category can only be created by Admin.
+     * and the category can only be created by Admin. 👇🏻
      */
     public CategoryDTO create(CategoryDTO dto) {
         CategoryEntity entity = new CategoryEntity();
@@ -48,7 +43,7 @@ public class CategoryService {
 
     /**
      * This method was compiled to change the name of the created category .
-     * For this method to work, a Category id must be given, and this work is only done by Admin.
+     * For this method to work, a Category id must be given, and this work is only done by Admin. 👇🏻
      */
     public String update(Integer categoryId, CategoryDTO dto,AppLanguage lan) {
         Optional<CategoryEntity> optional = categoryRepository.findById(categoryId);
@@ -68,7 +63,7 @@ public class CategoryService {
 
     /**
      * This method is configured to delete an existing directory via categoryId ,
-     * and the category can only be deleted by Admin.
+     * and the category can only be deleted by Admin. 👇🏻
      */
     public Boolean delete(Integer categoryId,AppLanguage language) {
         Optional<CategoryEntity> optional = categoryRepository.findById(categoryId);
@@ -85,7 +80,7 @@ public class CategoryService {
 
 
     /**
-     * This method returns all the categories created in the list view.
+     * This method returns all the categories created in the list view. 👇🏻
      */
     public List<CategoryDTO> getList() {
         Iterable<CategoryEntity> categoryList = categoryRepository.findAll();

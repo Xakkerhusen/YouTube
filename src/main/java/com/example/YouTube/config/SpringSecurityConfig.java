@@ -21,12 +21,38 @@ public class SpringSecurityConfig {
     private UserDetailsService userDetailsService;
     @Autowired
     private JWTTokenFilter jwtTokenFilter;
+
+    public static String[] AUTH_WHITELIST = {
+            "/profile/adm",
+            "/profile/verification/email/*",
+            "/auth/verification/email/*",
+
     public static String[] AUTH_WHITELIST = {"/profile/adm",
+
             "/auth/*",
-            "category/any/*",
+            "/category/any/*",
             "/attach/**",
             "/tagName/**",
+
+            "/channel/getById/*",
+
+            "/attach/**",
+            "/attach/**",
+            "/tagName/**",
+            "/channel/getById/*",
+
+            "/v2/api-docs",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-resources",
+            "/swagger-resources/**",
+
             "/channel/getById/*"
+
 
 
     };

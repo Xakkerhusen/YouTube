@@ -2,10 +2,13 @@ package com.example.YouTube.controller;
 
 
 import com.example.YouTube.dto.Auth;
+import com.example.YouTube.dto.ProfileDTO;
+import com.example.YouTube.dto.RegistrationDTO;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,5 +28,20 @@ public class AuthController {
         log.info("Login {} ", auth.getEmail());
         return ResponseEntity.ok(authService.login(auth,language));
     }
+    @PostMapping("/registration")
+    @Operation( summary = "Api for registration", description = "this api used for authorization")
+    public ResponseEntity<?> registartion( @Valid @RequestBody RegistrationDTO auth,
+                                           @RequestHeader(value = "Accept-Language",defaultValue = "UZ") AppLanguage language) {
+        log.info("registration {}", auth.getEmail());
+        return ResponseEntity.ok(authService.registration(auth,language));
+    }
+    @GetMapping("/verification/email/{jwt}")
+    @Operation( summary = "Api for verification by email", description = "this api used for authorization")
+    public ResponseEntity<ProfileDTO> emailVerification(@PathVariable("jwt") String jwt,
+                                                        @RequestHeader(value = "Accept-Language",defaultValue = "UZ") AppLanguage language) {
+        log.info("verification {}", jwt);
+        return ResponseEntity.ok(authService.emailVerification(jwt,language));
+    }
+
 
 }

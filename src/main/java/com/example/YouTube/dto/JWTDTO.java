@@ -25,4 +25,10 @@ public class JWTDTO {
         this.id = id;
         this.role = role;
     }
+
+    public JWTDTO(Integer id, String email, ProfileRole role) {
+        this.id = id;
+        this.email = email;
+        this.role = role;
+    }
 }

@@ -11,15 +11,15 @@ Content-Type: application/json
 #}
 
 //#admin2
-{
-  "email": "sanjardasturchi@gmail.com",
-  "password": "$Sanjar007"
-}
+//{
+//  "email": "sanjardasturchi@gmail.com",
+//  "password": "$Sanjar007"
+//}
 
 //#moderator
 //{
 //  "email": "moderator@gmail.com",
-//  "password": "$1Moderator1$"
+//  "password": "@1Moderator1@"
 //}
 
 //#publisher
@@ -32,12 +32,13 @@ Content-Type: application/json
 //  "email": "ccccccccc@mail.com",
 //  "password": "@1Usercccccccc1@"
 //}
-####
+
 //#user
-//{
-//     "email": "userjon@mail.com",
-//     "password": "@1Userjon1@"
-//}
+{
+     "email": "husenteshayev8@gmail.com",
+     "password": "Registratsiyabek1123@"
+}
+###
 //#user2
 //{
 //     "email": "aaaaaa@mail.com",
@@ -54,16 +55,15 @@ Accept-Language: RU
 Content-Type: application/json
 
 {
-  "phoneNumber": "998991339906",
-  "name": "Registratsiya2",
+  "name": "Registratsiya1",
   "surname": "Registratsiyabek",
-  "email": "husenhusenov8@gmail.com",
+  "email": "husenteshayev8@gmail.com",
   "password": "Registratsiyabek1123@"
 }
 
 ###Verification By email
-GET localhost:8080/auth/verification/email/1
-Accept-Language: UZ
+GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzU2NDgsImlkIjoxMywiZXhwIjoxNzA4NDM1OTQ4LCJpc3MiOiJLdW5VelRlc3QifQ.GFqr_z_dfigT9FFyqc0VQRJGW5psO_rLoHhmQNh1KajUopHwV4PJ7Djbr1oerqtgqSfsTo8WVhwJhdNR_J1EdA
+Accept-Language: EN
 ###Verification By phone number
 POST localhost:8080/auth/verification/phone
 Accept-Language: EN
