@@ -26,7 +26,7 @@ public class SpringSecurityConfig {
             "/auth/*",
             "category/any/*",
             "/attach/**",
-            "/tagName/**"
+            "/tagName/**",
             "/channel/getById/*"
 
 
