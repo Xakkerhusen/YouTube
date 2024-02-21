@@ -2,6 +2,8 @@ package com.example.YouTube.service;
 
 import com.example.YouTube.dto.TagNameDTO;
 import com.example.YouTube.entity.TagNameEntity;
+import com.example.YouTube.enums.AppLanguage;
+import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.TagNameRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,24 @@ public class TagNameService {
     @Autowired
     private TagNameRepository tagNameRepository;
 
-    public TagNameDTO create(TagNameDTO dto) {
+    @Autowired
+    private ResourceBundleService resourceBundleService;
+
+
+
+    /**
+     * This method checks whether the incoming tag name exists in the database by tag name.
+     * if the tag name for this name does not exist in the database,
+     * the tag name is saved, otherwise an exception is thrown
+     **/
+    public TagNameDTO create(TagNameDTO dto,AppLanguage language) {
+        Optional<TagNameEntity> optional = tagNameRepository.findByTagName(dto.getTagName());
+        if (optional.isPresent()){
+            log.warn("Tag name already exist {}", optional.get().getId());
+            throw new AppBadException(resourceBundleService.getMessage("tag.name.already.exist",language));
+        }
 
         TagNameEntity entity = new TagNameEntity();
-
         entity.setTagName(dto.getTagName());
         entity.setCreatedDate(LocalDateTime.now());
         tagNameRepository.save(entity);
@@ -35,22 +51,46 @@ public class TagNameService {
     }
 
 
-    public Boolean update(Integer id, TagNameDTO dto) {
-        TagNameEntity entity = get(id);
+
+    /**
+     * This method checks whether the incoming tag name exists in the database.
+     * if a tag name of that name does not exist in the database,
+     * the tag name will be updated, otherwise an exception will be thrown
+     **/
+    public Boolean update(Integer id, TagNameDTO dto, AppLanguage language) {
+        List<TagNameDTO> all = getAll();
+        for (TagNameDTO tag : all) {
+            if (tag.getTagName().equals(dto.getTagName())) {
+                log.warn("Tag name already exist {}", id);
+                throw new AppBadException(resourceBundleService.getMessage("tag.name.already.exist", language));
+            }
+        }
+        TagNameEntity entity = get(id, language);
         entity.setTagName(dto.getTagName());
         tagNameRepository.save(entity);
         return true;
     }
 
-    public Boolean delete(Integer id) {
-        TagNameEntity entity = get(id);
+
+
+    /**
+     * This method searches the database by tag name's id.
+     * If found, it deletes the found object, otherwise it throws an exception
+     * */
+    public Boolean delete(Integer id, AppLanguage language) {
+        TagNameEntity entity = get(id, language);
         tagNameRepository.delete(entity);
         return true;
     }
 
 
+
+    /**
+     * This method get all tag names
+     * */
     public List<TagNameDTO> getAll() {
         Iterable<TagNameEntity> all = tagNameRepository.findAll();
+
         List<TagNameDTO> dtoList = new LinkedList<>();
         for (TagNameEntity entity : all) {
             dtoList.add(toDTO(entity));
@@ -58,6 +98,11 @@ public class TagNameService {
         return dtoList;
     }
 
+
+
+    /**
+     * This method sets the incoming entity to dto
+     * */
     public TagNameDTO toDTO(TagNameEntity entity) {
         TagNameDTO dto = new TagNameDTO();
         dto.setId(entity.getId());
@@ -66,14 +111,17 @@ public class TagNameService {
         return dto;
     }
 
-    public TagNameEntity get(Integer id) {
-        Optional<TagNameEntity> optional = tagNameRepository.findById(id);
-        if (optional.isEmpty()) {
-            log.warn("Tag name not found {}", id);
-            throw new ArithmeticException("Tag name not found");
-        }
-        return optional.get();
-    }
 
+
+    /**
+     * this method looks up the input ID from the database.
+     * If found, it returns the found object, otherwise it throws an exception
+     */
+    public TagNameEntity get(Integer id, AppLanguage language) {
+        return tagNameRepository.findById(id).orElseThrow(() -> {
+            log.warn("Tag name not found {}", id);
+            return new AppBadException(resourceBundleService.getMessage("tag.name.not.found", language));
+        });
+    }
 
 }
