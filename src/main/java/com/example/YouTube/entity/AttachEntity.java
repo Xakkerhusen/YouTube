@@ -31,6 +31,9 @@ public class AttachEntity {
     @Column(name = "extension")
     private String extension;
 
+    @Column(name = "duration")
+    private long duration;
+
     @Column(name = "created_date")
     private LocalDateTime createdData = LocalDateTime.now();
 }

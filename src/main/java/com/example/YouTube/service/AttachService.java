@@ -6,6 +6,8 @@ import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.AttachRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.FrameGrabber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -62,6 +64,8 @@ public class AttachService {
 
             Files.write(path, bytes);
 
+            long durationInSeconds = getDurationInSeconds(path.toAbsolutePath());
+
             AttachEntity entity = new AttachEntity();
             entity.setSize(file.getSize());
             entity.setExtension(extension);
@@ -69,6 +73,7 @@ public class AttachService {
             entity.setCreatedData(LocalDateTime.now());
             entity.setId(key);
             entity.setPath(pathFolder);
+            entity.setDuration(durationInSeconds);
 
             attachRepository.save(entity);
 
@@ -198,6 +203,7 @@ public class AttachService {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
         dto.setUrl(serverUrl + "/attach/open/" + entity.getId() + "." + entity.getExtension());
+        dto.setDuration(entity.getDuration());
         return dto;
     }
 
@@ -225,6 +231,19 @@ public class AttachService {
             log.warn("File not found{}", id);
             return new AppBadException(resourceBundleService.getMessage("File.not.found", language));
         });
+    }
+
+
+    public  long getDurationInSeconds(Path videoFilePath) {
+        Path absolutePath = videoFilePath.toAbsolutePath();
+        try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(absolutePath.toString())) {
+            grabber.start();
+            long durationMicroseconds = grabber.getLengthInTime();
+            return durationMicroseconds / 1_000_000; // Microseconds to seconds
+        } catch (FrameGrabber.Exception e) {
+            e.printStackTrace();
+            return -1; // Indicate error with negative value
+        }
     }
 
 
