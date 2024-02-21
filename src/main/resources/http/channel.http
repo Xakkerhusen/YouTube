@@ -1,0 +1,59 @@
+### Creat
+POST http://localhost:8080/channel/creat
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA
+
+{
+  "name": "Yangiliklar",
+  "description": "Barcha turdagi yangiliklar",
+  "photoId": "2ff306e6-6286-4022-9f5e-229ec470a680",
+  "bannerId": "2ff306e6-6286-4022-9f5e-229ec470a680"
+}
+
+### Update Details
+PUT http://localhost:8080/channel/update/4bde2295-4cf5-4f6f-9467-a5adb05157e7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA
+
+{
+  "name": "Eski habarlar",
+  "description": "Umumiy eski habarlar"
+}
+
+### Update Photo
+PUT http://localhost:8080/channel/updatePhoto/4bde2295-4cf5-4f6f-9467-a5adb05157e7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA
+
+{
+  "imageId": "2ff306e6-6286-4022-9f5e-229ec470a680"
+}
+
+### Update Banner
+PUT http://localhost:8080/channel/updateBanner/4bde2295-4cf5-4f6f-9467-a5adb05157e7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA
+
+{
+  "imageId": "2ff306e6-6286-4022-9f5e-229ec470a680"
+}
+
+### Get By Pagination
+GET http://localhost:8080/channel/getByPagination
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzcxMTUsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDI0QGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNzA4NTIzNTE1LCJpc3MiOiJLdW5VelRlc3QifQ.z-bxTqNGu9yqzKNoMgn7jBRjNeio_fXFaKkro0VH9tWgC0dMc8LSQKWA1h-jmt7bH45LO16Il_WTeo9czdPOgw
+
+### Get By Id
+GET http://localhost:8080/channel/getById/4bde2295-4cf5-4f6f-9467-a5adb05157e7
+
+### Update Status
+PUT http://localhost:8080/channel/updateStatus/4bde2295-4cf5-4f6f-9467-a5adb05157e7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA
+
+{
+  "status": "BLOCK"
+}
+
+### Get List
+GET http://localhost:8080/channel/getChannelList
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA

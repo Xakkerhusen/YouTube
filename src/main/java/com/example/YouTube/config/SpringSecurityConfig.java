@@ -25,7 +25,10 @@ public class SpringSecurityConfig {
             "/profile/adm",
             "/auth/*",
             "category/any/*",
-            "/attach/**"
+            "/attach/**",
+            "/tagName/**"
+            "/channel/getById/*"
+
 
     };
 
