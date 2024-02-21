@@ -24,10 +24,6 @@ public class SpringSecurityConfig {
 
     public static String[] AUTH_WHITELIST = {
             "/profile/adm",
-            "/profile/verification/email/*",
-            "/auth/verification/email/*",
-
-    public static String[] AUTH_WHITELIST = {"/profile/adm",
 
             "/auth/*",
             "/category/any/*",
@@ -52,9 +48,6 @@ public class SpringSecurityConfig {
             "/swagger-resources/**",
 
             "/channel/getById/*"
-
-
-
     };
 
     @Bean
