@@ -17,13 +17,15 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private ProfileStatus status;
     private ProfileRole role;
+    private String name;
 
-    public CustomUserDetails(Integer id, String email, String password, ProfileStatus status, ProfileRole role) {
+    public CustomUserDetails(Integer id, String email, String password, ProfileStatus status, ProfileRole role,String name) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.status = status;
         this.role = role;
+        this.name = name;
     }
 
     @Override
@@ -70,5 +72,9 @@ public class CustomUserDetails implements UserDetails {
 
     public ProfileRole getRole() {
         return role;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -8,6 +8,9 @@ import com.example.YouTube.repository.AttachRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FrameGrabber;
+
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.FrameGrabber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -47,7 +50,7 @@ public class AttachService {
 
     /**
      * This method sends the image, video, or audio to the device with its address and name,
-     * and throws an exception if the address is incorrect
+     * and throws an exception if the address is incorrect 👇🏻
      */
     public AttachDTO save(MultipartFile file) {
         try {
@@ -86,7 +89,7 @@ public class AttachService {
 
 
     /**
-     * This method finds and returns the attachment by id, throws an exception if not found
+     * This method finds and returns the attachment by id, throws an exception if not found 👇🏻
      */
     public byte[] loadImage(String attachId, AppLanguage language) {
         String id = attachId.substring(0, attachId.lastIndexOf("."));
@@ -104,7 +107,7 @@ public class AttachService {
 
 
     /**
-     * This method is used to find the attachment by id and download it into the device memory
+     * This method is used to find the attachment by id and download it into the device memory 👇🏻
      */
     public ResponseEntity download(String attachId, AppLanguage language) {
         try {
@@ -152,7 +155,7 @@ public class AttachService {
 
     /**
      * This method searches the database by attach id.
-     * If found, it deletes the found object, otherwise it throws an exception
+     * If found, it deletes the found object, otherwise it throws an exception 👇🏻
      */
     public Boolean delete(String id, AppLanguage language) {
         get(id, language);
@@ -174,7 +177,7 @@ public class AttachService {
      * photo1.jpg
      * photo2.jpg
      * > day 2
-     * > day 3
+     * > day 3 👇🏻
      */
     public String getYmDString() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -187,7 +190,7 @@ public class AttachService {
 
     /**
      * This method is used to get the file extension
-     * if the filename is photo.jpg this method will return you "jpg"
+     * if the filename is photo.jpg this method will return you "jpg 👇🏻"
      */
     public String getExtension(String fileName) {
         int lastIndex = fileName.lastIndexOf(".");
@@ -197,7 +200,7 @@ public class AttachService {
 
     /**
      * This method takes the data from the entity to the dto
-     * sets id and url and returns
+     * sets id and url and returns 👇🏻
      */
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
@@ -210,7 +213,7 @@ public class AttachService {
 
     /**
      * This method takes the data from the entity to the dto
-     * sets id,url,size and original name and returns for the pagination
+     * sets id,url,size and original name and returns for the pagination 👇🏻
      */
     public AttachDTO toDTOPagination(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
@@ -224,7 +227,7 @@ public class AttachService {
 
     /**
      * this method looks up the input ID from the database.
-     * If found, it returns the found object, otherwise it throws an exception
+     * If found, it returns the found object, otherwise it throws an exception 👇🏻
      */
     public AttachEntity get(String id, AppLanguage language) {
         return attachRepository.findById(id).orElseThrow(() -> {
