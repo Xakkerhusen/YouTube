@@ -24,11 +24,11 @@ public class SpringSecurityConfig {
     public static String[] AUTH_WHITELIST = {"" +
             "/profile/adm",
             "/auth/*",
-            "category/adm/*",
-            "category/adm/**",
             "category/any/*",
             "/attach/**",
             "/tagName/**"
+            "/channel/getById/*"
+
 
     };
 

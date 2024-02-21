@@ -39,11 +39,11 @@ public class ChannelEntity {
     @JoinColumn(name = "profile_id",insertable = false,updatable = false)
     private ProfileEntity profile;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "photo_id",insertable = false,updatable = false)
-//    private AttachEntity photo;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "banner_id",insertable = false,updatable = false)
-//    private AttachEntity Banner;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo_id",insertable = false,updatable = false)
+    private AttachEntity photo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "banner_id",insertable = false,updatable = false)
+    private AttachEntity Banner;
 }

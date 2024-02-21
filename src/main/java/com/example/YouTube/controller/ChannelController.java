@@ -1,11 +1,10 @@
 package com.example.YouTube.controller;
 
-import com.example.YouTube.dto.ChannelDTO;
-import com.example.YouTube.dto.CreatChannelDTO;
-import com.example.YouTube.dto.UpdateChannelDTO;
+import com.example.YouTube.dto.*;
 import com.example.YouTube.enums.Status;
 import com.example.YouTube.service.ChannelService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,7 @@ public class ChannelController {
     @Operation(summary = "Api for creat", description = "this api used for creat channel")
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/creat")
-    public String creat(@RequestBody CreatChannelDTO channelDTO) {
+    public String creat(@Valid @RequestBody CreatChannelDTO channelDTO) {
         return channelService.creat(channelDTO);
     }
 
@@ -31,7 +30,7 @@ public class ChannelController {
     @PreAuthorize("hasRole('USER')")
     @PutMapping("/update/{channel_id}")
     public ResponseEntity<ChannelDTO> update(@PathVariable("channel_id") String channelId,
-                                             @RequestBody UpdateChannelDTO channelDTO) {
+                                             @Valid @RequestBody UpdateChannelDTO channelDTO) {
         return ResponseEntity.ok(channelService.update(channelId, channelDTO));
     }
 
@@ -39,16 +38,16 @@ public class ChannelController {
     @PreAuthorize("hasRole('USER')")
     @PutMapping("/updatePhoto/{channel_id}")
     public String updatePhoto(@PathVariable("channel_id") String channelId,
-                              @RequestParam("image_id") String imageId) {
-        return channelService.updatePhoto(channelId, imageId);
+                              @Valid @RequestBody ChannelImageDTO imageDTO) {
+        return channelService.updatePhoto(channelId, imageDTO.getImageId());
     }
 
     @Operation(summary = "Api for update", description = "this api used for update the Channel Banner")
     @PreAuthorize("hasRole('USER')")
     @PutMapping("/updateBanner/{channel_id}")
     public String updateBanner(@PathVariable("channel_id") String channelId,
-                               @RequestParam("image_id") String imageId) {
-        return channelService.updateBanner(channelId, imageId);
+                               @Valid @RequestBody ChannelImageDTO imageDTO) {
+        return channelService.updateBanner(channelId, imageDTO.getImageId());
     }
 
     @Operation(summary = "Api for get", description = "this api used for get channels by Pagination")
@@ -66,10 +65,11 @@ public class ChannelController {
     }
 
     @Operation(summary = "Api for update", description = "this api used for update the Channel Status")
+    @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
     @PutMapping("/updateStatus/{channel_id}")
     public String updateStatus(@PathVariable("channel_id") String channelId,
-                               @RequestParam("status") Status status) {
-        return channelService.updateStatus(channelId, status);
+                               @RequestBody ChannelStatusDTO status) {
+        return channelService.updateStatus(channelId, status.getStatus());
     }
 
     @Operation(summary = "Api for get", description = "this api used for get channel list")
