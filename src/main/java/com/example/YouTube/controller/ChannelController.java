@@ -4,6 +4,7 @@ import com.example.YouTube.dto.*;
 import com.example.YouTube.enums.Status;
 import com.example.YouTube.service.ChannelService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -12,7 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Tag(name = "Channel API list", description = "API list for Channel")
 @RestController
 @RequestMapping("/channel")
 public class ChannelController {
