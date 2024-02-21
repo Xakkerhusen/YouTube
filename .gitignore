@@ -33,5 +33,5 @@ build/
 .vscode/
 **/talablar.txt
 /src/main/resources/talablar.txt
+**/logs/
 logs/log-file.log
-/logs/
