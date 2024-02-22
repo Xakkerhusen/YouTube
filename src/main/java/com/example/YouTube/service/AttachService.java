@@ -209,6 +209,13 @@ public class AttachService {
         dto.setDuration(entity.getDuration());
         return dto;
     }
+    /**This method takes the data and
+     returns the url 👇🏻*/
+    public AttachDTO toDTOForProfile(AttachEntity entity) {
+        AttachDTO dto = new AttachDTO();
+        dto.setUrl(serverUrl + "/attach/open/" + entity.getId() + "." + entity.getExtension());
+        return dto;
+    }
 
 
     /**

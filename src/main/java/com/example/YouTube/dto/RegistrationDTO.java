@@ -19,4 +19,5 @@ public class RegistrationDTO {
     private String email;
     @NotBlank(message = "password required")
     private String password;
+    private String attachId;
 }

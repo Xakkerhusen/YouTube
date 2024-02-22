@@ -22,6 +22,7 @@ public class CreatedProfileDTO {
     private String email;
     @NotBlank(message = "Profile password required")
     private String password;
+    private String attachId;
     @NotNull(message = "Profile role required")
     private ProfileRole role;
 
