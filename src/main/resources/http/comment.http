@@ -1,0 +1,10 @@
+### create comment
+POST localhost:8080/comment/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
+Accept-Language: UZ
+Content-Type: application/json
+
+{
+  "content": "GOOD Comment User👌👌👌",
+  "videoID": "5377b750-db2b-4f75-b333-c991ace8be31"
+}
