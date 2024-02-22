@@ -25,7 +25,9 @@ public class SpringSecurityConfig {
             "/profile/adm",
             "/profile/verification/email/*",
             "/auth/verification/email/*",
+
             "/auth/*",
+            "/auth/verification/email/*",
             "/category/any/*",
             "/attach/**",
             "/tagName/**",

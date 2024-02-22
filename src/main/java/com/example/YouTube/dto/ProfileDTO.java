@@ -18,5 +18,7 @@ public class ProfileDTO {
     private String password;
     private ProfileRole role;
     private ProfileStatus status;
+    private String attachId;
     private String jwt;
+    private AttachDTO attach;
 }

@@ -34,16 +34,16 @@ Content-Type: application/json
 //}
 
 //#user
-{
-     "email": "husenteshayev8@gmail.com",
-     "password": "Registratsiyabek1123@"
-}
-###
-//#user2
 //{
-//     "email": "aaaaaa@mail.com",
-//     "password": "@1Useraaaaaa1@"
+//     "email": "husenteshayev8@gmail.com",
+//     "password": "Husen1123@"
 //}
+
+//#user2
+{
+     "email": "husenteshayiv@gmail.com",
+     "password": "User1123@"
+}
 ####
 
 
@@ -55,14 +55,14 @@ Accept-Language: RU
 Content-Type: application/json
 
 {
-  "name": "Registratsiya1",
-  "surname": "Registratsiyabek",
-  "email": "husenteshayev8@gmail.com",
-  "password": "Registratsiyabek1123@"
+  "name": "User2",
+  "surname": "userjon",
+  "email": "husenteshayiv@gmail.com",
+  "password": "User1123@"
 }
 
 ###Verification By email
-GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzU2NDgsImlkIjoxMywiZXhwIjoxNzA4NDM1OTQ4LCJpc3MiOiJLdW5VelRlc3QifQ.GFqr_z_dfigT9FFyqc0VQRJGW5psO_rLoHhmQNh1KajUopHwV4PJ7Djbr1oerqtgqSfsTo8WVhwJhdNR_J1EdA
+GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTE1NzAsImlkIjo0LCJleHAiOjE3MDg1OTE4NzAsImlzcyI6Ikt1blV6VGVzdCJ9.oPBpht71NAnuts3skQX6BMjJq2KW2DIiLyKF2IKT9prH9s7wBo639BBPTtoCp-yZnaMGaLEvsgyjFg8fuRi_Pg
 Accept-Language: EN
 ###Verification By phone number
 POST localhost:8080/auth/verification/phone

@@ -48,4 +48,23 @@ Content-Type: application/json
   "surname": "aliyev"
 }
 
+### Update Photo
+POST localhost:8080/profile/any/photo
+#user1 name=Husen
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTAwMjksImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY3NjQyOSwiaXNzIjoiS3VuVXpUZXN0In0.NhXLjLP-IkAABW1kQ_uoiCFMvTOw2s67AsUAgaLcWkxc1Mxkpyn7F2yoPG6QcSSgotlf78dLuoUD1umfATvS_g
+#user2 name=User1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTE5NzYsImVtYWlsIjoiaHVzZW50ZXNoYXlpdkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njc4Mzc2LCJpc3MiOiJLdW5VelRlc3QifQ.pFB3YAitT-6Fc4WocxFFSY1ZKr8byE3ctph0iK46ju2LnSSIOEUvO9BHtCTSBPHaGronz3OIgpM_Cyd5I3mhNg
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="photo_2024-02-22_13-17-53.jpg"
+
+< C:\Users\user\Downloads\photo_2024-02-22_13-17-53.jpg
+
+###Get Profile Detail
+GET localhost:8080/profile/any/getDetails
+Accept-Language: RU
+#user2 name=User1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTE5NzYsImVtYWlsIjoiaHVzZW50ZXNoYXlpdkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njc4Mzc2LCJpc3MiOiJLdW5VelRlc3QifQ.pFB3YAitT-6Fc4WocxFFSY1ZKr8byE3ctph0iK46ju2LnSSIOEUvO9BHtCTSBPHaGronz3OIgpM_Cyd5I3mhNg
+
 

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * This class is created for the methods of the profile
@@ -75,10 +76,30 @@ public class ProfileController {
     @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
     public ResponseEntity<?> updateProfileDetail(@RequestBody(required = false) UpdateProfileDTO dto,
                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-        log.info("change password profile ");
+        log.info("update detail profile ");
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         return ResponseEntity.ok(profileService.updateProfileDetail(profileId, dto, language));
     }
+     @PostMapping("/any/photo")
+    @Operation(summary = "Api for updateProfileAttach", description = "this api is used to updated photo ")
+    @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
+    public ResponseEntity<?> updateProfileAttach(@RequestParam("file") MultipartFile file,
+                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("change photo profile ");
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(profileService.updateProfileAttach(profileId, file, language));
+    }
+
+    @GetMapping("/any/getDetails")
+    @Operation(summary = "Api for getDetails", description = "this method works to return the information of the user who made the request ")
+    @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
+    public ResponseEntity<?> getDetails(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("change photo profile ");
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(profileService.getDetails(profileId, language));
+    }
+
+
 
 
 

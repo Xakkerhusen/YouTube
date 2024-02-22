@@ -29,4 +29,9 @@ public class ProfileEntity extends BaseEntity{
     @Column(name = "role")
     private ProfileRole role;
 
+    @Column(name = "main_photo")
+    private String attachId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "main_photo",insertable = false,updatable = false)
+    private AttachEntity attach;
 }
