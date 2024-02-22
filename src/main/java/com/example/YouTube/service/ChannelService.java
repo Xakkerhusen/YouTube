@@ -5,6 +5,7 @@ import com.example.YouTube.dto.ChannelDTO;
 import com.example.YouTube.dto.CreatChannelDTO;
 import com.example.YouTube.dto.UpdateChannelDTO;
 import com.example.YouTube.entity.ChannelEntity;
+import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.enums.Status;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.ChannelRepository;
@@ -28,10 +29,13 @@ public class ChannelService {
     @Autowired
     private ChannelRepository channelRepository;
 
+    @Autowired
+    private ResourceBundleService resourceBundleService;
+
     /**
      * This method is used to create a new channel
      */
-    public String creat(CreatChannelDTO channelDTO) {
+    public String creat(CreatChannelDTO channelDTO, AppLanguage language) {
         Integer profileId = getUserDetails().getId();
         ChannelEntity entity = new ChannelEntity();
         entity.setName(channelDTO.getName());
@@ -40,17 +44,17 @@ public class ChannelService {
         entity.setPhotoId(channelDTO.getPhotoId());
         entity.setProfileId(profileId);
         channelRepository.save(entity);
-        return "Channel created";
+        return resourceBundleService.getMessage("channel.created",language);
     }
 
     /**
      * This method is used to update the value of
      * (name,description) variables in the Channel class
      */
-    public ChannelDTO update(String channelId, UpdateChannelDTO channelDTO) {
+    public ChannelDTO update(String channelId, UpdateChannelDTO channelDTO, AppLanguage language) {
         Integer profileId = getUserDetails().getId();
         Optional<ChannelEntity> optional = channelRepository.findByIdAndProfileId(channelId, profileId);
-        if (optional.isEmpty()) throw new AppBadException("Channel not found");
+        if (optional.isEmpty()) throw new AppBadException(resourceBundleService.getMessage("channel.not.found",language));
         ChannelEntity entity = optional.get();
         if (!(channelDTO.getDescription() == null || channelDTO.getDescription().trim().isEmpty())) {
             entity.setDescription(channelDTO.getDescription());
@@ -65,31 +69,31 @@ public class ChannelService {
     /**
      * This method is used to update the Channel Photo
      */
-    public String updatePhoto(String channelId, String imageId) {
+    public String updatePhoto(String channelId, String imageId, AppLanguage language) {
         Integer profileId = getUserDetails().getId();
         Optional<ChannelEntity> optional = channelRepository.findByIdAndProfileId(channelId, profileId);
-        if (optional.isEmpty()) throw new AppBadException("Channel not found");
+        if (optional.isEmpty()) throw new AppBadException(resourceBundleService.getMessage("channel.not.found",language));
         // todo checking image
         channelRepository.changePhoto(channelId, imageId);
-        return "Channel photo changed";
+        return resourceBundleService.getMessage("channel.photo.changed",language);
     }
 
     /**
      * This method is used to update the Channel Banner
      */
-    public String updateBanner(String channelId, String imageId) {
+    public String updateBanner(String channelId, String imageId, AppLanguage language) {
         Integer profileId = getUserDetails().getId();
         Optional<ChannelEntity> optional = channelRepository.findByIdAndProfileId(channelId, profileId);
-        if (optional.isEmpty()) throw new AppBadException("Channel not found");
+        if (optional.isEmpty()) throw new AppBadException(resourceBundleService.getMessage("channel.not.found",language));
         // todo checking image
         channelRepository.changeBanner(channelId, imageId);
-        return "Channel photo changed";
+        return resourceBundleService.getMessage("channel.banner.changed",language);
     }
 
     /**
      * This method is used to get Channels by Pagination
      */
-    public PageImpl<ChannelDTO> getByPagination(Integer page, Integer size) {
+    public PageImpl<ChannelDTO> getByPagination(Integer page, Integer size, AppLanguage language) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<ChannelEntity> all = channelRepository.findAll(pageable);
         return new PageImpl<>(toDTOList(all.getContent()), pageable, all.getTotalElements());
@@ -98,27 +102,27 @@ public class ChannelService {
     /**
      * This method is used to get Channel By Id
      */
-    public ChannelDTO getById(String channelId) {
+    public ChannelDTO getById(String channelId, AppLanguage language) {
         Optional<ChannelEntity> optional = channelRepository.findById(channelId);
-        if (optional.isEmpty()) throw new AppBadException("Channel not found");
+        if (optional.isEmpty()) throw new AppBadException(resourceBundleService.getMessage("channel.not.found",language));
         return toDTO(optional.get());
     }
 
     /**
      * This method is used to update the Channel Status
      */
-    public String updateStatus(String channelId, Status status) {
+    public String updateStatus(String channelId, Status status, AppLanguage language) {
         Integer profileId = getUserDetails().getId();
         Optional<ChannelEntity> optional = channelRepository.findByIdAndProfileId(channelId, profileId);
-        if (optional.isEmpty()) throw new AppBadException("Channel not found");
+        if (optional.isEmpty()) throw new AppBadException(resourceBundleService.getMessage("channel.not.found",language));
         channelRepository.changeStatus(channelId,status);
-        return "Status is changed";
+        return resourceBundleService.getMessage("status.is.changed",language);
     }
 
     /**
      * This method is used to get the list of channels
      */
-    public List<ChannelDTO> getChannelList() {
+    public List<ChannelDTO> getChannelList(AppLanguage language) {
         return toDTOList(channelRepository.findByProfileId(getUserDetails().getId()));
     }
 
