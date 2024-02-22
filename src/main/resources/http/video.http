@@ -1,0 +1,14 @@
+### Create video
+POST http://localhost:8080/video/create
+Content-Type: application/json
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}

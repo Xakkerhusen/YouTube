@@ -47,7 +47,9 @@ public class SpringSecurityConfig {
             "/swagger-resources",
             "/swagger-resources/**",
 
-            "/channel/getById/*"
+            "/channel/getById/*",
+            "/channel/",
+            "/video/**",
 
 
 
