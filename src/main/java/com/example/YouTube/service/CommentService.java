@@ -204,7 +204,7 @@ public class CommentService {
 
     }
 
-    public List<CommentInfoDTO> getListVideo(String videoId,AppLanguage lan) {
+    public List<CommentInfoDTO> getListVideo(String videoId, AppLanguage lan) {
         List<CommentEntity> list = repository.videoID(videoId);
         if (list.isEmpty()) {
             String message = service.getMessage("video.no.comment", lan);
@@ -230,5 +230,20 @@ public class CommentService {
         dto.setProfileSurname(entity.getProfile().getSurname());
         dto.setProfilePhotoId(entity.getProfile().getAttachId());
         return dto;
+    }
+
+    public List<CommentInfoDTO> getreplyIdList(String commentID, AppLanguage language) {
+        if (repository.commentID(commentID).isEmpty()) {
+            String message = service.getMessage("comment.empty", language);
+            log.warn(message);
+            throw new AppBadException(message);
+        }
+        List<CommentEntity> byReplyIdComment = repository.findByReplyIdComment(commentID);
+        List<CommentInfoDTO> list = new LinkedList<>();
+        for (CommentEntity entity : byReplyIdComment) {
+            list.add(videoDTO(entity));
+        }
+        return list;
+
     }
 }
