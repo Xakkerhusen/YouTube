@@ -1,0 +1,33 @@
+### create comment
+POST localhost:8080/comment/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MjM5MTcsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODcxMDMxNywiaXNzIjoiS3VuVXpUZXN0In0.QKNOdLp-VgXfr5W8nREymV_FW3JOL_e_nKccYxgT3LqVjF62foMYJEzCPB9B9E_7_cJZL6aOinbPaS4a6mORGA
+Accept-Language: UZ
+Content-Type: application/json
+
+{
+  "content": "Good  Video",
+  "videoID": "3d4fda11-4cf5-4fb3-bbd5-1d28aeebb711"
+}
+
+### update comment
+POST localhost:8080/comment/update/632b51bf-5439-4bc7-8e11-3d826e78e14b
+Accept-Language: UZ
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
+Content-Type: application/json
+
+{
+  "content": "GOOD Comment update"
+}
+
+### delete comment
+
+DELETE localhost:8080/comment/delete/632b51bf-5439-4bc7-8e11-3d826e78e14b
+Accept-Language: UZ
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
+#user
+#eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
+
+### pagination comment
+
+GET localhost:8080/comment/adm/pagination?size=5&page=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MjI3MjgsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MDkxMjgsImlzcyI6Ikt1blV6VGVzdCJ9.k_xkkWfTcLN4MMoWEJV4-ytZKzTdIJdGria7MbYm3i28lNY-OgEDPUakCMw_81bpMWK9LqfoHSoeDYmfGkoqkA
