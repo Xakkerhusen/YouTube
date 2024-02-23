@@ -51,3 +51,9 @@ Accept-Language: UZ
 GET localhost:8080/comment/getListVideo/e8009202-b1b0-45de-9bd9-88932c6fbce8
 Accept-Language: UZ
 
+### getList comment (replyID)
+GET localhost:8080/comment/replyList/2341fb06-2606-47b1-8099-0aedd05e6359
+Accept-Language: UZ
+
+
+

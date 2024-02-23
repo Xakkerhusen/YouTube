@@ -82,7 +82,7 @@ public class CommentController {
 
 
     @GetMapping("/paginationProfileID")
-    @Operation(summary = "API pagination comment profileID(ADMIN)", description = "this api is used to pagination comment(ADMIN)")
+    @Operation(summary = "API pagination comment profileID(USER)", description = "this api is used to pagination comment(USER)")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<PageImpl<CommentPaginationDTO>> paginationProile(
             @RequestParam(value = "size", defaultValue = "1") Integer size,
@@ -93,10 +93,18 @@ public class CommentController {
     }
 
     @GetMapping("/getListVideo/{id}")
-    @Operation(summary = "",description = "")
+    @Operation(summary = "API list comment videoID", description = "This API brings comments written to it via videoID")
     public ResponseEntity<List<CommentInfoDTO>> getListVideoID(@PathVariable(value = "id") String videoId,
                                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(service.getListVideo(videoId, language));
+    }
+
+
+    @GetMapping("/replyList/{id}")
+    public ResponseEntity<List<CommentInfoDTO>> replyID(@PathVariable(value = "id") String commentID,
+                                                        @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(service.getreplyIdList(commentID, language));
+
     }
 
 }
