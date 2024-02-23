@@ -1,12 +1,16 @@
 package com.example.YouTube.service;
 
 import com.example.YouTube.dto.CommentDTO;
+import com.example.YouTube.dto.CommentInfoDTO;
+import com.example.YouTube.dto.CommentPaginationDTO;
 import com.example.YouTube.dto.CreateCommentDTO;
+import com.example.YouTube.entity.AttachEntity;
 import com.example.YouTube.entity.CommentEntity;
 import com.example.YouTube.entity.ProfileEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.enums.ProfileRole;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.repository.AttachRepository;
 import com.example.YouTube.repository.CommetRepository;
 import com.example.YouTube.repository.ProfileRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -17,16 +21,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Slf4j
 public class CommentService {
     @Autowired
     private ProfileRepository profileRepository;
+
+    @Autowired
+    private AttachRepository attachRepository;
 
     @Autowired
     private ResourceBundleService service;
@@ -60,8 +64,8 @@ public class CommentService {
      * any comment, that is, a comment.
      */
 
-    public CommentEntity get(Integer id, AppLanguage language) {
-        return repository.findById(id).orElseThrow(() ->
+    public CommentEntity get(String id, AppLanguage language) {
+        return repository.findByReplyId(id).orElseThrow(() ->
         {
             String message = service.getMessage("replyID.wrong", language);
             log.warn(message);
@@ -121,7 +125,7 @@ public class CommentService {
 
 
     /**
-     *This method shows all the comments for Admin.
+     * This method shows all the comments for Admin.
      */
 
     public PageImpl<CommentDTO> pagination(Integer size, Integer page) {
@@ -144,6 +148,87 @@ public class CommentService {
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setVideoId(entity.getVideoId());
         dto.setUpdateDate(entity.getUpdateDate());
+        return dto;
+    }
+
+    public CommentPaginationDTO dtoComment(CommentEntity entity) {
+        CommentPaginationDTO dto = new CommentPaginationDTO();
+        dto.setCommentID(entity.getId());
+        dto.setTitle(entity.getVideo().getTitle());
+        dto.setLikeCount(entity.getLikeCount());
+        dto.setDislikeCount(entity.getDislikeCount());
+        String attachId = entity.getVideo().getAttachId();
+        Optional<AttachEntity> optional = attachRepository.findAttachID(attachId);
+        if (optional.isEmpty()) {
+            dto.setDuration(null);
+        } else {
+            AttachEntity attachEntity = optional.get();
+            dto.setDuration(attachEntity.getDuration());
+        }
+        dto.setVideoName(entity.getVideo().getTitle());
+        dto.setContent(entity.getContent());
+        dto.setPreviewAttachID(entity.getVideo().getPreviewAttachId());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setVideoID(entity.getVideoId());
+        return dto;
+    }
+
+
+    /**
+     * Bu metod orqali ADMIN berilgan userga tegishli barcha
+     * commentlarni to`liq ko`rishi mumkin
+     */
+
+    public PageImpl<CommentPaginationDTO> paginationProfile(Integer profileID, Integer size, Integer page, AppLanguage lan) {
+
+        Optional<ProfileEntity> byId = profileRepository.findById(profileID);
+        if (byId.isEmpty()) {
+            log.warn("comment not fount");
+            String message = service.getMessage("comment.not.fount", lan);
+            throw new AppBadException(message);
+        }
+
+        PageRequest pageable = PageRequest.of(page - 1, size);
+        Page<CommentEntity> commentEntities = repository.profileID(profileID, pageable);
+        List<CommentEntity> entityList = commentEntities.getContent();
+        if (entityList.isEmpty()) {
+            throw new AppBadException("bu user hali izoh yozmagan.");
+        }
+        long totalElements = commentEntities.getTotalElements();
+        List<CommentPaginationDTO> dtoList = new ArrayList<>();
+
+        for (CommentEntity comment : entityList) {
+            dtoList.add(dtoComment(comment));
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+
+    }
+
+    public List<CommentInfoDTO> getListVideo(String videoId,AppLanguage lan) {
+        List<CommentEntity> list = repository.videoID(videoId);
+        if (list.isEmpty()) {
+            String message = service.getMessage("video.no.comment", lan);
+            log.warn(message);
+            throw new AppBadException(message);
+        }
+        List<CommentInfoDTO> commentList = new LinkedList<>();
+        for (CommentEntity entity : list) {
+            commentList.add(videoDTO(entity));
+        }
+        return commentList;
+    }
+
+    private CommentInfoDTO videoDTO(CommentEntity entity) {
+        CommentInfoDTO dto = new CommentInfoDTO();
+        dto.setCommentID(entity.getId());
+        dto.setLikeCount(entity.getLikeCount());
+        dto.setDislikeCount(entity.getDislikeCount());
+        dto.setProfileID(entity.getProfileId());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setContent(entity.getContent());
+        dto.setProfileName(entity.getProfile().getName());
+        dto.setProfileSurname(entity.getProfile().getSurname());
+        dto.setProfilePhotoId(entity.getProfile().getAttachId());
         return dto;
     }
 }

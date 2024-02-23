@@ -39,7 +39,7 @@ public class CommentEntity {
     private Integer profileId;
 
     @Column(name = "reply_id")
-    private Integer replyId;
+    private String replyId;
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
