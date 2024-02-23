@@ -3,17 +3,19 @@ package com.example.YouTube.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
-@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmailHistoryDTO {
-    private Integer id;
+public class CreateCommentDTO {
+    private String id;
+    private String content;
     private LocalDateTime createdDate;
-    private String sentSms;
-    private String email;
+    private Integer profileID;
+    private String videoID;
+    private String replyID;
+
+
 }

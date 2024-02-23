@@ -46,10 +46,12 @@ public class SpringSecurityConfig {
             "/swagger-ui/**",
             "/swagger-resources",
             "/swagger-resources/**",
+            "/comment/replyList/*",
 
             "/channel/getById/*",
             "/channel/",
             "/video/**",
+            "/video_tag/getVideoTagListByVideoId/{video_id}",
 
 
 
