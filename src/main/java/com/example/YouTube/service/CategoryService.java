@@ -24,6 +24,9 @@ public class CategoryService {
     @Autowired
     private ResourceBundleService bundleService;
 
+    @Autowired
+    private ResourceBundleService resourceBundleService;
+
     /**
      * This method is structured to create category,
      * and the category can only be created by Admin. 👇🏻
@@ -40,17 +43,16 @@ public class CategoryService {
     }
 
 
-
     /**
      * This method was compiled to change the name of the created category .
      * For this method to work, a Category id must be given, and this work is only done by Admin. 👇🏻
      */
-    public String update(Integer categoryId, CategoryDTO dto,AppLanguage lan) {
+    public String update(Integer categoryId, CategoryDTO dto, AppLanguage lan) {
         Optional<CategoryEntity> optional = categoryRepository.findById(categoryId);
 
         if (optional.isEmpty()) {
             log.warn("There is no category with such an id.Please check categoryId");
-            String message = bundleService.getMessage("category.not.found",lan);
+            String message = bundleService.getMessage("category.not.found", lan);
             throw new AppBadException(message);
         }
         CategoryEntity entity = optional.get();
@@ -65,7 +67,7 @@ public class CategoryService {
      * This method is configured to delete an existing directory via categoryId ,
      * and the category can only be deleted by Admin. 👇🏻
      */
-    public Boolean delete(Integer categoryId,AppLanguage language) {
+    public Boolean delete(Integer categoryId, AppLanguage language) {
         Optional<CategoryEntity> optional = categoryRepository.findById(categoryId);
         if (optional.isEmpty()) {
             log.warn("There is no category with such an id.Please check categoryId");
@@ -76,7 +78,6 @@ public class CategoryService {
         return true;
 
     }
-
 
 
     /**
@@ -95,4 +96,13 @@ public class CategoryService {
         }
         return list;
     }
+
+    public CategoryEntity get(Integer id, AppLanguage language) {
+        Optional<CategoryEntity> optional = categoryRepository.findById(id);
+        if (optional.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("Category.not.found", language));
+        }
+        return optional.get();
+    }
+
 }

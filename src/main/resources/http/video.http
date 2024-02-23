@@ -3,12 +3,55 @@ POST http://localhost:8080/video/create
 Content-Type: application/json
 
 {
-  "title": "Yevropadagi hayot",
+  "title": "Yevropadagi O'zbeklar",
   "description": "Yevropadagi hayot haqida bilib olamiz",
-  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "attachId": "e9428584-4126-4d40-a705-c8cd697728c8",
   "categoryId": 5,
   "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
   "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
   "videoStatus": "PUBLIC",
-  "videoType": "SHORT"
+  "videoType": "VIDEO"
 }
+
+
+### Update
+PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+
+{
+  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+}
+
+### Update status
+PUT http://localhost:8080/video/updateStatus/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+
+{
+  "videoStatus": "PRIVATE"
+}
+
+
+### Update view count
+PUT http://localhost:8080/video/increaseViewCountByVideoId/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/x-www-form-urlencoded
+
+
+### Pagination
+GET http://localhost:8080/video/paginationCategoryId?category=5
+
+
+### Search
+GET http://localhost:8080/video/search?title=vro
+
+
+### Get by id
+GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+
+
+### Pagination video list
+GET http://localhost:8080/video/videoList
+
+
+### Pagination by channelId
+GET http://localhost:8080/video/channelVideoList/d72b61cb-e0f6-49be-a41d-2e2cea7518d7
+

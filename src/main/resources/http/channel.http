@@ -1,13 +1,14 @@
 ### Creat
 POST http://localhost:8080/channel/creat
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM2ODQsImVtYWlsIjoic2FuamFyc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg1MjAwODQsImlzcyI6Ikt1blV6VGVzdCJ9.MDTuWVsQN9fhahv_ywP48p3r44gT018qEC31P0Y0tYqUQo45xAA31hX8SHm4N0EbcSn6sYNS76RQ2MRj0YlnxA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDYzNzYsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY5Mjc3NiwiaXNzIjoiS3VuVXpUZXN0In0._-bRvF0Exb8F8CKJ2_t_nqc-Ymds5HmY0tSM_ZL24DvHratj2i-1VShd6Cmz8AFmiRa0T4UZP_ATgjToi8ZDIQ
+Accept-Language: UZ
 
 {
   "name": "Yangiliklar",
   "description": "Barcha turdagi yangiliklar",
-  "photoId": "2ff306e6-6286-4022-9f5e-229ec470a680",
-  "bannerId": "2ff306e6-6286-4022-9f5e-229ec470a680"
+  "photoId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "bannerId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a"
 }
 
 ### Update Details

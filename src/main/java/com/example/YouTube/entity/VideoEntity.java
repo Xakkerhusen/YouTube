@@ -40,6 +40,10 @@ public class VideoEntity {
 
     @Column(name = "preview_attach_id", nullable = false)
     private String previewAttachId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_id", nullable = false, insertable = false, updatable = false)
+    private AttachEntity previewAttach;
+
     @Column(name = "title", nullable = false)
     private String title;
     @Column(name = "description", nullable = false)
@@ -49,6 +53,9 @@ public class VideoEntity {
     private LocalDateTime createdDate = LocalDateTime.now();
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
+
+    @Column(name = "duration")
+    private long duration;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "video_status")
