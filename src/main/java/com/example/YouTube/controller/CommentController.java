@@ -1,5 +1,9 @@
 package com.example.YouTube.controller;
 
+import com.example.YouTube.config.SpringSecurityConfig;
+import com.example.YouTube.dto.CommentDTO;
+import com.example.YouTube.dto.CommentInfoDTO;
+import com.example.YouTube.dto.CommentPaginationDTO;
 import com.example.YouTube.dto.CreateCommentDTO;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.service.CommentService;
@@ -8,9 +12,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -54,12 +61,42 @@ public class CommentController {
 
 
     @GetMapping("/adm/pagination")
-    @Operation(summary = "API pagination comment(ADMIN)", description = "")
+    @Operation(summary = "API pagination comment(ADMIN)", description = "this api is used to pagination comment(ADMIN)")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> pagination(@RequestParam(value = "size") Integer size,
                                         @RequestParam(value = "page") Integer page) {
-
         return ResponseEntity.ok(service.pagination(size, page));
+    }
+
+
+    @GetMapping("/adm/paginationProfileID")
+    @Operation(summary = "API pagination comment profileID(ADMIN)", description = "this api is used to pagination comment(ADMIN)")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<PageImpl<CommentPaginationDTO>> paginationProfileID(
+            @RequestParam(value = "size", defaultValue = "1") Integer size,
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "id") Integer profileID,
+            @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(service.paginationProfile(profileID, size, page, language));
+    }
+
+
+    @GetMapping("/paginationProfileID")
+    @Operation(summary = "API pagination comment profileID(ADMIN)", description = "this api is used to pagination comment(ADMIN)")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<PageImpl<CommentPaginationDTO>> paginationProile(
+            @RequestParam(value = "size", defaultValue = "1") Integer size,
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        Integer profileID = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(service.paginationProfile(profileID, size, page, language));
+    }
+
+    @GetMapping("/getListVideo/{id}")
+    @Operation(summary = "",description = "")
+    public ResponseEntity<List<CommentInfoDTO>> getListVideoID(@PathVariable(value = "id") String videoId,
+                                                               @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(service.getListVideo(videoId, language));
     }
 
 }
