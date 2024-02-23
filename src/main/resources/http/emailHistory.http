@@ -1,0 +1,16 @@
+###Get all Email History
+GET localhost:8080/emailHistory/adm
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2NzA0MzAsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3NTY4MzAsImlzcyI6Ikt1blV6VGVzdCJ9.hxOEa1KWsP7wwguBoHbi0sx_K0kSNjVYDrKQbR_hguHup7F6pRaQ7GnzCPMfo_BIDZjTmEddflo-wjWo39AxXg
+###Get all Email History by Email
+GET localhost:8080/emailHistory/any/husenteshayev8@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2NzA0MzAsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3NTY4MzAsImlzcyI6Ikt1blV6VGVzdCJ9.hxOEa1KWsP7wwguBoHbi0sx_K0kSNjVYDrKQbR_hguHup7F6pRaQ7GnzCPMfo_BIDZjTmEddflo-wjWo39AxXg
+
+###Get email history by filter
+POST localhost:8080/emailHistory/adm/filter
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2NzA0MzAsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3NTY4MzAsImlzcyI6Ikt1blV6VGVzdCJ9.hxOEa1KWsP7wwguBoHbi0sx_K0kSNjVYDrKQbR_hguHup7F6pRaQ7GnzCPMfo_BIDZjTmEddflo-wjWo39AxXg
+Content-Type: application/json
+
+{
+  "email": "husenteshayev8@gmail.com",
+  "toDate": "2024-02-23"
+}
