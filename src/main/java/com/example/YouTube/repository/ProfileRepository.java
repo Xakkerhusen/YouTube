@@ -3,6 +3,7 @@ package com.example.YouTube.repository;
 import com.example.YouTube.entity.ProfileEntity;
 import com.example.YouTube.enums.ProfileStatus;
 import jakarta.transaction.Transactional;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Repository
 public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer> {
     Optional<ProfileEntity> findByEmail(String username);
+
 
     Optional<ProfileEntity> findById(Integer id);
 

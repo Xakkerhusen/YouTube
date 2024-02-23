@@ -17,4 +17,7 @@ public interface EmailSentHistoryRepository extends CrudRepository<EmailSentHist
     @Query("SELECT count (s) from EmailSentHistoryEntity s where s.email =?1 and s.createdDate between ?2 and ?3")
     Long countSendEmail(String email, LocalDateTime from, LocalDateTime to);
 
+    @Query("from EmailSentHistoryEntity where email=?1")
+    Page<EmailSentHistoryEntity>findByEmail(String email,Pageable pageable);
+
 }
