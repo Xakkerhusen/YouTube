@@ -34,6 +34,9 @@ public class AttachEntity {
     @Column(name = "duration")
     private long duration;
 
+    @Column(name = "url")
+    private String url;
+
     @Column(name = "created_date")
     private LocalDateTime createdData = LocalDateTime.now();
 }

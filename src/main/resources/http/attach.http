@@ -3,9 +3,10 @@ POST http://localhost:8080/attach/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="kunuz.jpg"
+Content-Disposition: form-data; name="file"; filename="video.mp4"
 
-< C:\Users\asadb\OneDrive\Desktop\img\kunuz.jpg
+
+< C:\Users\asadb\OneDrive\Desktop\img\video.mp4
 
 ### Get by id
 GET http://localhost:8080/attach/open/a12c91fe-0949-4027-b1c2-5beb783f996a.jpg
