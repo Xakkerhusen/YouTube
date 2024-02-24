@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class CommentInfoDTO {
-    private String commentID;
+    private Integer commentID;
     private String content;
     private LocalDateTime createdDate;
     private Long likeCount;

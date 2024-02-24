@@ -64,7 +64,7 @@ public class CommentService {
      * any comment, that is, a comment.
      */
 
-    public CommentEntity get(String id, AppLanguage language) {
+    public CommentEntity get(Integer id, AppLanguage language) {
         return repository.findByReplyId(id).orElseThrow(() ->
         {
             String message = service.getMessage("replyID.wrong", language);
@@ -73,7 +73,7 @@ public class CommentService {
         });
     }
 
-    public CommentEntity getCommitId(String id, AppLanguage language) {
+    public CommentEntity getCommitId(Integer id, AppLanguage language) {
         return repository.commentID(id).orElseThrow(() ->
         {
             String message = service.getMessage("commentID.wrong", language);
@@ -85,7 +85,7 @@ public class CommentService {
     /**
      * This can change the annotation the user wrote in the method
      */
-    public String update(CreateCommentDTO dto, Integer profileID, AppLanguage language, String commentId) {
+    public String update(CreateCommentDTO dto, Integer profileID, AppLanguage language, Integer commentId) {
         CommentEntity entity = getCommitId(commentId, language);
         if (Objects.equals(entity.getProfileId(), profileID)) {
             entity.setContent(dto.getContent());
@@ -105,7 +105,7 @@ public class CommentService {
      * comments written through the method.
      * This work is done by the user himself or ADMIN.
      */
-    public Boolean delete(Integer profileID, AppLanguage language, String commentId) {
+    public Boolean delete(Integer profileID, AppLanguage language, Integer commentId) {
         CommentEntity commitId = getCommitId(commentId, language);
         Optional<ProfileEntity> byId = profileRepository.findById(profileID);
         if (byId.isEmpty()) {
@@ -232,7 +232,7 @@ public class CommentService {
         return dto;
     }
 
-    public List<CommentInfoDTO> getreplyIdList(String commentID, AppLanguage language) {
+    public List<CommentInfoDTO> getreplyIdList(Integer commentID, AppLanguage language) {
         if (repository.commentID(commentID).isEmpty()) {
             String message = service.getMessage("comment.empty", language);
             log.warn(message);
