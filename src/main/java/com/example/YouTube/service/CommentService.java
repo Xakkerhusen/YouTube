@@ -67,7 +67,7 @@ public class CommentService {
     public CommentEntity get(String id, AppLanguage language) {
         return repository.findByReplyId(id).orElseThrow(() ->
         {
-            String message = service.getMessage("replyID.wrong", language);
+            String message = service.getMessage("comment.not.found", language);
             log.warn(message);
             throw new AppBadException(message);
         });
@@ -218,7 +218,7 @@ public class CommentService {
         return commentList;
     }
 
-    private CommentInfoDTO videoDTO(CommentEntity entity) {
+    public CommentInfoDTO videoDTO(CommentEntity entity) {
         CommentInfoDTO dto = new CommentInfoDTO();
         dto.setCommentID(entity.getId());
         dto.setLikeCount(entity.getLikeCount());
