@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class PlaylistVideoDTO {
     private Long id;
 
-    private Long playlistId;
+    private Integer playlistId;
 
     private String videoId;
 

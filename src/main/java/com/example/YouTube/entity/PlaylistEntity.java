@@ -28,4 +28,8 @@ public class PlaylistEntity extends BaseEntity {
     @Column(name = "order_number")
     private Integer orderNumber;
 
+    @Column(name = "video_count")
+    private Integer videoCount;
+
+
 }

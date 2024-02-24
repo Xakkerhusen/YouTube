@@ -1,5 +1,6 @@
 package com.example.YouTube.controller;
 
+import com.example.YouTube.config.CustomUserDetails;
 import com.example.YouTube.dto.CreatePlaylistDTO;
 import com.example.YouTube.dto.PlaylistDTO;
 import com.example.YouTube.enums.AppLanguage;
@@ -29,17 +30,59 @@ public class PlaylistController {
     public ResponseEntity<?> create(@Valid @RequestBody CreatePlaylistDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("Create playlist {}", dto.getName());
-        return ResponseEntity.ok(playlistService.create(dto, language));
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        return ResponseEntity.ok(playlistService.create(currentUser.getId(),dto, language));
     }
 
     @PutMapping("/update/{playlist_id}")
     @Operation(summary = "Api for playlist", description = "this api is used to updated playlist ")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> updatePlaylist( @PathVariable("playlist_id") Long playlistId,
+    public ResponseEntity<?> update( @PathVariable("playlist_id") Integer playlistId,
                                              @Valid @RequestBody(required = false) PlaylistDTO dto,
                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("update  playlist ");
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         return ResponseEntity.ok(playlistService.update(playlistId,profileId,dto,language));
     }
+
+    @PutMapping("/updateStatus/{playlist_id}")
+    @Operation(summary = "Api for playlist", description = "this api is used to updated status playlist ")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> updateStatus( @PathVariable("playlist_id") Integer playlistId,
+                                     @Valid @RequestBody(required = false) PlaylistDTO dto,
+                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("update status  playlist ");
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(playlistService.update(playlistId,profileId,dto,language));
+    }
+
+    @DeleteMapping("/delete/{playlist_id}")
+    @Operation(summary = "Api for playlist", description = "this api is used to delete playlist ")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public ResponseEntity<?> delete( @PathVariable("playlist_id") Integer playlistId,
+                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("update status  playlist ");
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(playlistService.delete(playlistId,profileId,language));
+    }
+
+    @GetMapping("/pagination")
+    @Operation(summary = "Api for playlist", description = "this api is used to pagination playlist ")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> pagination(@RequestParam Integer page, Integer size,
+                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("update status  playlist ");
+        return ResponseEntity.ok(playlistService.pagination(page,size,language));
+    }
+
+    @GetMapping("/getAll")
+    @Operation(summary = "Api for playlist", description = "this api is used to delete playlist ")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> delete(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("update status  playlist ");
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(playlistService.getPlaylistByUser(profileId,language));
+    }
+
+
 }

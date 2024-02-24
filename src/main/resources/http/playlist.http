@@ -1,12 +1,12 @@
 ### create
 POST localhost:8080/playlist
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTYwMjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODcwMjQyMSwiaXNzIjoiS3VuVXpUZXN0In0.kcO_imWAzUPUjLa7XkaoTHiknSDZHeZ8b7mCv273gG1VnnahKv2Oo1jOQbNXJDbmfKTqFCQ3tmSj5V4wra4MJQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
 
 {
   "name": "java",
   "description": "java coding",
-  "channelId": "dc4e5f3a-bad9-407d-9014-193bac489942",
+  "channelId": "1db51e78-2680-4cc3-98c0-21d212270d8b",
   "status": "PUBLIC",
   "orderNumber": 1
 }
@@ -15,17 +15,27 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTYwMjEsImVtYWlsIjoiY
 ###
 PUT http://localhost:8080/playlist/update/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTYwMjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODcwMjQyMSwiaXNzIjoiS3VuVXpUZXN0In0.kcO_imWAzUPUjLa7XkaoTHiknSDZHeZ8b7mCv273gG1VnnahKv2Oo1jOQbNXJDbmfKTqFCQ3tmSj5V4wra4MJQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
 
 {
   "name": "java 3",
   "description": "java coding 2",
-  "channelId": "dc4e5f3a-bad9-407d-9014-193bac489942",
+  "channelId": "1db51e78-2680-4cc3-98c0-21d212270d8b",
   "orderNumber": 2,
-  "status": "PUBLIC"
+  "status": "PRIVATE"
 }
 
+### delete
+DELETE http://localhost:8080/playlist/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
 
+### pagination
+GET http://localhost:8080/playlist/pagination?page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
+
+### get all by User
+GET http://localhost:8080/playlist/getAll
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
 
 
 

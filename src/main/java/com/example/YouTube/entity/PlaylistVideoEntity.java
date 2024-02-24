@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 public class PlaylistVideoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "playlist_id")
-    private Long playlistId;
+    private Integer playlistId;
 
     @ManyToOne
     @JoinColumn(name = "playlist_id",insertable = false,updatable = false)
@@ -27,7 +27,7 @@ public class PlaylistVideoEntity {
 
     @ManyToOne
     @JoinColumn(name = "video_id",insertable = false,updatable = false)
-    private AttachEntity video;
+    private VideoEntity video;
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
