@@ -1,0 +1,21 @@
+### create
+POST http://localhost:8080/playlist_video/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
+
+{
+  "playlistId": 2,
+  "videoId": "4f243ffe-9b2a-4228-b2ab-76d0544a4a16",
+  "orderNumber": 1
+}
+
+
+
+
+
+
+
+
+
+
+
