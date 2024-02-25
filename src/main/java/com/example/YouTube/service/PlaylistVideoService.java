@@ -4,7 +4,6 @@ import com.example.YouTube.dto.*;
 import com.example.YouTube.entity.*;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
-import com.example.YouTube.repository.PlaylistRepository;
 import com.example.YouTube.repository.PlaylistVideoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +22,16 @@ public class PlaylistVideoService {
     private final VideoService videoService;
     private final ChannelService channelService;
     private final ResourceBundleService resourceBundleService;
-    private final PlaylistRepository playlistRepository;
     private final AttachService attachService;
+    @Autowired
     public PlaylistVideoService(PlaylistVideoRepository playlistVideoRepository, PlaylistService playlistService,
                                 VideoService videoService, ChannelService channelService,
-                                ResourceBundleService resourceBundleService, PlaylistRepository playlistRepository,
-                                AttachService attachService) {
+                                ResourceBundleService resourceBundleService, AttachService attachService) {
         this.playlistVideoRepository = playlistVideoRepository;
         this.playlistService = playlistService;
         this.videoService = videoService;
         this.channelService = channelService;
         this.resourceBundleService = resourceBundleService;
-        this.playlistRepository = playlistRepository;
         this.attachService = attachService;
     }
 
@@ -55,8 +52,6 @@ public class PlaylistVideoService {
         entity.setPlaylistId(playlist.getId());
         entity.setVideoId(videoEntity.getId());
         entity.setCreatedDate(LocalDateTime.now());
-//        playlist.setVideoCount(playlist.getVideoCount() + 1);
-//        playlistRepository.save(playlist);
 
         playlistVideoRepository.save(entity);
 
@@ -97,8 +92,7 @@ public class PlaylistVideoService {
 
         playlistVideoRepository.delete(playlistVideo);
 
-//        playlist.setVideoCount(playlist.getVideoCount() - 1);
-//        playlistRepository.save(playlist);
+
 
         return "Deleted successfully";
     }
