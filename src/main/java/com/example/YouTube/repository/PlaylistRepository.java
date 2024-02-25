@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integer> {
 
@@ -20,6 +21,15 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
 
     Page<PlaylistEntity> findAll(Pageable pageable);
 
-    @Query("from PlaylistEntity where visible=true")
+    @Query("from PlaylistEntity where visible=true order by orderNumber desc ")
     List<PlaylistEntity> find();
+
+    List<PlaylistEntity> findAllByChannelIdOrderByOrderNumberDesc(String channelId);
+
+
+    //    @Query("from PlaylistEntity where visible=true ")
+    Optional<PlaylistEntity> findByIdAndVisibleTrue(Integer id);
+
+    List<PlaylistEntity> findAllByOrderByOrderNumberDesc();
+
 }
