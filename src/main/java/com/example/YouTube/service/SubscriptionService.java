@@ -1,5 +1,7 @@
 package com.example.YouTube.service;
 
+import com.example.YouTube.controller.ChangeSubscriptionNotificationDTO;
+import com.example.YouTube.controller.ChangeSubscriptionStatusDTO;
 import com.example.YouTube.dto.AttachDTO;
 import com.example.YouTube.dto.ChannelDTO;
 import com.example.YouTube.dto.SubscriptionCreateDTO;
@@ -59,7 +61,7 @@ public class SubscriptionService {
         return "Success!!!";
     }
 
-    public String changeSubscriptionStatus(Integer profileId,SubscriptionCreateDTO dto,AppLanguage language){
+    public String changeSubscriptionStatus(Integer profileId, ChangeSubscriptionStatusDTO dto, AppLanguage language){
 
         ProfileEntity profileEntity = profileService.get(profileId, language);
         Optional<SubscriptionEntity> subscription = subscriptionRepository.findByChannelIdAndProfileId(dto.getChannelId(),profileEntity.getId());
@@ -79,7 +81,7 @@ public class SubscriptionService {
         return "Status has changed";
     }
 
-    public String changeNotificationType(Integer profileId,SubscriptionCreateDTO dto,AppLanguage language){
+    public String changeNotificationType(Integer profileId, ChangeSubscriptionNotificationDTO dto, AppLanguage language){
 
         ProfileEntity profileEntity = profileService.get(profileId, language);
         Optional<SubscriptionEntity> subscription = subscriptionRepository.findByChannelIdAndProfileId(dto.getChannelId(),profileEntity.getId());
@@ -95,7 +97,7 @@ public class SubscriptionService {
 
         subscriptionRepository.save(entity);
 
-        return "Status has changed";
+        return "Notification Type changed";
     }
 
 

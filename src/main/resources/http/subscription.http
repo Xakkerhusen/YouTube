@@ -1,0 +1,43 @@
+### Creat
+POST http://localhost:8080/subscription/create
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDM0MTcsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTAyOTgxNywiaXNzIjoiS3VuVXpUZXN0In0.RcFWwM6MLQGH9pMUyOygHXgJAB0YVHK6f8G4v1B5SjbzptT4MEezi-x0HlUlegjNfuvKYI-KtDcHq_jGvDmNug
+
+{
+  "channelId": "6cd034cc-9716-4f95-aab9-fe06b72573df",
+  "notificationType": "ALL",
+  "status": "ACTIVE"
+}
+
+### Creat Status
+PUT http://localhost:8080/subscription/changeSubscriptionStatus
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDM0MTcsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTAyOTgxNywiaXNzIjoiS3VuVXpUZXN0In0.RcFWwM6MLQGH9pMUyOygHXgJAB0YVHK6f8G4v1B5SjbzptT4MEezi-x0HlUlegjNfuvKYI-KtDcHq_jGvDmNug
+
+{
+"channelId": "6cd034cc-9716-4f95-aab9-fe06b72573df",
+"status": "ACTIVE"
+}
+
+### Creat Notification Type
+PUT http://localhost:8080/subscription/changeNotificationType
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDM0MTcsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTAyOTgxNywiaXNzIjoiS3VuVXpUZXN0In0.RcFWwM6MLQGH9pMUyOygHXgJAB0YVHK6f8G4v1B5SjbzptT4MEezi-x0HlUlegjNfuvKYI-KtDcHq_jGvDmNug
+
+{
+  "channelId": "6cd034cc-9716-4f95-aab9-fe06b72573df",
+  "notificationType": "PERSONALIZED"
+}
+
+### Get
+GET http://localhost:8080/subscription/getInfo
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDM0MTcsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTAyOTgxNywiaXNzIjoiS3VuVXpUZXN0In0.RcFWwM6MLQGH9pMUyOygHXgJAB0YVHK6f8G4v1B5SjbzptT4MEezi-x0HlUlegjNfuvKYI-KtDcHq_jGvDmNug
+
+### Get
+GET http://localhost:8080/subscription/getInfoByAdmin?profile_id=12
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDQyMzYsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzA2MzYsImlzcyI6Ikt1blV6VGVzdCJ9.mrgWUzVuKyIoJdDlLHLRBdg32vGY_vlsyGnL42s8Vnzx1arDTXh1ENFOyIDrn42sElx2uwx5igKpkMksXVczBQ
