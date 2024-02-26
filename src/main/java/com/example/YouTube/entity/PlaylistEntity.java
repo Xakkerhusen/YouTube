@@ -31,5 +31,7 @@ public class PlaylistEntity extends BaseEntity {
     @Column(name = "video_count")
     private Integer videoCount;
 
-
+    public PlaylistEntity() {
+        this.videoCount=0;
+    }
 }
