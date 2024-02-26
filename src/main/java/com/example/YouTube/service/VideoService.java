@@ -1,13 +1,14 @@
 package com.example.YouTube.service;
 
+import com.example.YouTube.config.CustomUserDetails;
 import com.example.YouTube.dto.*;
 import com.example.YouTube.entity.*;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.enums.ProfileRole;
 import com.example.YouTube.enums.VideoStatus;
 import com.example.YouTube.exp.AppBadException;
-import com.example.YouTube.repository.AttachRepository;
 import com.example.YouTube.repository.VideoRepository;
+import com.example.YouTube.repository.VideoTagRepository;
 import com.example.YouTube.utils.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,26 @@ public class VideoService {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private VideoWatchedService videoWatchedService;
+
+    @Autowired
+    private VideoTagRepository videoTagRepository;
+
 
     /**
      * this method is used to create a video
      */
-    public VideoCreateDTO create(VideoCreateDTO dto, AppLanguage language) {
+
+    public VideoCreateDTO create(VideoCreateDTO dto, CustomUserDetails currentUser, AppLanguage language) {
+        Integer profileId = currentUser.getId();
+
+        if (!currentUser.getRole().equals(ProfileRole.ROLE_USER)){
+            log.warn("You have not access{}", profileId);
+            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+        }
+        checkProfileIsOwnerThisChannel(profileId,dto.getChannelId(),language);
+
         VideoEntity entity = new VideoEntity();
         entity.setTitle(dto.getTitle());
         entity.setDescription(dto.getDescription());
@@ -60,6 +76,7 @@ public class VideoService {
         entity.setPublishedDate(LocalDateTime.now());
 
         videoRepository.save(entity);
+
         dto.setCreatedDate(LocalDateTime.now());
 
         return dto;
@@ -69,7 +86,15 @@ public class VideoService {
     /**
      * this method is used to update video detail
      */
-    public Boolean update(String id, VideoCreateDTO dto, AppLanguage language) {
+    public Boolean update(String id, CustomUserDetails currentUser, VideoCreateDTO dto, AppLanguage language) {
+        Integer profileId = currentUser.getId();
+
+        if (!currentUser.getRole().equals(ProfileRole.ROLE_USER)){
+            log.warn("You have not access{}", profileId);
+            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+        }
+        checkProfileIsOwnerThisChannel(profileId,dto.getChannelId(),language);
+
         VideoEntity entity = get(id, language);
         if (dto.getTitle() != null) {
             entity.setTitle(dto.getTitle());
@@ -88,20 +113,39 @@ public class VideoService {
     /**
      * this method is used to update video status
      */
-    public Boolean updateStatus(String id, VideoStatusDTO dto, AppLanguage language) {
+    public Boolean updateStatus(String id, CustomUserDetails currentUser, VideoStatusDTO dto, AppLanguage language) {
+        Integer profileId = currentUser.getId();
+
+        if (!currentUser.getRole().equals(ProfileRole.ROLE_USER)){
+            log.warn("You have not access{}", profileId);
+            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+        }
+        checkProfileIsOwnerThisChannel(profileId,dto.getChannelId(),language);
+
         VideoEntity entity = get(id, language);
         entity.setVideoStatus(dto.getVideoStatus());
         videoRepository.save(entity);
         return true;
     }
 
+    private void checkProfileIsOwnerThisChannel(Integer profileId, String channelId, AppLanguage language) {
+        ChannelEntity channelEntity = channelService.get(channelId, language);
+        if (!profileId.equals(channelEntity.getProfileId())) {
+            log.warn("Profile not found{}", profileId);
+            throw new AppBadException(resourceBundleService.getMessage("Profile.not.found", language) + "-->>" + profileId);
+        }
+    }
+
 
     /**
      * this method is used to increase video view count by videoId
      */
-    public Boolean increaseViewCount(String videoId, AppLanguage language) {
+    public Boolean increaseViewCount(String videoId, Integer profileId, AppLanguage language) {
         get(videoId, language);
-        return videoRepository.increaseViewCount(videoId) != 0;
+        if (videoWatchedService.save(videoId, profileId)) {
+            return videoRepository.increaseViewCount(videoId) != 0;
+        }
+        return false;
     }
 
 
@@ -144,6 +188,7 @@ public class VideoService {
      * this method is used to get byId videos
      */
     public VideoDTO getById(String id, AppLanguage language) {
+
         VideoEntity entity = get(id, language);
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         if (entity.getVideoStatus().equals(VideoStatus.PRIVATE)) {
@@ -161,7 +206,11 @@ public class VideoService {
     /**
      * this method is used to pagination video list
      */
-    public PageImpl<VideoDTO> paginationVideoList(Integer page, Integer size, AppLanguage language) {
+    public PageImpl<VideoDTO> paginationVideoList(Integer page, Integer size, CustomUserDetails currentUser, AppLanguage language) {
+        if (!currentUser.getRole().equals(ProfileRole.ROLE_ADMIN)) {
+            log.warn("You have not access{}", currentUser.getId());
+            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+        }
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
 
         Pageable paging = PageRequest.of(page - 1, size, sort);
@@ -251,7 +300,8 @@ public class VideoService {
         AttachEntity attachEntity = attachService.get(entity.getAttachId(), language);
         AttachDTO attachDTO = new AttachDTO();
         attachDTO.setId(attachEntity.getId());
-        attachDTO.setUrl(attachEntity.getPath());
+//        attachDTO.setUrl(attachEntity.getPath());
+        attachDTO.setUrl(attachEntity.getUrl());
         dto.setPreviewAttach(attachDTO);
 
         // channel
@@ -336,6 +386,7 @@ public class VideoService {
      * this method is used to get full video detail by videoId
      * and return one video details
      */
+
     public VideoEntity get(String id, AppLanguage language) {
         Optional<VideoEntity> optional = videoRepository.findById(id);
         if (optional.isEmpty()) {
@@ -346,4 +397,27 @@ public class VideoService {
     }
 
 
+    /**
+     * this method is used to get video by tagId and pages
+     */
+    public PageImpl<VideoDTO> getByTagId(Integer page, Integer size, AppLanguage language, Integer tagId) {
+
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+
+        Pageable paging = PageRequest.of(page - 1, size, sort);
+
+        Page<VideoTagEntity> videoPage = videoTagRepository.findByTagId(paging,tagId);
+        List<VideoTagEntity> entityList = videoPage.getContent();
+        long totalElement = videoPage.getTotalElements();
+
+        List<VideoDTO> dtoList = new LinkedList<>();
+        for (VideoTagEntity entity : entityList) {
+
+            VideoEntity videoEntity = get(entity.getVideoId(), language);
+            VideoDTO dtoShortInfo = toDTOShortInfo(videoEntity, language);
+            dtoList.add(dtoShortInfo);
+        }
+        return new PageImpl<>(dtoList, paging, totalElement);
+
+    }
 }

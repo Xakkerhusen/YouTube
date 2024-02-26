@@ -9,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FrameGrabber;
 
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.FrameGrabber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -21,9 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -77,6 +78,7 @@ public class AttachService {
             entity.setId(key);
             entity.setPath(pathFolder);
             entity.setDuration(durationInSeconds);
+            entity.setUrl(serverUrl + "/attach/open/" + entity.getId() + "." + entity.getExtension());
 
             attachRepository.save(entity);
 
@@ -86,6 +88,7 @@ public class AttachService {
         }
         return null;
     }
+
 
 
     /**
@@ -104,6 +107,8 @@ public class AttachService {
         }
         return new byte[0];
     }
+
+
 
 
     /**
@@ -133,6 +138,7 @@ public class AttachService {
     }
 
 
+
     /**
      * This method used attach for pagination
      */
@@ -153,6 +159,7 @@ public class AttachService {
     }
 
 
+
     /**
      * This method searches the database by attach id.
      * If found, it deletes the found object, otherwise it throws an exception 👇🏻
@@ -162,6 +169,7 @@ public class AttachService {
         attachRepository.deleteById(id);
         return true;
     }
+
 
 
     /**
@@ -209,6 +217,8 @@ public class AttachService {
         dto.setDuration(entity.getDuration());
         return dto;
     }
+
+
     /**This method takes the data and
      returns the url 👇🏻*/
     public AttachDTO toDTOForProfile(AttachEntity entity) {
@@ -244,6 +254,7 @@ public class AttachService {
     }
 
 
+
     public  long getDurationInSeconds(Path videoFilePath) {
         Path absolutePath = videoFilePath.toAbsolutePath();
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(absolutePath.toString())) {
@@ -255,6 +266,7 @@ public class AttachService {
             return -1; // Indicate error with negative value
         }
     }
+
 
 
 }

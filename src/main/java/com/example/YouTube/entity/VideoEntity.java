@@ -1,5 +1,6 @@
 package com.example.YouTube.entity;
 
+import com.example.YouTube.dto.PlaylistDTO;
 import com.example.YouTube.enums.VideoStatus;
 import com.example.YouTube.enums.VideoType;
 import jakarta.persistence.*;
@@ -8,7 +9,6 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -55,7 +55,7 @@ public class VideoEntity {
     private LocalDateTime publishedDate;
 
     @Column(name = "duration")
-    private long duration;
+    private long duration = 0l;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "video_status")
@@ -72,6 +72,12 @@ public class VideoEntity {
     private Long likeCount = 0l;
     @Column(name = "dislike_count")
     private Long dislikeCount = 0l;
+
+    @Column(name = "playlist_id", nullable = false)
+    private Integer playlistId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "playlist_id", nullable = false, insertable = false, updatable = false)
+    private PlaylistEntity playlist;
 
 }
 

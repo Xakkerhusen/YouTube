@@ -35,7 +35,7 @@ public class PlaylistController {
     @PutMapping("/update/{playlist_id}")
     @Operation(summary = "Api for playlist", description = "this api is used to updated playlist ")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> updatePlaylist( @PathVariable("playlist_id") Long playlistId,
+    public ResponseEntity<?> updatePlaylist( @PathVariable("playlist_id") Integer playlistId,
                                              @Valid @RequestBody(required = false) PlaylistDTO dto,
                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("update  playlist ");

@@ -57,7 +57,7 @@ public class PlaylistService {
     /**
      * This method is used to update a new playlist
      */
-    public String update(Long playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language){
+    public String update(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language){
         PlaylistEntity entity = get(playlistId, language);
 
         ChannelDTO channelDTO = channelService.getById(entity.getChannelId(),language);
@@ -80,7 +80,7 @@ public class PlaylistService {
     }
 
 
-    private PlaylistEntity get(Long playlistId, AppLanguage language) {
+    private PlaylistEntity get(Integer playlistId, AppLanguage language) {
         return playlistRepository.findById(playlistId).orElseThrow(() -> {
             log.warn("Profile not found{}", playlistId);
             return new AppBadException(resourceBundleService.getMessage("playlist.not.found", language)+"-->"+playlistId);

@@ -1,0 +1,42 @@
+### create
+POST http://localhost:8080/video_emotion/like
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "profileId": 5,
+  "videoId": "9e1a8687-552d-46e8-92c0-76c06a5e3a24",
+  "status": "LIKE"
+}
+
+
+### Create dislike
+POST http://localhost:8080/video_emotion/dislike
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "profileId": 5,
+  "videoId": "9e1a8687-552d-46e8-92c0-76c06a5e3a24",
+  "status": "DISLIKE"
+}
+
+
+### Delete emotion
+DELETE http://localhost:8080/video_emotion/remove/5/9e1a8687-552d-46e8-92c0-76c06a5e3a24
+Accept-Language: EN
+
+
+### Get video list
+GET http://localhost:8080/video_emotion/userLikedVideoList
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTMyMTYsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3OTYxNiwiaXNzIjoiS3VuVXpUZXN0In0.Wb13Wo6N8_nRwd8mrt-uDZ_uq3gLkomAPIdy7W79M-qhStf3mqyG9ouofxaAVhi9LmqFtikVvq4OOoHqo0bQQA
+Accept-Language: UZ
+
+
+
+### Get video list by profileId
+GET http://localhost:8080/video_emotion/userLikedVideoListByAdmin/5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM4NDUsImVtYWlsIjoic2hha2h6b2RhbGxheW9yb3YyM0BnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwODk4MDI0NSwiaXNzIjoiS3VuVXpUZXN0In0.vDhSpzKN3WHLyhKf0SuOuaD_yIAyr1qMq9QI6k3f1btDVN0wJ0rBIFkua6hHDb1HpP7XJ-q3jBDc01FDnIGctA
+Accept-Language: UZ
+
+

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaylistDTO {
-    private Long id;
+    private Integer id;
     private String channelId;
     private String name;
     private String description;

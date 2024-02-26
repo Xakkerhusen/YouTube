@@ -26,5 +26,3 @@ GET http://localhost:8080/attach/attachPagination
 DELETE http://localhost:8080/attach/delete/844be37a-e4e3-48be-9f31-4c755b2adb88
 Accept-Language: UZ
 
-
-

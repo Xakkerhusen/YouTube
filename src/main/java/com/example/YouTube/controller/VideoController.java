@@ -1,10 +1,12 @@
 package com.example.YouTube.controller;
 
+import com.example.YouTube.config.CustomUserDetails;
 import com.example.YouTube.dto.VideoCreateDTO;
 import com.example.YouTube.dto.VideoDTO;
 import com.example.YouTube.dto.VideoStatusDTO;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.service.VideoService;
+import com.example.YouTube.utils.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -12,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,42 +30,49 @@ public class VideoController {
 
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Api for create", description = "this api is used to create video")
     public ResponseEntity<VideoCreateDTO> create(@Valid @RequestBody VideoCreateDTO dto,
                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                  AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video create ");
-        return ResponseEntity.ok(videoService.create(dto, language));
+        return ResponseEntity.ok(videoService.create(dto, currentUser, language));
     }
 
 
     @PutMapping("/update/{id}")
+    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Api for update", description = "this api is used to update video")
     public ResponseEntity<Boolean> update(@Valid @PathVariable("id") String id, @RequestBody VideoCreateDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                           AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video update detail{} ", id);
-        return ResponseEntity.ok(videoService.update(id, dto, language));
+        return ResponseEntity.ok(videoService.update(id,currentUser, dto, language));
     }
 
 
     @PutMapping("/updateStatus/{id}")
+    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Api for update status", description = "this api is used to update video status")
     public ResponseEntity<Boolean> updateStatus(@Valid @PathVariable("id") String id, @RequestBody VideoStatusDTO dto,
                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                 AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video update status{} ", id);
-        return ResponseEntity.ok(videoService.updateStatus(id, dto, language));
+        return ResponseEntity.ok(videoService.updateStatus(id,currentUser, dto, language));
     }
 
 
-    @PutMapping("/increaseViewCountByVideoId/{id}")
+    @PutMapping("/increaseViewCountByVideoId/{vId}/{pId}")
     @Operation(summary = "API for increase view count", description = "this api is used to increase video view count")
-    public ResponseEntity<Boolean> increaseViewCount(@PathVariable("id") String videoId,
+    public ResponseEntity<Boolean> increaseViewCount(@PathVariable("vId") String videoId,
+                                                     @PathVariable("pId") Integer profileId,
                                                      @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                      AppLanguage language) {
         log.info("Increase view count{}", videoId);
-        return ResponseEntity.ok(videoService.increaseViewCount(videoId, language));
+        return ResponseEntity.ok(videoService.increaseViewCount(videoId, profileId, language));
     }
 
 
@@ -88,11 +98,24 @@ public class VideoController {
     }
 
 
+    @GetMapping("/paginationByTagId/{tagId}")
+    @Operation(summary = "Api for get by tag id", description = "this api is used to get by tag id")
+    public ResponseEntity<PageImpl<VideoDTO>> getByTagId(@PathVariable("tagId") Integer tagId,
+                                                         @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                         @RequestParam(value = "size", defaultValue = "2") Integer size,
+                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                         AppLanguage language) {
+        log.info("Video get by tag id{} ", tagId);
+        return ResponseEntity.ok(videoService.getByTagId(page, size, language,tagId));
+    }
+
     @GetMapping("/getById/{id}")
+    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Api for get by id", description = "this api is used to get by id")
     public ResponseEntity<VideoDTO> getById(@PathVariable("id") String id,
-                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                            @RequestParam(value = "Accept-Language", defaultValue = "UZ")
                                             AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video get by id{} ", id);
         return ResponseEntity.ok(videoService.getById(id, language));
     }
@@ -104,8 +127,9 @@ public class VideoController {
                                                                   @RequestParam(value = "size", defaultValue = "2") Integer size,
                                                                   @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                                   AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video pagination ");
-        return ResponseEntity.ok(videoService.paginationVideoList(page, size, language));
+        return ResponseEntity.ok(videoService.paginationVideoList(page, size,currentUser, language));
     }
 
 

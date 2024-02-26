@@ -16,18 +16,16 @@ public class PlaylistVideoEntity {
     private Long id;
 
     @Column(name = "playlist_id")
-    private Long playlistId;
-
+    private Integer playlistId;
     @ManyToOne
     @JoinColumn(name = "playlist_id",insertable = false,updatable = false)
     private PlaylistEntity playlist;
 
     @Column(name = "video_id")
     private String videoId;
-
     @ManyToOne
     @JoinColumn(name = "video_id",insertable = false,updatable = false)
-    private AttachEntity video;
+    private VideoEntity video;
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
