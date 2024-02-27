@@ -24,7 +24,8 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class ChannelService {
+public class
+ChannelService {
     /**
      * This object is used to work with the database
      */

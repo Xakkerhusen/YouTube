@@ -1,0 +1,27 @@
+### create Report
+POST localhost:8080/report/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3OTQwNjksImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4ODgwNDY5LCJpc3MiOiJLdW5VelRlc3QifQ.gB-5NFcVQoYYi2v_UV3vuw5ZMRO2N3Ffi8l2NInriSwtjTZN53euyrBDF50Vawao8FffX5Jmrulxb5e_sq9J3Q
+Accept-Language:UZ
+Content-Type: application/json
+
+{
+  "content": "Yoqimsiz  Channel kerak emas 😒😒😒",
+  "type": "CHANNEL",
+  "entityID": "747aa408-0eb5-48ac-b468-544e78a5b8f5"
+}
+
+### pagination Report(ADMIN)
+GET localhost:8080/report/adm/paginationReport?size=1&page=3
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3OTU0MDcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4ODE4MDcsImlzcyI6Ikt1blV6VGVzdCJ9.1lIJa2VMxsibc2HdU-9OJJfKaDVcW1V1wPoAyTOfRSFTRMemc_AOpg5BZhvCJuFrQ7hTFKEF03UpcZT5ZhezBw
+
+### remove Report(ADMIN)
+DELETE localhost:8080/report/adm/remove/3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3OTU0MDcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4ODE4MDcsImlzcyI6Ikt1blV6VGVzdCJ9.1lIJa2VMxsibc2HdU-9OJJfKaDVcW1V1wPoAyTOfRSFTRMemc_AOpg5BZhvCJuFrQ7hTFKEF03UpcZT5ZhezBw
+Accept-Language: UZ
+
+### list(profileID) Report(ADMIN)
+GET localhost:8080/report/adm/reportList/5
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3OTU0MDcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4ODE4MDcsImlzcyI6Ikt1blV6VGVzdCJ9.1lIJa2VMxsibc2HdU-9OJJfKaDVcW1V1wPoAyTOfRSFTRMemc_AOpg5BZhvCJuFrQ7hTFKEF03UpcZT5ZhezBw
+

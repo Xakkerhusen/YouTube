@@ -13,9 +13,8 @@ import java.time.LocalDateTime;
 public class CommentEntity {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(name = "content",columnDefinition = "TEXT")
     private String content;
 
@@ -39,7 +38,7 @@ public class CommentEntity {
     private Integer profileId;
 
     @Column(name = "reply_id")
-    private String replyId;
+    private Integer replyId=0;
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;

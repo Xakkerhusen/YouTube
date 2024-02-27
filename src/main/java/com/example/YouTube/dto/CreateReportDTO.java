@@ -1,21 +1,21 @@
 package com.example.YouTube.dto;
 
+import com.example.YouTube.entity.ProfileEntity;
+import com.example.YouTube.enums.ReportType;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateCommentDTO {
-    private Integer id;
-    private String content;
-    private LocalDateTime createdDate;
-    private Integer profileID;
-    private String videoID;
-    private Integer replyID;
+public class CreateReportDTO {
 
+    private Integer id;
+    private Integer profileID;
+    private String content;
+    private String entityID;
+    private ReportType type;
 
 }

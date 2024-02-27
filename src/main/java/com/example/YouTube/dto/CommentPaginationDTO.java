@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 public class CommentPaginationDTO {
 //    id,content,created_date,like_count,dislike_count, video(id,name,preview_attach_id,title,duration)
-    private String commentID;
+    private Integer commentID;
     private String content;
     private LocalDateTime createdDate;
     private Long likeCount;

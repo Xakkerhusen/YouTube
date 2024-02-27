@@ -3,17 +3,16 @@ package com.example.YouTube.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
-import org.bytedeco.opencv.presets.opencv_core;
 
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CommentLikeInfoDTO {
+public class PlaylistDetailInfoDTO {
     private Integer id;
-    private Integer profileId;
-    private Integer commentId;
-    private LocalDateTime createdDate;
-    private String type;
+    private String name;
+    private Integer videoCount;
+    private Integer totalViewCount;
+    private LocalDateTime lastUpdateDate;
 }

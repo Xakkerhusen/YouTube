@@ -10,41 +10,41 @@ Accept-Language: UZ
 Content-Type: application/json
 
 {
-  "content": "Good  Video👌👌👌👌",
-  "videoID": "5377b750-db2b-4f75-b333-c991ace8be31"
+  "content": "Good  Video",
+  "videoID": "3d4fda11-4cf5-4fb3-bbd5-1d28aeebb711"
 }
 
 ### update comment
-POST localhost:8080/comment/update/7
+POST localhost:8080/comment/update/632b51bf-5439-4bc7-8e11-3d826e78e14b
 Accept-Language: UZ
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODU5NjksImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg3MjM2OSwiaXNzIjoiS3VuVXpUZXN0In0.vWsgp9BUlasBeKlsclPmUjQ907nvA5akzc9mb-_As_euJvWY_b95sLYN3wkFrx6xvSAEHUEG6cOd1OaCmHRtng
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
 Content-Type: application/json
 
 {
-  "content": "GOOD Comment update👌👌"
+  "content": "GOOD Comment update"
 }
 
 ### delete comment
 
-DELETE localhost:8080/comment/delete/5
+DELETE localhost:8080/comment/delete/632b51bf-5439-4bc7-8e11-3d826e78e14b
 Accept-Language: UZ
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODU5NjksImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg3MjM2OSwiaXNzIjoiS3VuVXpUZXN0In0.vWsgp9BUlasBeKlsclPmUjQ907nvA5akzc9mb-_As_euJvWY_b95sLYN3wkFrx6xvSAEHUEG6cOd1OaCmHRtng
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
 #user
 #eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI4MDAsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4Njk5MjAwLCJpc3MiOiJLdW5VelRlc3QifQ.3d6YGD3lHO4Sh2udXyit_cwSWl--Btb7zhNtH5xh1XxCKeyUuhwiAyfLwgwmRAdsoRE2xFLedEoQyQX-eefnag
 
 ### pagination comment
 
 GET localhost:8080/comment/adm/pagination?size=5&page=1
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2NjU5NjcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3NTIzNjcsImlzcyI6Ikt1blV6VGVzdCJ9.Yx4oeTwNhG9Ro6KjQjXhs560m4cQ33yZ4rwzQrR1BnMPRnh0RYqhpGWwpyzJan9TBQ6v9pdV7IWPJ2P6ODksMA
 
 ### paginarion comment profileID(ADMIN)
 GET localhost:8080/comment/adm/paginationProfileID?size=2&page=2&id=3
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2NjU5NjcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3NTIzNjcsImlzcyI6Ikt1blV6VGVzdCJ9.Yx4oeTwNhG9Ro6KjQjXhs560m4cQ33yZ4rwzQrR1BnMPRnh0RYqhpGWwpyzJan9TBQ6v9pdV7IWPJ2P6ODksMA
 Accept-Language: UZ
 
 ### paginarion comment profileId(USER,OWNER)
 GET localhost:8080/comment/paginationProfileID?size=2&page=1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODU5NjksImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg3MjM2OSwiaXNzIjoiS3VuVXpUZXN0In0.vWsgp9BUlasBeKlsclPmUjQ907nvA5akzc9mb-_As_euJvWY_b95sLYN3wkFrx6xvSAEHUEG6cOd1OaCmHRtng
+Authorization: Bearer
 #user(id=3,comment yozgan)
 #eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2NjkzMDMsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NzU1NzAzLCJpc3MiOiJLdW5VelRlc3QifQ.1ICtqSiwTkVFRdeymFrUOenZ0v1tVfxdTNacSejevexzIaukATc3IL7bpdFulfPsuWKF_JCLVl3zIxPWA1tWNQ
 #user(id=5,comment yozgan)
@@ -54,11 +54,10 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODU5NjksImVtYWlsIjoid
 Accept-Language: UZ
 ### getList comment (VideoID)
 GET localhost:8080/comment/getListVideo/e8009202-b1b0-45de-9bd9-88932c6fbce8
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODU5NjksImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg3MjM2OSwiaXNzIjoiS3VuVXpUZXN0In0.vWsgp9BUlasBeKlsclPmUjQ907nvA5akzc9mb-_As_euJvWY_b95sLYN3wkFrx6xvSAEHUEG6cOd1OaCmHRtng
 Accept-Language: UZ
 
 ### getList comment (replyID)
-GET localhost:8080/comment/replyList/3
+GET localhost:8080/comment/replyList/2341fb06-2606-47b1-8099-0aedd05e6359
 Accept-Language: UZ
 
 

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommentDTO {
-    private String id;
+    private Integer id;
     private String content;
     private LocalDateTime createdDate;
     private Long dislikeCount ;

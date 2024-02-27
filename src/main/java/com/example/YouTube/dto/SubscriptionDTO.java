@@ -1,19 +1,21 @@
 package com.example.YouTube.dto;
 
+import com.example.YouTube.enums.NotificationType;
+import com.example.YouTube.enums.Status;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
-import org.bytedeco.opencv.presets.opencv_core;
 
 import java.time.LocalDateTime;
-
 @Setter
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CommentLikeInfoDTO {
-    private Integer id;
+public class SubscriptionDTO {
+    private Long id;
     private Integer profileId;
-    private Integer commentId;
+    private String channelId;
     private LocalDateTime createdDate;
-    private String type;
+    private LocalDateTime unsubscribeDate;
+    private Status status;
+    private NotificationType notificationType;
 }

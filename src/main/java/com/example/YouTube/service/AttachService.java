@@ -67,6 +67,7 @@ public class AttachService {
 
             Files.write(path, bytes);
 
+            String url=serverUrl+"/attach/open/"+key+"."+extension;
             long durationInSeconds = getDurationInSeconds(path.toAbsolutePath());
 
             AttachEntity entity = new AttachEntity();
@@ -77,6 +78,7 @@ public class AttachService {
             entity.setId(key);
             entity.setPath(pathFolder);
             entity.setDuration(durationInSeconds);
+            entity.setUrl(url);
 
             attachRepository.save(entity);
 
