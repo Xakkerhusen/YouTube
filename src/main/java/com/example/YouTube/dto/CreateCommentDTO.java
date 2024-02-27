@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateCommentDTO {
-    private String id;
+    private Integer id;
     private String content;
     private LocalDateTime createdDate;
     private Integer profileID;
     private String videoID;
-    private String replyID;
+    private Integer replyID;
 
 
 }

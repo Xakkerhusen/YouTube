@@ -41,7 +41,7 @@ public class CommentController {
     @PostMapping("/update/{id}")
     @Operation(summary = "API update comment", description = "this api is used to update comment")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> update(@PathVariable(value = "id") String commentId,
+    public ResponseEntity<?> update(@PathVariable(value = "id") Integer commentId,
                                     @Valid @RequestBody() CreateCommentDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
@@ -52,7 +52,7 @@ public class CommentController {
     @DeleteMapping("/delete/{id}")
     @Operation(summary = "API delete comment", description = "this api is used to delete comment")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<?> delete(@PathVariable(value = "id") String commentId,
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Integer commentId,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
         Integer profileID = SpringSecurityUtil.getCurrentUser().getId();
@@ -101,7 +101,7 @@ public class CommentController {
 
 
     @GetMapping("/replyList/{id}")
-    public ResponseEntity<List<CommentInfoDTO>> replyID(@PathVariable(value = "id") String commentID,
+    public ResponseEntity<List<CommentInfoDTO>> replyID(@PathVariable(value = "id") Integer commentID,
                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(service.getreplyIdList(commentID, language));
 
