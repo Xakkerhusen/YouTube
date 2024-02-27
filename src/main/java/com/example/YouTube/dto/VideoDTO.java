@@ -13,10 +13,15 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class VideoDTO {
     private String id;
+    private ProfileDTO profile;
     private Integer categoryId;
+    private CategoryDTO category;
     private String attachId;
+    private AttachDTO attach;
     private String channelId;
+    private ChannelDTO channel;
     private String previewAttachId;
+    private AttachDTO previewAttach;
     private String title;
     private String description;
     private LocalDateTime createdDate;
@@ -27,4 +32,5 @@ public class VideoDTO {
     private Long sharedCount;
     private Long likeCount;
     private Long dislikeCount;
+    private long duration;
 }

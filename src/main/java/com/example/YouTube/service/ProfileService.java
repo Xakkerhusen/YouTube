@@ -156,7 +156,7 @@ public class ProfileService {
      * this method looks up the input ID from the database.
      * If found, it returns the found object, otherwise it throws an exception 👇🏻
      */
-    private ProfileEntity get(Integer profileId, AppLanguage language) {
+    public ProfileEntity get(Integer profileId, AppLanguage language) {
         return profileRepository.findById(profileId).orElseThrow(() -> {
             log.warn("Profile not found{}", profileId);
             return new AppBadException(resourceBundleService.getMessage("profile.not.found", language));

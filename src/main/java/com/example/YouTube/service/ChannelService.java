@@ -9,6 +9,7 @@ import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.enums.Status;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.repository.ChannelRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -21,8 +22,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
-public class ChannelService {
+public class
+ChannelService {
     /**
      * This object is used to work with the database
      */
@@ -157,6 +160,15 @@ public class ChannelService {
         dto.setBannerId(entity.getBannerId());
         dto.setProfileId(entity.getProfileId());
         return dto;
+    }
+
+    public ChannelEntity get(String id,AppLanguage language ){
+        Optional<ChannelEntity> optional = channelRepository.findById(id);
+        if (optional.isEmpty()){
+            log.warn("Channel not found");
+            throw new AppBadException(resourceBundleService.getMessage("Channel.not.found",language));
+        }
+        return optional.get();
     }
 
 }

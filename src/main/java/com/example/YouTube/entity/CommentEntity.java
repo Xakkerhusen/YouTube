@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-@Table(name = "comment_entity")
+@Table(name = "comment")
 public class CommentEntity {
 
     @Id
@@ -23,7 +23,7 @@ public class CommentEntity {
     private LocalDateTime createdDate;
 
 
-    @Column(name = "dislike_count)")
+    @Column(name = "dislike_count")
     private Long dislikeCount=0l;
 
 

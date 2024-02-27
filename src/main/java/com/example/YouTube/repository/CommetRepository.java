@@ -24,8 +24,13 @@ public interface CommetRepository extends CrudRepository<CommentEntity,Integer>,
     @Query("from CommentEntity ce where ce.videoId=?1")
     List<CommentEntity> videoID(String profileID);
 
+
     @Query("from CommentEntity ce where ce.replyId=?1")
     Optional<CommentEntity> findByReplyId(Integer id);
+
+    @Query("from CommentEntity ce where ce.id=?1")
+    Optional<CommentEntity> findByReplyId(String id);
+
 
     @Query("from CommentEntity ce where ce.replyId=?1")
     List<CommentEntity> findByReplyIdComment(Integer id);

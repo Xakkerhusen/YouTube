@@ -1,721 +1,735 @@
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjMzNDgsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTc0OCwiaXNzIjoiS3VuVXpUZXN0In0.ss5i7K0v37MTDQFfblpcmzSEeeoGAY9VkAwY3N4bAktf3UEqZpUoIpgt5K3_N8iNqI_lAosb1XE-dsi3k7JLVQ
-Accept-Language: EN
+GET http://localhost:8080/video/channelVideoList/d72b61cb-e0f6-49be-a41d-2e2cea7518d7
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> f-4.txt
+<> 2024-02-23T010757.200.json
 
 ###
 
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjMzNDgsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTc0OCwiaXNzIjoiS3VuVXpUZXN0In0.ss5i7K0v37MTDQFfblpcmzSEeeoGAY9VkAwY3N4bAktf3UEqZpUoIpgt5K3_N8iNqI_lAosb1XE-dsi3k7JLVQ
-Accept-Language: EN
+GET http://localhost:8080/video/search?title=vro
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> f-3.txt
+<> 2024-02-22T234422.200.json
 
 ###
 
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5ODMsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwODM4MywiaXNzIjoiS3VuVXpUZXN0In0.AQIDpI3EWLtOFJhWKpwag7QjFN5VxvZqbMJ1SmBb2E4s4-Ka33mKX0-LwpUfapHAqh_3oKZdNjVJvNLIjXQJ2A
+GET http://localhost:8080/video/search?title=Yevro
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T234312.200.json
+
+###
+
+GET http://localhost:8080/video/search?title=Yevropa
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T234259.200.json
+
+###
+
+GET http://localhost:8080/video/search?title=yevropa
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T234239.200.json
+
+###
+
+GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T231130.200.json
+
+###
+
+GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T231026.400.txt
+
+###
+
+GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T230739.400.txt
+
+###
+
+GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T230324.200.json
+
+###
+
+GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T225826.400.txt
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T213205.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T212442.400.txt
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T212325.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T211951.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T211804.400.txt
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T211245.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T211159.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T210500.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T210211.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T210119.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T210059.400.txt
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T205739.400.txt
+
+###
+
+PUT http://localhost:8080/video/increaseViewCountByVideoId/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T205656.200.json
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T205353.400.txt
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T205304.400.txt
+
+###
+
+GET http://localhost:8080/video/paginationCategoryId?category=5
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T204838.400.txt
+
+###
+
+POST http://localhost:8080/video/create
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 336
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "email": "sanjarbeksultanov2023@gmail.com"
+  "title": "Yevropadagi O'zbeklar",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "e9428584-4126-4d40-a705-c8cd697728c8",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "VIDEO"
 }
 
-<> 2024-02-21T184910.200.json
+<> 2024-02-22T204250.200.json
 
 ###
 
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI4NTQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTI1NCwiaXNzIjoiS3VuVXpUZXN0In0.3oFhcrFRmWyG7Q8F6aYnIgj21ZhHJF5zcejePq4Bqty3RWhhOmfCKd9Jk7s8sw7d3SqAvzH0YmkUzzSPn4SuaQ
-Accept-Language: EN
+POST http://localhost:8080/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Content-Length: 8175934
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> f-2.txt
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="video.mp4"
+
+< C:\Users\asadb\OneDrive\Desktop\img\video.mp4
+--WebAppBoundary--
+
+<> 2024-02-22T204158.200.json
 
 ###
 
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI4NTQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTI1NCwiaXNzIjoiS3VuVXpUZXN0In0.3oFhcrFRmWyG7Q8F6aYnIgj21ZhHJF5zcejePq4Bqty3RWhhOmfCKd9Jk7s8sw7d3SqAvzH0YmkUzzSPn4SuaQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> f-1.txt
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI4NTQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTI1NCwiaXNzIjoiS3VuVXpUZXN0In0.3oFhcrFRmWyG7Q8F6aYnIgj21ZhHJF5zcejePq4Bqty3RWhhOmfCKd9Jk7s8sw7d3SqAvzH0YmkUzzSPn4SuaQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> f.txt
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI4NTQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTI1NCwiaXNzIjoiS3VuVXpUZXN0In0.3oFhcrFRmWyG7Q8F6aYnIgj21ZhHJF5zcejePq4Bqty3RWhhOmfCKd9Jk7s8sw7d3SqAvzH0YmkUzzSPn4SuaQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=3650ECE471508B82B83A1AF02BCDC991
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI4NTQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTI1NCwiaXNzIjoiS3VuVXpUZXN0In0.3oFhcrFRmWyG7Q8F6aYnIgj21ZhHJF5zcejePq4Bqty3RWhhOmfCKd9Jk7s8sw7d3SqAvzH0YmkUzzSPn4SuaQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=966DC0D3B43CF928AD45574F503FDC36
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI4NTQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwOTI1NCwiaXNzIjoiS3VuVXpUZXN0In0.3oFhcrFRmWyG7Q8F6aYnIgj21ZhHJF5zcejePq4Bqty3RWhhOmfCKd9Jk7s8sw7d3SqAvzH0YmkUzzSPn4SuaQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B6952662E6BBB12D9BFA0F0C089D070
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5ODMsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwODM4MywiaXNzIjoiS3VuVXpUZXN0In0.AQIDpI3EWLtOFJhWKpwag7QjFN5VxvZqbMJ1SmBb2E4s4-Ka33mKX0-LwpUfapHAqh_3oKZdNjVJvNLIjXQJ2A
+POST http://localhost:8080/video/create
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 336
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B6952662E6BBB12D9BFA0F0C089D070
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "email": "sanjarbeksultanov2023@gmail.com"
+  "title": "Yevropadagi O'zbeklar",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "9fbb4fa7-39ce-46f9-94b4-556a5fd94914",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "VIDEO"
 }
 
-<> 2024-02-21T184057.200.json
+<> 2024-02-22T203728.400.txt
 
 ###
 
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI1MjQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwODkyNCwiaXNzIjoiS3VuVXpUZXN0In0.nl5-KNxS57okXxZ9eJ5CM3GjbBpneEr1LDwuIkgG6afcwXfqlvUuIUtsWyxdDZv_l3FoqAVB1Lp8bC8AnhuoIQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B6952662E6BBB12D9BFA0F0C089D070
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjI1MjQsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpZCI6MTMsImV4cCI6MTcwODYwODkyNCwiaXNzIjoiS3VuVXpUZXN0In0.nl5-KNxS57okXxZ9eJ5CM3GjbBpneEr1LDwuIkgG6afcwXfqlvUuIUtsWyxdDZv_l3FoqAVB1Lp8bC8AnhuoIQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=35219C1EC358C77681B18A9B04A9531A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5ODMsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwODM4MywiaXNzIjoiS3VuVXpUZXN0In0.AQIDpI3EWLtOFJhWKpwag7QjFN5VxvZqbMJ1SmBb2E4s4-Ka33mKX0-LwpUfapHAqh_3oKZdNjVJvNLIjXQJ2A
+POST http://localhost:8080/video/create
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 340
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=35219C1EC358C77681B18A9B04A9531A
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "email": "sanjarbeksultanov2023@gmail.com"
+  "title": "Yevropadagi O'zbeklar",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "9fbb4fa7-39ce-46f9-94b4-556a5fd94914.mp4",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "VIDEO"
 }
 
-<> 2024-02-21T183527.200.json
+<> 2024-02-22T203717.400.json
 
 ###
 
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjIwNDIsImVtYWlsIjoic2FuamFyYmVrc3VsdGFub3YyMDIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg2MDg0NDIsImlzcyI6Ikt1blV6VGVzdCJ9.6XjAw4EfUG4umZxSvk2THWw6MPubINfVLUbw4ozQF-O3TRhlg_ZjGe99HriLudcAf6vCQgvp-QvWnT7WJX_atA
-Accept-Language: EN
+PUT http://localhost:8080/video/increaseViewCountByVideoId/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=35219C1EC358C77681B18A9B04A9531A
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
+<> 2024-02-22T193013.200.json
+
 ###
 
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5ODMsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwODM4MywiaXNzIjoiS3VuVXpUZXN0In0.AQIDpI3EWLtOFJhWKpwag7QjFN5VxvZqbMJ1SmBb2E4s4-Ka33mKX0-LwpUfapHAqh_3oKZdNjVJvNLIjXQJ2A
-Content-Type: application/json
-Content-Length: 48
+PUT http://localhost:8080/video/increaseViewCountByVideoId/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=35219C1EC358C77681B18A9B04A9531A
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T192754.200.json
+
+###
+
+PUT http://localhost:8080/video/updateStatus/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+Content-Length: 30
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "email": "sanjarbeksultanov2023@gmail.com"
+  "videoStatus": "PRIVATE"
 }
 
-<> 2024-02-21T182754.200.json
+<> 2024-02-22T191815.200.json
 
 ###
 
-POST http://localhost:8080/auth/login
+PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+Content-Length: 78
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+}
+
+<> 2024-02-22T190622.200.json
+
+###
+
+PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+Content-Length: 78
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+}
+
+<> 2024-02-22T190602.400.txt
+
+###
+
+PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+Content-Length: 78
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+}
+
+<> 2024-02-22T190531.400.txt
+
+###
+
+PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+Content-Type: application/json
+Content-Length: 78
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+}
+
+<> 2024-02-22T190254.400.txt
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 332
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+<> 2024-02-22T183549.200.json
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 332
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+<> 2024-02-22T183432.200.json
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 332
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+<> 2024-02-22T183045.200.json
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 332
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=1B95AF1DC6DB9BA70E08FD96044A1639
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+<> 2024-02-22T183018.400.txt
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 332
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=0609475368CBEAC847DF7282F0F1D215
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 332
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=0609475368CBEAC847DF7282F0F1D215
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+<> 2024-02-22T182542.400.txt
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 351
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=0609475368CBEAC847DF7282F0F1D215
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "tagNameId": 25,
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+<> 2024-02-22T181109.400.txt
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 351
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=0609475368CBEAC847DF7282F0F1D215
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "tagNameId": 25,
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+###
+
+POST http://localhost:8080/video/create
+Content-Type: application/json
+Content-Length: 351
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=42C11A327DA099AED1E3B3A3727270F9
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "Yevropadagi hayot",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+  "attachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "categoryId": 5,
+  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
+  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "tagNameId": 25,
+  "videoStatus": "PUBLIC",
+  "videoType": "SHORT"
+}
+
+###
+
+POST http://localhost:8080/channel/creat
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDYzNzYsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY5Mjc3NiwiaXNzIjoiS3VuVXpUZXN0In0._-bRvF0Exb8F8CKJ2_t_nqc-Ymds5HmY0tSM_ZL24DvHratj2i-1VShd6Cmz8AFmiRa0T4UZP_ATgjToi8ZDIQ
 Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 86
+Content-Length: 181
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=35219C1EC358C77681B18A9B04A9531A
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=42C11A327DA099AED1E3B3A3727270F9
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-     "email": "husenteshayev8@gmail.com",
-     "password": "Registratsiyabek1123@"
+  "name": "Yangiliklar",
+  "description": "Barcha turdagi yangiliklar",
+  "photoId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "bannerId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a"
 }
 
-<> 2024-02-21T182623.200.json
+<> 2024-02-22T175712.200.txt
 
 ###
 
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjAzODUsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNjc4NSwiaXNzIjoiS3VuVXpUZXN0In0.Tqbj4pTFkPQZ-xDculs4EP-YJDtE4ATrx1EbvoA8JD7bK1aIM_Y5sr4I6bZNZQ1F1Wv5WQ2oQ9euKt7z7wdRHA
+POST http://localhost:8080/channel/creat
 Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=A4C4E804027A837424C9844438973528
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "sanjarbeksultanov2023@gmail.com"
-}
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjAzODUsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNjc4NSwiaXNzIjoiS3VuVXpUZXN0In0.Tqbj4pTFkPQZ-xDculs4EP-YJDtE4ATrx1EbvoA8JD7bK1aIM_Y5sr4I6bZNZQ1F1Wv5WQ2oQ9euKt7z7wdRHA
-Content-Type: application/json
-Content-Length: 33
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=711E1143FD16E700FDBCCB52F44A6966
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husen8@gmail.com"
-}
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjAzODUsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNjc4NSwiaXNzIjoiS3VuVXpUZXN0In0.Tqbj4pTFkPQZ-xDculs4EP-YJDtE4ATrx1EbvoA8JD7bK1aIM_Y5sr4I6bZNZQ1F1Wv5WQ2oQ9euKt7z7wdRHA
-Content-Type: application/json
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=711E1143FD16E700FDBCCB52F44A6966
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayev8@gmail.com"
-}
-
-<> 2024-02-21T180029.200.json
-
-###
-
-POST http://localhost:8080/auth/login
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDU0MjUsImlkIjo1LCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NjkxODI1LCJpc3MiOiJLdW5VelRlc3QifQ.6enxG3BvMyNkT3N2eJ96hMNLefsjeRSIrtEFJeImsrhIuE1NRQ-S1p8zfoGu-mtsw5s4UErB58tdHUwPNqT1Ww
 Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 92
+Content-Length: 181
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=711E1143FD16E700FDBCCB52F44A6966
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=60884642C09AE2F6FED52BB8BD037D9B
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-     "email": "allayarovshahzodbekz@gmail.com",
-     "password": "Registratsiyabek1123@"
-}
-
-<> 2024-02-21T175945.200.json
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgxNTQsImVtYWlsIjoiYWxsYXlhcm9AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNDU1NCwiaXNzIjoiS3VuVXpUZXN0In0.-YRIQZ9lCfodFcxZgG_mzJEk_3uLeMLyMcDWpEv7JmtpZ8KmFdSDKDLoD3O3ohL28I87zCRO0xWRt4gmP0m_Lw
-Content-Type: application/json
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=D3D7DEBC6AA5949D91A84AE3E1A72ADB
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayev8@gmail.com"
+  "name": "Yangiliklar",
+  "description": "Barcha turdagi yangiliklar",
+  "photoId": "2ff306e6-6286-4022-9f5e-229ec470a680",
+  "bannerId": "2ff306e6-6286-4022-9f5e-229ec470a680"
 }
 
 ###
 
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgxNTQsImVtYWlsIjoiYWxsYXlhcm9AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNDU1NCwiaXNzIjoiS3VuVXpUZXN0In0.-YRIQZ9lCfodFcxZgG_mzJEk_3uLeMLyMcDWpEv7JmtpZ8KmFdSDKDLoD3O3ohL28I87zCRO0xWRt4gmP0m_Lw
+POST http://localhost:8080/channel/creat
 Content-Type: application/json
-Content-Length: 37
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=D5AFC3DEBB07DC97B9A5CBE68B856DC3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "aahzodbekz@gmail.com"
-}
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgxNTQsImVtYWlsIjoiYWxsYXlhcm9AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNDU1NCwiaXNzIjoiS3VuVXpUZXN0In0.-YRIQZ9lCfodFcxZgG_mzJEk_3uLeMLyMcDWpEv7JmtpZ8KmFdSDKDLoD3O3ohL28I87zCRO0xWRt4gmP0m_Lw
-Content-Type: application/json
-Content-Length: 47
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=D5AFC3DEBB07DC97B9A5CBE68B856DC3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovshahzodbekz@gmail.com"
-}
-
-<> 2024-02-21T175338.200.json
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTg3MzcsImlkIjoxMywiZXhwIjoxNzA4NTE5MDM3LCJpc3MiOiJLdW5VelRlc3QifQ.qnFz15kxmLcWwdnlQKkYwVz9tJnzmtw8N-KJVqdr1dlNAHgil9E6zuT7_vd6d57agTY_XaYosOQRx5Vvmq6O3w
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=0783EF5AA4F5E5E7BABEEB311DB067D4
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgxNTQsImVtYWlsIjoiYWxsYXlhcm9AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNDU1NCwiaXNzIjoiS3VuVXpUZXN0In0.-YRIQZ9lCfodFcxZgG_mzJEk_3uLeMLyMcDWpEv7JmtpZ8KmFdSDKDLoD3O3ohL28I87zCRO0xWRt4gmP0m_Lw
-Content-Type: application/json
-Content-Length: 47
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=0783EF5AA4F5E5E7BABEEB311DB067D4
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovshahzodbekz@gmail.com"
-}
-
-<> 2024-02-21T173219.200.json
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgzMTIsImlkIjoxMywiZXhwIjoxNzA4NTE4NjEyLCJpc3MiOiJLdW5VelRlc3QifQ.O78Ok1esb7jgBGSRJVdFaD2Dnqbm1R5G7qg8qXSPBTjNHtLiZvsWctnosdBk8axf4YG4No_GQvsZFR1YPTJTYg
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgxNTQsImVtYWlsIjoiYWxsYXlhcm9AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNDU1NCwiaXNzIjoiS3VuVXpUZXN0In0.-YRIQZ9lCfodFcxZgG_mzJEk_3uLeMLyMcDWpEv7JmtpZ8KmFdSDKDLoD3O3ohL28I87zCRO0xWRt4gmP0m_Lw
-Content-Type: application/json
-Content-Length: 47
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovshahzodbekz@gmail.com"
-}
-
-<> 2024-02-21T172514.200.json
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTgxNTQsImVtYWlsIjoiYWxsYXlhcm9AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODYwNDU1NCwiaXNzIjoiS3VuVXpUZXN0In0.-YRIQZ9lCfodFcxZgG_mzJEk_3uLeMLyMcDWpEv7JmtpZ8KmFdSDKDLoD3O3ohL28I87zCRO0xWRt4gmP0m_Lw
-Content-Type: application/json
-Content-Length: 39
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovjon@gmail.com"
-}
-
-<> 2024-02-21T172421.200.json
-
-###
-
-POST http://localhost:8080/auth/login
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDU0MjUsImlkIjo1LCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NjkxODI1LCJpc3MiOiJLdW5VelRlc3QifQ.6enxG3BvMyNkT3N2eJ96hMNLefsjeRSIrtEFJeImsrhIuE1NRQ-S1p8zfoGu-mtsw5s4UErB58tdHUwPNqT1Ww
 Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 80
+Content-Length: 181
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=F8ADF2FB7E0D5E6EC49031E78EE88E0E
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-     "email": "allayaro@gmail.com",
-     "password": "Registratsiyabek1123@"
+  "name": "Yangiliklar",
+  "description": "Barcha turdagi yangiliklar",
+  "photoId": "2ff306e6-6286-4022-9f5e-229ec470a680",
+  "bannerId": "2ff306e6-6286-4022-9f5e-229ec470a680"
 }
-
-<> 2024-02-21T172234.200.json
 
 ###
 
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTc2NjMsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21pbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NjA0MDYzLCJpc3MiOiJLdW5VelRlc3QifQ.dmF1qN4v6LBoly2yhWniGAVTDaoa3AnIxGlhOcUeA2c7EcvW1jGld02pBhuclml0rQIQmQdVYilcVRsEAmpvgQ
+POST http://localhost:8080/channel/creat
 Content-Type: application/json
-Content-Length: 35
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayaro@gmail.com"
-}
-
-<> 2024-02-21T171536.200.json
-
-###
-
-POST http://localhost:8080/auth/login
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDU0MjUsImlkIjo1LCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NjkxODI1LCJpc3MiOiJLdW5VelRlc3QifQ.6enxG3BvMyNkT3N2eJ96hMNLefsjeRSIrtEFJeImsrhIuE1NRQ-S1p8zfoGu-mtsw5s4UErB58tdHUwPNqT1Ww
 Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 91
+Content-Length: 181
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Cookie: JSESSIONID=DEAF9C548FE667E7606E736F6B90D87A
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-     "email": "allayarovshahzodbekz@gmil.com",
-     "password": "Registratsiyabek1123@"
+  "name": "Yangiliklar",
+  "description": "Barcha turdagi yangiliklar",
+  "photoId": "2ff306e6-6286-4022-9f5e-229ec470a680",
+  "bannerId": "2ff306e6-6286-4022-9f5e-229ec470a680"
 }
-
-<> 2024-02-21T171423.200.json
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY5MzUsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU5MzMzNSwiaXNzIjoiS3VuVXpUZXN0In0.gbCSw_Sx4C6DDWmQwpGyk4v9hL4jgfvU6F5U2C2J4KA0st4rPfCrSaaf0NV4yVfXc6aoiS-nEiKAcUqGxGYDXg
-Content-Type: application/json
-Content-Length: 47
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=825DDCF7DC77377D1FBB1EC4740C4F9F
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovshahzodbekz@gmail.com"
-}
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY5MzUsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU5MzMzNSwiaXNzIjoiS3VuVXpUZXN0In0.gbCSw_Sx4C6DDWmQwpGyk4v9hL4jgfvU6F5U2C2J4KA0st4rPfCrSaaf0NV4yVfXc6aoiS-nEiKAcUqGxGYDXg
-Content-Type: application/json
-Content-Length: 47
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=286963C5AEAFFC6E1E27BE1542A6A525
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovshahzodbekz@gmail.com"
-}
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY5MzUsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU5MzMzNSwiaXNzIjoiS3VuVXpUZXN0In0.gbCSw_Sx4C6DDWmQwpGyk4v9hL4jgfvU6F5U2C2J4KA0st4rPfCrSaaf0NV4yVfXc6aoiS-nEiKAcUqGxGYDXg
-Content-Type: application/json
-Content-Length: 46
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=286963C5AEAFFC6E1E27BE1542A6A525
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "allayarovshahzodbekz@gmil.com"
-}
-
-<> 2024-02-21T161759.200.json
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY5NTIsImlkIjoxMywiZXhwIjoxNzA4NTA3MjUyLCJpc3MiOiJLdW5VelRlc3QifQ.HuFZgOFGnG3NJwH-uW1dYDFehHq7hMCnLHsFadxLlyRI0IZ0wkyFp2tUzwZ0X_1Mh9Fwhdpjoojs9Ne-uMNrxA
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=286963C5AEAFFC6E1E27BE1542A6A525
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY5MzUsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU5MzMzNSwiaXNzIjoiS3VuVXpUZXN0In0.gbCSw_Sx4C6DDWmQwpGyk4v9hL4jgfvU6F5U2C2J4KA0st4rPfCrSaaf0NV4yVfXc6aoiS-nEiKAcUqGxGYDXg
-Content-Type: application/json
-Content-Length: 40
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=286963C5AEAFFC6E1E27BE1542A6A525
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayiv@gmail.com"
-}
-
-<> 2024-02-21T141554.200.json
-
-###
-
-POST http://localhost:8080/auth/login
-Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 86
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=286963C5AEAFFC6E1E27BE1542A6A525
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-     "email": "husenteshayev8@gmail.com",
-     "password": "Registratsiyabek1123@"
-}
-
-<> 2024-02-21T141536.200.json
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY3MDAsImVtYWlsIjoiaHVzZW50ZXNoYXlpdkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NTkzMTAwLCJpc3MiOiJLdW5VelRlc3QifQ.ibl-DAUlaKomSKYXIyQGC4PYKfCTvt8XqaaALHqHFhPC-8sjPvbPdJJR7BnOKxaw6231EDKwvKkBPVPtvwXx6A
-Content-Type: application/json
-Content-Length: 40
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayiv@gmail.com"
-}
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY3NTAsImlkIjoxMywiZXhwIjoxNzA4NTA3MDUwLCJpc3MiOiJLdW5VelRlc3QifQ.n5QadmbH8L8w9DqEoyFxzqMu_Vifp93XHcIKEadpTLAGs121Es-IsSOAgubMSHHt8iZ_h5ilx8yRokf_4_9ESg
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY3MDAsImVtYWlsIjoiaHVzZW50ZXNoYXlpdkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NTkzMTAwLCJpc3MiOiJLdW5VelRlc3QifQ.ibl-DAUlaKomSKYXIyQGC4PYKfCTvt8XqaaALHqHFhPC-8sjPvbPdJJR7BnOKxaw6231EDKwvKkBPVPtvwXx6A
-Content-Type: application/json
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayev8@gmail.com"
-}
-
-<> 2024-02-21T141232.200.json
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDY3MDAsImVtYWlsIjoiaHVzZW50ZXNoYXlpdkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NTkzMTAwLCJpc3MiOiJLdW5VelRlc3QifQ.ibl-DAUlaKomSKYXIyQGC4PYKfCTvt8XqaaALHqHFhPC-8sjPvbPdJJR7BnOKxaw6231EDKwvKkBPVPtvwXx6A
-Content-Type: application/json
-Content-Length: 40
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayiv@gmail.com"
-}
-
-<> 2024-02-21T141210.200.json
-
-###
-
-POST http://localhost:8080/auth/login
-Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 85
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-     "email": "husenteshayiv@gmail.com",
-     "password": "Registratsiyabek1123@"
-}
-
-<> 2024-02-21T141140.200.json
-
-###
-
-POST http://localhost:8080/auth/login
-Accept-Language: UZ
-Content-Type: application/json
-Content-Length: 86
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-     "email": "husenteshayev8@gmail.com",
-     "password": "Registratsiyabek1123@"
-}
-
-<> 2024-02-21T141053.400.txt
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDI2MzcsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU4OTAzNywiaXNzIjoiS3VuVXpUZXN0In0.QYcdsy1hTOhrRu7v3IWwCS49rpiHKfis0-OuqE0-IbKUti2vQUo2nDGwSroGe0dPSAAmvmAV6I4OzBs3J5SPsg
-Content-Type: application/json
-Content-Length: 40
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=2B767E232E9AADCDF01EB2A09F2ACC1A
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayiv@gmail.com"
-}
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDI2MzcsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU4OTAzNywiaXNzIjoiS3VuVXpUZXN0In0.QYcdsy1hTOhrRu7v3IWwCS49rpiHKfis0-OuqE0-IbKUti2vQUo2nDGwSroGe0dPSAAmvmAV6I4OzBs3J5SPsg
-Content-Type: application/json
-Content-Length: 40
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=952CEB8754FCC2304231891317379F70
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayiv@gmail.com"
-}
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDYxODMsImlkIjoxMywiZXhwIjoxNzA4NTA2NDgzLCJpc3MiOiJLdW5VelRlc3QifQ.zU1Euy5G7xnqat_TAsyEZvxKAD3LBTKn8W6QVAzT2ZsRjjNJgb22wgy4W9hbYrJXKb-SDgHsuaaGO2DlK_1ISw
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=952CEB8754FCC2304231891317379F70
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDYxODMsImlkIjoxMywiZXhwIjoxNzA4NTA2NDgzLCJpc3MiOiJLdW5VelRlc3QifQ.zU1Euy5G7xnqat_TAsyEZvxKAD3LBTKn8W6QVAzT2ZsRjjNJgb22wgy4W9hbYrJXKb-SDgHsuaaGO2DlK_1ISw
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=8232DA8C935E1B6B8AD5E2F9EA3975E8
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/profile/any
-Accept-Language: RU
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDI2MzcsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU4OTAzNywiaXNzIjoiS3VuVXpUZXN0In0.QYcdsy1hTOhrRu7v3IWwCS49rpiHKfis0-OuqE0-IbKUti2vQUo2nDGwSroGe0dPSAAmvmAV6I4OzBs3J5SPsg
-Content-Type: application/json
-Content-Length: 40
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=8232DA8C935E1B6B8AD5E2F9EA3975E8
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "husenteshayiv@gmail.com"
-}
-
-<> 2024-02-21T140305.200.json
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDU3MzQsImlkIjoxMywiZXhwIjoxNzA4NTA2MDM0LCJpc3MiOiJLdW5VelRlc3QifQ.cEOXFIXgKWxLWYCjqhS-U-HPR9G2voJ9J1psSfavGQUsd3ju37aMn_bF--4Ea0kbXSxJ2Z7lpMCAb2cvx1KCQQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=8232DA8C935E1B6B8AD5E2F9EA3975E8
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDU3MzQsImlkIjoxMywiZXhwIjoxNzA4NTA2MDM0LCJpc3MiOiJLdW5VelRlc3QifQ.cEOXFIXgKWxLWYCjqhS-U-HPR9G2voJ9J1psSfavGQUsd3ju37aMn_bF--4Ea0kbXSxJ2Z7lpMCAb2cvx1KCQQ
-Accept-Language: EN
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Cookie: JSESSIONID=F649E6C6B03C94FC244BB94A3DE90836
-Accept-Encoding: br,deflate,gzip,x-gzip
 
 ###
 

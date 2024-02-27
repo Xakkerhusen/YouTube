@@ -1,6 +1,7 @@
 package com.example.YouTube.entity;
 
 import com.example.YouTube.enums.Status;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @Table(name = "channel")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChannelEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     @Column(name = "name")
