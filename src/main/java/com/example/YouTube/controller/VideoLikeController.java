@@ -24,12 +24,12 @@ public class VideoLikeController {
     @Operation(summary = "API for create", description = "this api is used to create video like")
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
-    public ResponseEntity<?> create(@PathVariable("id") String commentId,
+    public ResponseEntity<?> create(@PathVariable("id") String videoId,
                                     @RequestBody CreatedLikeDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("Create video like ");
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
-        return ResponseEntity.ok(videoLikeService.create(commentId, profileId, dto, language));
+        return ResponseEntity.ok(videoLikeService.create(videoId, profileId, dto, language));
     }
 //
 //    @Operation(summary = "API for userLikedCommentList", description = "this api is used to get User Liked Comment List")

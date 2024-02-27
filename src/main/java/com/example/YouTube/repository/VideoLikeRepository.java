@@ -1,6 +1,7 @@
 package com.example.YouTube.repository;
 
 import com.example.YouTube.entity.CommentLikeEntity;
+import com.example.YouTube.entity.VideoLikeEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,10 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface VideoLikeRepository extends CrudRepository<CommentLikeEntity, Integer> {
-    @Query("from CommentLikeEntity where  commentId=?1 and profileId=?2")
-    Optional<CommentLikeEntity> findTop1ByCommentId(String commentId, Integer profileId);
-
+public interface VideoLikeRepository extends CrudRepository<VideoLikeEntity, Integer> {
+    @Query("from VideoLikeEntity where  videoId=?1 and profileId=?2")
+    Optional<VideoLikeEntity> findTop1ByCommentId(String commentId, Integer profileId);
 
     @Transactional
     @Modifying

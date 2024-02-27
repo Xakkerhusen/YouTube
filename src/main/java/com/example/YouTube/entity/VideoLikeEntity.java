@@ -17,11 +17,11 @@ public class VideoLikeEntity extends BaseEntity{
     @ManyToOne()
     @JoinColumn(name = "profile_id",insertable = false,updatable = false)
     private ProfileEntity profile;
-    @Column(name = "comment_id")
-    private String commentId;
+    @Column(name = "video_id")
+    private String videoId;
     @ManyToOne()
-    @JoinColumn(name = "comment_id",insertable = false,updatable = false)
-    private CommentEntity comment;
+    @JoinColumn(name = "video_id",insertable = false,updatable = false)
+    private VideoEntity video;
     @Column(name = "type")
     private String type;
     @Column(name = "createdDate")

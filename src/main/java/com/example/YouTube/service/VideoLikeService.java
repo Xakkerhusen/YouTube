@@ -3,6 +3,7 @@ package com.example.YouTube.service;
 
 import com.example.YouTube.dto.CreatedLikeDTO;
 import com.example.YouTube.entity.CommentLikeEntity;
+import com.example.YouTube.entity.VideoLikeEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.repository.VideoLikeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,29 +20,29 @@ public class VideoLikeService {
     private VideoLikeRepository videoLikeRepository;
 
     @Autowired
-    private CommentService commentService;
+    private VideoService videoService;
     @Autowired
     private ResourceBundleService resourceBundleService;
 
-    public Object create(String commentId, Integer profileId, CreatedLikeDTO dto, AppLanguage language) {
-        commentService.get(commentId, language);
-        Optional<CommentLikeEntity> optional = videoLikeRepository.findTop1ByCommentId(commentId, profileId);
+    public Object create(String videoId, Integer profileId, CreatedLikeDTO dto, AppLanguage language) {
+        videoService.get(videoId, language);
+        Optional<VideoLikeEntity> optional = videoLikeRepository.findTop1ByCommentId(videoId, profileId);
 
-        CommentLikeEntity commentEntity = new CommentLikeEntity();
+        VideoLikeEntity commentEntity = new VideoLikeEntity();
 
         if (optional.isEmpty()) {
-            commentEntity.setCommentId(commentId);
+            commentEntity.setVideoId(videoId);
             commentEntity.setProfileId(profileId);
             commentEntity.setType(String.valueOf(dto.getStatus()));
             videoLikeRepository.save(commentEntity);
             return "SUCCESS save";
         }
-        CommentLikeEntity entity = optional.get();
+        VideoLikeEntity entity = optional.get();
         if (entity.getType().equals(dto.getStatus().toString())) {
             videoLikeRepository.deleteById(entity.getId());
             return "SUCCESS delete";
-        } else if (entity.getCommentId().equals(commentId) && !entity.getProfileId().equals(profileId)) {
-            commentEntity.setCommentId(commentId);
+        } else if (entity.getVideoId().equals(videoId) && !entity.getProfileId().equals(profileId)) {
+            commentEntity.setVideoId(videoId);
             commentEntity.setProfileId(profileId);
             commentEntity.setType(String.valueOf(dto.getStatus()));
             videoLikeRepository.save(commentEntity);
