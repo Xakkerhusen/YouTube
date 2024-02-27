@@ -24,7 +24,7 @@ public class CommentLikeController {
     @Operation(summary = "API for create", description = "this api is used to create comment like")
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
-    public ResponseEntity<?> create(@PathVariable("id") String commentId,
+    public ResponseEntity<?> create(@PathVariable("id") Integer commentId,
                                     @RequestBody CreatedCommentLikeDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("Create comment like ");

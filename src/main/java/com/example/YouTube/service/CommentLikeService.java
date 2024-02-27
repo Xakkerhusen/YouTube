@@ -27,7 +27,7 @@ public class CommentLikeService {
     @Autowired
     private ResourceBundleService resourceBundleService;
 
-    public Object create(String commentId, Integer profileId, CreatedCommentLikeDTO dto, AppLanguage language) {
+    public Object create(Integer commentId, Integer profileId, CreatedCommentLikeDTO dto, AppLanguage language) {
         commentService.get(commentId, language);
         Optional<CommentLikeEntity> optional = commentLikeRepository.findTop1ByCommentId(commentId, profileId);
 

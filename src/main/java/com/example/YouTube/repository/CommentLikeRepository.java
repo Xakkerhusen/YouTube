@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface CommentLikeRepository extends CrudRepository<CommentLikeEntity, Integer> {
     @Query("from CommentLikeEntity where  commentId=?1 and profileId=?2")
-    Optional<CommentLikeEntity> findTop1ByCommentId(String commentId, Integer profileId);
+    Optional<CommentLikeEntity> findTop1ByCommentId(Integer commentId, Integer profileId);
 
 
     @Transactional

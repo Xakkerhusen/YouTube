@@ -1,5 +1,5 @@
 ###Create CommentLike
-POST localhost:8080/commentLike/aa68b92e-e472-40ff-9fc0-f732a30da921
+POST localhost:8080/commentLike/
 Accept-Language: RU
 Content-Type: application/json
 #admin

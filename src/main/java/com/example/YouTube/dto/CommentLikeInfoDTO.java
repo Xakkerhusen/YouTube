@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class CommentLikeInfoDTO {
     private Integer id;
     private Integer profileId;
-    private String commentId;
+    private Integer commentId;
     private LocalDateTime createdDate;
     private String type;
 }
