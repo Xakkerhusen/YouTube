@@ -1,14 +1,15 @@
 ### Create video
 POST http://localhost:8080/video/create
+Accept-Language: RU
 Content-Type: application/json
 
 {
   "title": "Yevropadagi O'zbeklar",
   "description": "Yevropadagi hayot haqida bilib olamiz",
-  "attachId": "e9428584-4126-4d40-a705-c8cd697728c8",
+  "attachId": "b8c9c96c-005d-4793-abd3-6a4faab45507",
   "categoryId": 5,
-  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
-  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "channelId": "852af6b4-ea6c-4aa4-a108-b6818e64db9b",
+  "previewAttachId": "5cf4b677-ec45-417b-a27e-36a1c4e5b9e2",
   "videoStatus": "PUBLIC",
   "videoType": "VIDEO"
 }

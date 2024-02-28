@@ -3,7 +3,7 @@ package com.example.YouTube.service;
 
 import com.example.YouTube.dto.CommentInfoDTO;
 import com.example.YouTube.dto.CommentLikeInfoDTO;
-import com.example.YouTube.dto.CreatedCommentLikeDTO;
+import com.example.YouTube.dto.CreatedLikeDTO;
 import com.example.YouTube.entity.CommentLikeEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.repository.CommentLikeRepository;
@@ -27,7 +27,7 @@ public class CommentLikeService {
     @Autowired
     private ResourceBundleService resourceBundleService;
 
-    public Object create(Integer commentId, Integer profileId, CreatedCommentLikeDTO dto, AppLanguage language) {
+    public Object create(Integer commentId, Integer profileId, CreatedLikeDTO dto, AppLanguage language) {
         commentService.get(commentId, language);
         Optional<CommentLikeEntity> optional = commentLikeRepository.findTop1ByCommentId(commentId, profileId);
 
