@@ -340,7 +340,7 @@ public class VideoService {
         Optional<VideoEntity> optional = videoRepository.findById(id);
         if (optional.isEmpty()) {
             log.warn("Video not found{}", id);
-            throw new AppBadException(resourceBundleService.getMessage("Video.not.found", language));
+            throw new AppBadException(resourceBundleService.getMessage("video.not.found", language));
         }
         return optional.get();
     }

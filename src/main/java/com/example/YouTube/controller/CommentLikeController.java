@@ -1,13 +1,12 @@
 package com.example.YouTube.controller;
 
-import com.example.YouTube.dto.CreatedCommentLikeDTO;
+import com.example.YouTube.dto.CreatedLikeDTO;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.service.CommentLikeService;
 import com.example.YouTube.utils.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.bytedeco.opencv.presets.opencv_core;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,7 +24,7 @@ public class CommentLikeController {
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
     public ResponseEntity<?> create(@PathVariable("id") Integer commentId,
-                                    @RequestBody CreatedCommentLikeDTO dto,
+                                    @RequestBody CreatedLikeDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("Create comment like ");
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();

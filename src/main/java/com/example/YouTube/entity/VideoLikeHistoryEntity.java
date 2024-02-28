@@ -10,11 +10,8 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-@Table(name = "video_like")
-public class VideoLikeEntity  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+@Table(name = "video_like_history")
+public class VideoLikeHistoryEntity extends BaseEntity{
     @Column(name = "profile_id")
     private Integer profileId;
     @ManyToOne()
@@ -27,6 +24,6 @@ public class VideoLikeEntity  {
     private VideoEntity video;
     @Column(name = "type")
     private String type;
-    @Column(name = "created_date")
-    private LocalDateTime createdDate=LocalDateTime.now();
+    @Column(name = "deleted_date")
+    private LocalDateTime deletedDate;
 }

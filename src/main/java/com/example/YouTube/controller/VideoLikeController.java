@@ -31,24 +31,24 @@ public class VideoLikeController {
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         return ResponseEntity.ok(videoLikeService.create(videoId, profileId, dto, language));
     }
-//
-//    @Operation(summary = "API for userLikedCommentList", description = "this api is used to get User Liked Comment List")
-//    @GetMapping("")
-//    @PreAuthorize("hasRole('USER')")
-//    public ResponseEntity<?> userLikedCommentList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-//        log.info("get User Liked Comment List ");
-//        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
-//        return ResponseEntity.ok(commentLikeService.userLikedCommentList(profileId, language));
-//    }
-//
-//    @Operation(summary = "API for Get userLikedCommentListByUserId", description = "this api is used to  Get User LikedComment List By UserId")
-//    @GetMapping("adm/{id}")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public ResponseEntity<?> userLikedCommentListByUserId(@PathVariable("id")Integer id,
-//                                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-//        log.info("Get User LikedComment List By UserId ");
-//        SpringSecurityUtil.getCurrentUser();
-//        return ResponseEntity.ok(commentLikeService.userLikedCommentListByUserId(id, language));
-//    }
+
+    @Operation(summary = "API for userLikedVideoList", description = "this api is used to get User Liked Video List")
+    @GetMapping("")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> userLikedVideoList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("get User Liked Comment List ");
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(videoLikeService.userLikedVideoList(profileId, language));
+    }
+
+    @Operation(summary = "API for Get userLikedVideoListByUserId", description = "this api is used to  Get User LikeVideo List By UserId")
+    @GetMapping("adm/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> userLikedVideoListByUserId(@PathVariable("id")Integer id,
+                                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("Get User Like Video List By UserId ");
+        SpringSecurityUtil.getCurrentUser();
+        return ResponseEntity.ok(videoLikeService.userLikedVideoListByUserId(id, language));
+    }
 
 }

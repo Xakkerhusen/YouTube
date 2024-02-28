@@ -15,15 +15,15 @@ import java.util.Optional;
 @Repository
 public interface VideoLikeRepository extends CrudRepository<VideoLikeEntity, Integer> {
     @Query("from VideoLikeEntity where  videoId=?1 and profileId=?2")
-    Optional<VideoLikeEntity> findTop1ByCommentId(String commentId, Integer profileId);
+    Optional<VideoLikeEntity> findTop1ByVideoId(String commentId, Integer profileId);
 
     @Transactional
     @Modifying
-    @Query("update CommentLikeEntity set type=?2 , updatedDate=?3 where id=?1")
-    Integer update(Integer id, String status, LocalDateTime now);
+    @Query("update VideoLikeEntity set type=?2  where id=?1")
+    Integer update(Integer id, String status);
 
-    @Query("from CommentLikeEntity where profileId=?1 and type='LIKE' order by createdDate desc ")
-    List<CommentLikeEntity> getByProfileId(Integer profileId);
-
-    List<CommentLikeEntity> findByProfileId(Integer id);
+//    @Query("from CommentLikeEntity where profileId=?1 and type='LIKE' order by createdDate desc ")
+//    List<CommentLikeEntity> getByProfileId(Integer profileId);
+//
+//    List<CommentLikeEntity> findByProfileId(Integer id);
 }
