@@ -10,20 +10,20 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-@Table(name = "comment_like")
-public class CommentLikeEntity extends BaseEntity{
+@Table(name = "video_like_history")
+public class VideoLikeHistoryEntity extends BaseEntity{
     @Column(name = "profile_id")
     private Integer profileId;
     @ManyToOne()
     @JoinColumn(name = "profile_id",insertable = false,updatable = false)
     private ProfileEntity profile;
-    @Column(name = "comment_id")
-    private Integer commentId;
+    @Column(name = "video_id")
+    private String videoId;
     @ManyToOne()
-    @JoinColumn(name = "comment_id",insertable = false,updatable = false)
-    private CommentEntity comment;
+    @JoinColumn(name = "video_id",insertable = false,updatable = false)
+    private VideoEntity video;
     @Column(name = "type")
     private String type;
-    @Column(name = "createdDate")
-    private LocalDateTime createdDate=LocalDateTime.now();
+    @Column(name = "deleted_date")
+    private LocalDateTime deletedDate;
 }

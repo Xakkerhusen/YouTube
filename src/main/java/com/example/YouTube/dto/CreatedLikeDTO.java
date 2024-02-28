@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreatedCommentLikeDTO {
+public class CreatedLikeDTO {
     private LikeStatus status;
 }

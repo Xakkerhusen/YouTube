@@ -1,34 +1,46 @@
 
-### Created Admin
+###Created Admin
 POST localhost:8080/auth/login
 Accept-Language: UZ
 Content-Type: application/json
 #admin1
 
 {
-  "email": "asadbekxojamurodov68@gmail.com",
-  "password": "User1234@"
+  "email": "user@gmail.com",
+  "password": "$1User1$"
 }
 
-
+###
+//#admin
+//{
+//     "email": "husenteshayiv@gmail.com",
+//     "password": "User1123@"
+//}
+###
+#user
+//{
+//     "email": "moderator@gmail.com",
+//     "password": "$1Moderator1$"
+//}
+###
 
 
 
 
 ####Registration
 POST localhost:8080/auth/registration
-Accept-Language: UZ
+Accept-Language: RU
 Content-Type: application/json
 
 {
-  "name": "User1",
+  "name": "User2",
   "surname": "userjon",
-  "email": "asadbekxojamurodov68@gmail.com",
-  "password": "User1234@"
+  "email": "husenteshayiv@gmail.com",
+  "password": "User1123@"
 }
 
 ###Verification By email
-GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDUzNDMsImlkIjo1LCJleHAiOjE3MDg2MDU2NDMsImlzcyI6Ikt1blV6VGVzdCJ9.IWJAG5vqnYoImsqGDgByDuCxh8oPohLmScf6JYznE_OaBUDOBsbduez7PDnUxGxknshsTDCeYYINE3hl-ReleA
+GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTE1NzAsImlkIjo0LCJleHAiOjE3MDg1OTE4NzAsImlzcyI6Ikt1blV6VGVzdCJ9.oPBpht71NAnuts3skQX6BMjJq2KW2DIiLyKF2IKT9prH9s7wBo639BBPTtoCp-yZnaMGaLEvsgyjFg8fuRi_Pg
 Accept-Language: EN
 ###Verification By phone number
 POST localhost:8080/auth/verification/phone

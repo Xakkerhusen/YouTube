@@ -1,14 +1,14 @@
 ###Create Profile
 POST localhost:8080/profile/adm
 #admin
-#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDgzNjA0MjgsImVtYWlsIjoic2FuamFyZGFzdHVyY2hpQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNzA4NDQ2ODI4LCJpc3MiOiJLdW5VelRlc3QifQ.cLlepkJ3YNV_MWcv1uBKnqJiru7Tto5x4_4yG3ulMpw-75xgUsh67ESYYLAcFcGtwdA8L99hLIbQLG1mPl9JoA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NTkxMTUsImVtYWlsIjoiaHVzZW50ZXNoYXlldjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NDU1MTUsImlzcyI6Ikt1blV6VGVzdCJ9.IA3ieFZi854zOs6_wmVHZpBBhzVGHr4ZaW96EJLTmRAFfp7W44sRluCFHybWmHzZOFOqlq5pUrHtn8sRs1G75w
 Content-Type: application/json
 
 {
-  "name": "Moderator",
-  "surname": "Moderatorov",
-  "email": "moderator@gmail.com",
-  "password": "$1Moderator1$",
+  "name": "User",
+  "surname": "Userov",
+  "email": "user@gmail.com",
+  "password": "$1User1$",
   "role": "ROLE_USER"
 }
 
