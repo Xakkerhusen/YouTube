@@ -15,10 +15,10 @@ public interface VideoEmotionRepository extends CrudRepository<VideoEmotionEntit
 
     Optional<VideoEmotionEntity> findByVideoIdAndProfileId(String videoId, Integer profileId);
 
-//    @Transactional
-//    @Modifying
-//    @Query("update VideoEmotionEntity set visible = ?2 where id = ?1")
-//    void updateVisible(Integer id,boolean visible);
+    @Transactional
+    @Modifying
+    @Query("update VideoEmotionEntity set visible = ?2 where id = ?1")
+    void updateVisible(Integer id,boolean visible);
 
 
     @Transactional

@@ -1,46 +1,51 @@
 ### Create video
 POST http://localhost:8080/video/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODI5NTQsImVtYWlsIjoic2hha2h6b2RhbGxheW9yb3YyM0BnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4ODY5MzU0LCJpc3MiOiJLdW5VelRlc3QifQ.OXwSvpu3QZihPEqcn31hZF_bE11kvfWTJ8j8O7DrGWSs63QZA7-pq5vkhlRrrpnen8ofcS6fSVUn5C_7GDt6EA
-Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
+Accept-Language: UZ
 
 {
-  "title": "java coding",
-  "description": "qiziqarli hangomalar",
-  "attachId": "7bdc26d0-d200-4c04-b7f4-00fd9b903fb7",
+  "title": "Programming languages",
+  "description": "How many programming languages do you know? ",
+  "attachId": "54e8f048-e9ad-4209-ad7b-ec0a1a3a6d4c",
   "categoryId": 5,
-  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
-  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "channelId": "3be090e2-04ab-45ca-904b-47c198f11077",
+  "previewAttachId": "fc8697cf-05c3-4924-8923-b24cc6fe49d4",
   "videoStatus": "PUBLIC",
-  "videoType": "SHORT",
-  "playlistIds": [1,2]
+  "videoType": "VIDEO",
+  "playlistVideo": [1,2,3],
+  "tagList": ["java","spring"]
 }
 
 
 ### Update
-PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+PUT http://localhost:8080/video/update/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 
 {
-  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+  "tagList": ["python","kotlin"]
 }
+
 
 ### Update status
-PUT http://localhost:8080/video/updateStatus/8db5a764-5d44-4b64-9094-d9189ad83311
+PUT http://localhost:8080/video/updateStatus/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 
 {
-  "videoStatus": "PRIVATE"
+  "videoStatus": "PUBLIC",
+  "channelId": "3be090e2-04ab-45ca-904b-47c198f11077"
 }
 
 
-### Update view count
-PUT http://localhost:8080/video/increaseViewCountByVideoId/8db5a764-5d44-4b64-9094-d9189ad83311/5
+### Increase view count
+PUT http://localhost:8080/video/increaseViewCountByVideoId/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e/7
 Content-Type: application/x-www-form-urlencoded
 
 
 ### Pagination
-GET http://localhost:8080/video/paginationCategoryId?category=5
+GET http://localhost:8080/video/paginationCategoryId?categoryId=5
 
 
 ### Search
@@ -48,16 +53,20 @@ GET http://localhost:8080/video/search?title=vro
 
 
 ### Get by tagId pagination
-GET http://localhost:8080/video/paginationByTagId/6
+GET http://localhost:8080/video/paginationByTagId/kotlin
 Accept-Language: UZ
 
+
 ### Get by id
-GET http://localhost:8080/video/getById/4db6b840-b3fb-4fb8-8144-6aa93832610e
+GET http://localhost:8080/video/getById/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
 Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxMjA4ODAsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTIwNzI4MCwiaXNzIjoiS3VuVXpUZXN0In0.WyU1BzCBQ0hO5mFWxH3T2V3xnnx14lac-z2h0W_cR-Pu-Z6VgSxSFI8uhECRom3S9nmGSj9psw2ppH5So5XA2A
+
 
 
 ### Pagination video list
 GET http://localhost:8080/video/videoList
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxMTk3NTEsImVtYWlsIjoiQWRtaW5jZWVrMTIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNzA5MjA2MTUxLCJpc3MiOiJLdW5VelRlc3QifQ.iyf5RntT8eKMZLiPataL-Z3N7Xf4TUkRMi6mk5uqwuHo_cPdmQXG6UgAB_noxGrTMPAbimCDuKiUYL_9s_7wwA
 
 
 ### Pagination by channelId

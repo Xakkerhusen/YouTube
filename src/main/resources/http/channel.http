@@ -1,19 +1,16 @@
 ### Creat
 POST http://localhost:8080/channel/creat
 Content-Type: application/json
-
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDYzNzYsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY5Mjc3NiwiaXNzIjoiS3VuVXpUZXN0In0._-bRvF0Exb8F8CKJ2_t_nqc-Ymds5HmY0tSM_ZL24DvHratj2i-1VShd6Cmz8AFmiRa0T4UZP_ATgjToi8ZDIQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 Accept-Language: UZ
 
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MjI3MTcsImVtYWlsIjoiaHVzZW50ZXNoYXlpdkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzA4NzA5MTE3LCJpc3MiOiJLdW5VelRlc3QifQ.yIClg3804-Re6jwtn-66SuccKEseMJXHeijWpzQeAuQyj0mh8f0hWDi_n7viQjG0Jr8vLyAothCV2c1w3vw4yQ
-
-
 {
-  "name": "Yangiliklar",
-  "description": "Barcha turdagi yangiliklar",
-  "photoId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
-  "bannerId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a"
+  "name": "Kun uz",
+  "description": "Kunnubg eng so'ngi yangiliklari",
+  "photoId": "5087af77-a06d-41d0-9a66-06a9701503c0",
+  "bannerId": "a667330e-e5c2-422d-a1f4-88c80b330b72"
 }
+
 
 ### Update Details
 PUT http://localhost:8080/channel/update/4bde2295-4cf5-4f6f-9467-a5adb05157e7

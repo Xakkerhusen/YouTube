@@ -90,7 +90,6 @@ public class AttachService {
     }
 
 
-
     /**
      * This method finds and returns the attachment by id, throws an exception if not found 👇🏻
      */
@@ -107,8 +106,6 @@ public class AttachService {
         }
         return new byte[0];
     }
-
-
 
 
     /**
@@ -138,7 +135,6 @@ public class AttachService {
     }
 
 
-
     /**
      * This method used attach for pagination
      */
@@ -159,7 +155,6 @@ public class AttachService {
     }
 
 
-
     /**
      * This method searches the database by attach id.
      * If found, it deletes the found object, otherwise it throws an exception 👇🏻
@@ -169,7 +164,6 @@ public class AttachService {
         attachRepository.deleteById(id);
         return true;
     }
-
 
 
     /**
@@ -219,8 +213,10 @@ public class AttachService {
     }
 
 
-    /**This method takes the data and
-     returns the url 👇🏻*/
+    /**
+     * This method takes the data and
+     * returns the url 👇🏻
+     */
     public AttachDTO toDTOForProfile(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setUrl(serverUrl + "/attach/open/" + entity.getId() + "." + entity.getExtension());
@@ -254,8 +250,7 @@ public class AttachService {
     }
 
 
-
-    public  long getDurationInSeconds(Path videoFilePath) {
+    public long getDurationInSeconds(Path videoFilePath) {
         Path absolutePath = videoFilePath.toAbsolutePath();
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(absolutePath.toString())) {
             grabber.start();
@@ -268,5 +263,11 @@ public class AttachService {
     }
 
 
-
+    public AttachDTO getURL(String previewAttachId, AppLanguage language) {
+        AttachDTO attachDTO = new AttachDTO();
+        AttachEntity attachEntity = get(previewAttachId, language);
+        attachDTO.setId(previewAttachId);
+        attachDTO.setUrl(attachEntity.getUrl());
+        return attachDTO;
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.YouTube.dto;
 
-import com.example.YouTube.enums.LikeStatus;
 import com.example.YouTube.enums.VideoStatus;
 import com.example.YouTube.enums.VideoType;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,6 +33,9 @@ public class VideoDTO {
     private Long sharedCount;
     private Long likeCount;
     private Long dislikeCount;
-    private long duration;
-    private PlaylistDTO playlist;
+    private Long duration;
+    private ProfileDTO owner;
+    private String playListJson;
+    private List<Integer> playlistVideo;
+    private List<String> tagList;
 }

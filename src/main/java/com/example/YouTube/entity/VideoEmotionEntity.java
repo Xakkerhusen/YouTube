@@ -36,4 +36,7 @@ public class VideoEmotionEntity {
     @Enumerated(EnumType.STRING)
     private LikeStatus status;
 
+    @Column(name = "visible")
+    private Boolean visible = true;
+
 }

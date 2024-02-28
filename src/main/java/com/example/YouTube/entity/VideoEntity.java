@@ -1,6 +1,5 @@
 package com.example.YouTube.entity;
 
-import com.example.YouTube.dto.PlaylistDTO;
 import com.example.YouTube.enums.VideoStatus;
 import com.example.YouTube.enums.VideoType;
 import jakarta.persistence.*;
@@ -9,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "video")
 public class VideoEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
@@ -54,9 +54,6 @@ public class VideoEntity {
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
 
-    @Column(name = "duration")
-    private long duration = 0l;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "video_status")
     private VideoStatus videoStatus;
@@ -64,6 +61,8 @@ public class VideoEntity {
     @Column(name = "video_type")
     private VideoType videoType;
 
+    @Column(name = "duration")
+    private Long duration = 0l;
     @Column(name = "view_count")
     private Long viewCount = 0l;
     @Column(name = "shared_count")
@@ -73,11 +72,11 @@ public class VideoEntity {
     @Column(name = "dislike_count")
     private Long dislikeCount = 0l;
 
-    @Column(name = "playlist_id", nullable = false)
-    private Integer playlistId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "playlist_id", nullable = false, insertable = false, updatable = false)
-    private PlaylistEntity playlist;
+    @OneToMany(mappedBy = "video", fetch = FetchType.LAZY)
+    private List<PlaylistVideoEntity> playlistVideoEntityList;
+
+    @OneToMany(mappedBy = "video", fetch = FetchType.LAZY)
+    private List<VideoTagEntity> videoTagEntityList;
 
 }
 

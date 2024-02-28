@@ -6,13 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class PlaylistVideoService {
 
     @Autowired
     private PlaylistVideoRepository playlistVideoRepository;
+
+    public void create(String videoId, List<Integer> playListVideo) {
+        for (Integer play : playListVideo) {
+            create(videoId, play);
+        }
+    }
+
+    public void create(String videoId, Integer playListVideoId) {
+        PlaylistVideoEntity entity = new PlaylistVideoEntity();
+        entity.setVideoId(videoId);
+        entity.setPlaylistId(playListVideoId);
+        playlistVideoRepository.save(entity);
+    }
 
 }

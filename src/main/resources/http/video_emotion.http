@@ -5,7 +5,7 @@ Accept-Language: UZ
 
 {
   "profileId": 5,
-  "videoId": "9e1a8687-552d-46e8-92c0-76c06a5e3a24",
+  "videoId": "5c4f740d-0eeb-4d14-b43f-7e3f9d82529e",
   "status": "LIKE"
 }
 
@@ -16,14 +16,14 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "profileId": 5,
-  "videoId": "9e1a8687-552d-46e8-92c0-76c06a5e3a24",
+  "profileId": 7,
+  "videoId": "5c4f740d-0eeb-4d14-b43f-7e3f9d82529e",
   "status": "DISLIKE"
 }
 
 
 ### Delete emotion
-DELETE http://localhost:8080/video_emotion/remove/5/9e1a8687-552d-46e8-92c0-76c06a5e3a24
+DELETE http://localhost:8080/video_emotion/remove/5/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
 Accept-Language: EN
 
 

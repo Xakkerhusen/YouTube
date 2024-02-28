@@ -59,6 +59,8 @@ public class SpringSecurityConfig {
             "/video_emotion/dislike",
             "/video_emotion/remove/{pId}/{vId}",
             "video/paginationByTagId/{tagId}",
+            "video/paginationCategoryId",
+            "video/search",
 
 
     };

@@ -52,7 +52,9 @@ public class VideoEmotionService {
 
     public Boolean remove(Integer pId, String vId, AppLanguage language) {
         VideoEmotionEntity articleLikeEntity = get(pId, vId, language);
-        videoEmotionRepository.delete(articleLikeEntity);
+//        videoEmotionRepository.delete(articleLikeEntity);
+        videoEmotionRepository.updateVisible(articleLikeEntity.getId(),false);
+
         return true;
     }
 

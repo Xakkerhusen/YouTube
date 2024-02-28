@@ -7,6 +7,10 @@ import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.enums.ProfileRole;
 import com.example.YouTube.enums.VideoStatus;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.mapper.VideoShortInfoMapper;
+import com.example.YouTube.mapper.VideoShortInfoPaginationMapper;
+import com.example.YouTube.repository.ChannelRepository;
+import com.example.YouTube.repository.PlaylistVideoRepository;
 import com.example.YouTube.repository.VideoRepository;
 import com.example.YouTube.repository.VideoTagRepository;
 import com.example.YouTube.utils.SpringSecurityUtil;
@@ -16,9 +20,8 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -48,19 +51,37 @@ public class VideoService {
     @Autowired
     private VideoTagRepository videoTagRepository;
 
+    @Autowired
+    private PlaylistVideoService playlistVideoService;
+
+    @Autowired
+    private VideoTagService videoTagService;
+
+    @Autowired
+    private ChannelRepository channelRepository;
+
+    @Autowired
+    private PlaylistVideoRepository playlistVideoRepository;
+
 
     /**
      * this method is used to create a video
      */
 
     public VideoCreateDTO create(VideoCreateDTO dto, CustomUserDetails currentUser, AppLanguage language) {
-        Integer profileId = currentUser.getId();
 
-        if (!currentUser.getRole().equals(ProfileRole.ROLE_USER)){
-            log.warn("You have not access{}", profileId);
-            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+        checkProfileRole(currentUser, ProfileRole.ROLE_USER, language);
+        checkProfileIsOwnerThisChannel(currentUser.getId(), dto.getChannelId(), language);
+        List<VideoEntity> videoList = videoRepository.findByAttachId(dto.getAttachId());
+
+        if (videoList != null) {
+            for (VideoEntity entity : videoList) {
+                if (entity.getAttachId().equals(dto.getAttachId()) && entity.getCategoryId().equals(dto.getCategoryId())) {
+                    log.warn("One video must be in one category{}", dto.getCategoryId());
+                    throw new AppBadException(resourceBundleService.getMessage("One.video.must.be.in.one.category", language));
+                }
+            }
         }
-        checkProfileIsOwnerThisChannel(profileId,dto.getChannelId(),language);
 
         VideoEntity entity = new VideoEntity();
         entity.setTitle(dto.getTitle());
@@ -77,6 +98,9 @@ public class VideoService {
 
         videoRepository.save(entity);
 
+        videoTagService.create(entity.getId(), dto.getTagList());
+        playlistVideoService.create(entity.getId(), dto.getPlaylistVideo());
+
         dto.setCreatedDate(LocalDateTime.now());
 
         return dto;
@@ -87,26 +111,108 @@ public class VideoService {
      * this method is used to update video detail
      */
     public Boolean update(String id, CustomUserDetails currentUser, VideoCreateDTO dto, AppLanguage language) {
-        Integer profileId = currentUser.getId();
 
-        if (!currentUser.getRole().equals(ProfileRole.ROLE_USER)){
-            log.warn("You have not access{}", profileId);
-            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+        Iterable<ChannelEntity> all = channelRepository.findAll();
+        String channelId = "";
+        for (ChannelEntity channelEntity : all) {
+            if (channelEntity.getProfileId().equals(currentUser.getId())) {
+                channelId = channelEntity.getId();
+            }
         }
-        checkProfileIsOwnerThisChannel(profileId,dto.getChannelId(),language);
 
-        VideoEntity entity = get(id, language);
+
+        checkProfileRole(currentUser, ProfileRole.ROLE_USER, language);
+        checkProfileIsOwnerThisChannel(currentUser.getId(), channelId, language);
+        VideoEntity video = get(id, language);
+
+
+        // marge PlayList
+        List<Integer> newPlaylist = dto.getPlaylistVideo();
+        if (newPlaylist != null) {
+            mergePlayList(id, newPlaylist);
+        }
+
+
+        // marge TagList
+        List<String> newTagList = dto.getTagList();
+        if (newTagList != null) {
+            mergeTagName(id, newTagList);
+        }
+
+
         if (dto.getTitle() != null) {
-            entity.setTitle(dto.getTitle());
+            video.setTitle(dto.getTitle());
         }
         if (dto.getDescription() != null) {
-            entity.setDescription(dto.getDescription());
+            video.setDescription(dto.getDescription());
         }
         if (dto.getPreviewAttachId() != null) {
-            entity.setPreviewAttachId(dto.getPreviewAttachId());
+            video.setPreviewAttachId(dto.getPreviewAttachId());
         }
-        videoRepository.save(entity);
+        videoRepository.save(video);
         return true;
+    }
+
+    public void mergeTagName(String videoId, List<String> newVideoTagList) {
+        // Eskilar ro'yhati
+        List<VideoTagEntity> videoTagList = videoTagRepository.findByVideoIdList(videoId);
+
+
+        Set<String> oldVideoTagListId = videoTagList.stream()
+                .map(VideoTagEntity::getTagName)
+                .collect(Collectors.toSet());
+
+        // Eskilar ro'yhatidan chiqarilgan yangi typelar
+
+        List<String> toDelete = oldVideoTagListId.stream()
+                .filter(id -> !newVideoTagList.contains(id))
+                .collect(Collectors.toList());
+
+        // Yangi typelarni qo'shish
+        for (String tagsId : newVideoTagList) {
+            if (!oldVideoTagListId.contains(tagsId)) {
+                VideoTagEntity newVideoTag = new VideoTagEntity();
+                newVideoTag.setVideoId(videoId);
+                newVideoTag.setTagName(tagsId);
+                videoTagRepository.save(newVideoTag);
+            }
+        }
+
+        // Eskilar ro'yhatidan o'chirish
+        for (String tagName : toDelete) {
+            videoTagRepository.deleteByVideoIdAndTagName(videoId, tagName);
+        }
+    }
+
+    public void mergePlayList(String videoId, List<Integer> newPlayListIds) {
+        // Eskilar ro'yhati
+        List<PlaylistVideoEntity> oldPlayList = playlistVideoRepository.findByVideoId(videoId);
+
+
+        Set<Integer> oldPlayListId = oldPlayList.stream()
+                .map(PlaylistVideoEntity::getPlaylistId)
+                .collect(Collectors.toSet());
+
+        // Eskilar ro'yhatidan chiqarilgan yangi typelar
+
+        List<Integer> toDelete = oldPlayListId.stream()
+                .filter(id -> !newPlayListIds.contains(id))
+                .collect(Collectors.toList());
+
+        // Yangi typelarni qo'shish
+        for (Integer typeId : newPlayListIds) {
+            if (!oldPlayListId.contains(typeId)) {
+                PlaylistVideoEntity newPlayListEntity = new PlaylistVideoEntity();
+                newPlayListEntity.setVideoId(videoId);
+                newPlayListEntity.setPlaylistId(typeId);
+                playlistVideoRepository.save(newPlayListEntity);
+            }
+        }
+
+        // Eskilar ro'yhatidan o'chirish
+        for (Integer typeId : toDelete) {
+            playlistVideoRepository.deleteByVideoIdAndPlaylistId(videoId, typeId);
+        }
     }
 
 
@@ -114,26 +220,14 @@ public class VideoService {
      * this method is used to update video status
      */
     public Boolean updateStatus(String id, CustomUserDetails currentUser, VideoStatusDTO dto, AppLanguage language) {
-        Integer profileId = currentUser.getId();
 
-        if (!currentUser.getRole().equals(ProfileRole.ROLE_USER)){
-            log.warn("You have not access{}", profileId);
-            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
-        }
-        checkProfileIsOwnerThisChannel(profileId,dto.getChannelId(),language);
+        checkProfileRole(currentUser, ProfileRole.ROLE_USER, language);
+        checkProfileIsOwnerThisChannel(currentUser.getId(), dto.getChannelId(), language);
 
         VideoEntity entity = get(id, language);
         entity.setVideoStatus(dto.getVideoStatus());
         videoRepository.save(entity);
         return true;
-    }
-
-    private void checkProfileIsOwnerThisChannel(Integer profileId, String channelId, AppLanguage language) {
-        ChannelEntity channelEntity = channelService.get(channelId, language);
-        if (!profileId.equals(channelEntity.getProfileId())) {
-            log.warn("Profile not found{}", profileId);
-            throw new AppBadException(resourceBundleService.getMessage("Profile.not.found", language) + "-->>" + profileId);
-        }
     }
 
 
@@ -142,10 +236,7 @@ public class VideoService {
      */
     public Boolean increaseViewCount(String videoId, Integer profileId, AppLanguage language) {
         get(videoId, language);
-        if (videoWatchedService.save(videoId, profileId)) {
-            return videoRepository.increaseViewCount(videoId) != 0;
-        }
-        return false;
+        return videoWatchedService.save(videoId, profileId);
     }
 
 
@@ -156,7 +247,7 @@ public class VideoService {
         Iterable<VideoEntity> all = videoRepository.findAll();
         List<VideoDTO> dtoList = new LinkedList<>();
         for (VideoEntity entity : all) {
-            if (entity.getTitle().toLowerCase().contains(title.toLowerCase())) {
+            if (entity.getTitle().toLowerCase().contains(title.toLowerCase()) && entity.getVideoStatus().equals(VideoStatus.PUBLIC)) {
                 dtoList.add(toDTOShortInfo(entity, language));
             }
         }
@@ -167,18 +258,34 @@ public class VideoService {
     /**
      * this method is used to pagination video by categoryId
      */
-    public PageImpl<VideoDTO> paginationCategoryId(Integer page, Integer size, Integer categoryId, AppLanguage language) {
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+    public PageImpl<VideoListShortInfoDTO> paginationCategoryId(Integer page, Integer size, Integer categoryId, AppLanguage language) {
 
-        Pageable paging = PageRequest.of(page - 1, size, sort);
+        Pageable paging = PageRequest.of(page - 1, size);
 
-        Page<VideoEntity> videoPage = videoRepository.findAllByCategoryId(paging, categoryId);
-        List<VideoEntity> entityList = videoPage.getContent();
+        Page<VideoShortInfoMapper> videoPage = videoRepository.getVideoShortInfo(paging, categoryId);
+
+        List<VideoShortInfoMapper> entityList = videoPage.getContent();
         long totalElement = videoPage.getTotalElements();
 
-        List<VideoDTO> dtoList = new LinkedList<>();
-        for (VideoEntity entity : entityList) {
-            dtoList.add(toDTOShortInfo(entity, language));
+        List<VideoListShortInfoDTO> dtoList = new LinkedList<>();
+        for (VideoShortInfoMapper entity : entityList) {
+            VideoListShortInfoDTO videoDTO = new VideoListShortInfoDTO();
+            videoDTO.setId(entity.getId());
+            videoDTO.setTitle(entity.getTitle());
+            if (entity.getPreviewAttachId() != null) {
+                videoDTO.setPreviewAttach(attachService.getURL(entity.getPreviewAttachId(), language));
+            }
+            videoDTO.setPublishedDate(entity.getPublishedDate());
+            videoDTO.setViewCount(entity.getViewCount());
+            videoDTO.setDuration(entity.getDuration());
+
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getChannelName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            videoDTO.setChannel(channelDTO);
+
+            dtoList.add(videoDTO);
         }
         return new PageImpl<>(dtoList, paging, totalElement);
     }
@@ -187,10 +294,9 @@ public class VideoService {
     /**
      * this method is used to get byId videos
      */
-    public VideoDTO getById(String id, AppLanguage language) {
-
+    public VideoDTO getById(String id, CustomUserDetails currentUser, AppLanguage language) {
         VideoEntity entity = get(id, language);
-        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        Integer profileId = currentUser.getId();
         if (entity.getVideoStatus().equals(VideoStatus.PRIVATE)) {
             ProfileEntity profileEntity = profileService.get(profileId, language);
             ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
@@ -209,7 +315,7 @@ public class VideoService {
     public PageImpl<VideoDTO> paginationVideoList(Integer page, Integer size, CustomUserDetails currentUser, AppLanguage language) {
         if (!currentUser.getRole().equals(ProfileRole.ROLE_ADMIN)) {
             log.warn("You have not access{}", currentUser.getId());
-            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access",language));
+            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access", language));
         }
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
 
@@ -324,10 +430,6 @@ public class VideoService {
     }
 
 
-//    tagList(id,name)
-//    Like(isUserLiked,IsUserDisliked)
-
-
     /**
      * this method is used to set video details
      * which sets the incoming entity to dto.
@@ -400,24 +502,91 @@ public class VideoService {
     /**
      * this method is used to get video by tagId and pages
      */
-    public PageImpl<VideoDTO> getByTagId(Integer page, Integer size, AppLanguage language, Integer tagId) {
+    public PageImpl<VideoListShortInfoDTO> getByTagId(Integer page, Integer size, AppLanguage language, String tagName) {
 
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable paging = PageRequest.of(page - 1, size);
 
-        Pageable paging = PageRequest.of(page - 1, size, sort);
+        Page<VideoShortInfoMapper> videoPage = videoRepository.getVideoShortInfoString(paging, tagName);
 
-        Page<VideoTagEntity> videoPage = videoTagRepository.findByTagId(paging,tagId);
-        List<VideoTagEntity> entityList = videoPage.getContent();
+        List<VideoShortInfoMapper> entityList = videoPage.getContent();
         long totalElement = videoPage.getTotalElements();
 
-        List<VideoDTO> dtoList = new LinkedList<>();
-        for (VideoTagEntity entity : entityList) {
+        List<VideoListShortInfoDTO> dtoList = new LinkedList<>();
+        for (VideoShortInfoMapper entity : entityList) {
+            VideoListShortInfoDTO videoDTO = new VideoListShortInfoDTO();
+            videoDTO.setId(entity.getId());
+            videoDTO.setTitle(entity.getTitle());
+            if (entity.getPreviewAttachId() != null) {
+                videoDTO.setPreviewAttach(attachService.getURL(entity.getPreviewAttachId(), language));
+            }
+            videoDTO.setPublishedDate(entity.getPublishedDate());
+            videoDTO.setViewCount(entity.getViewCount());
+            videoDTO.setDuration(entity.getDuration());
 
-            VideoEntity videoEntity = get(entity.getVideoId(), language);
-            VideoDTO dtoShortInfo = toDTOShortInfo(videoEntity, language);
-            dtoList.add(dtoShortInfo);
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getChannelName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            videoDTO.setChannel(channelDTO);
+
+            dtoList.add(videoDTO);
         }
         return new PageImpl<>(dtoList, paging, totalElement);
 
     }
+
+    public PageImpl<VideoListPaginationDTO> getVideoListForAdmin(Integer page, Integer size, CustomUserDetails currentUser, AppLanguage language) {
+        checkProfileRole(currentUser, ProfileRole.ROLE_ADMIN, language);
+
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Page<VideoShortInfoPaginationMapper> entityPage = videoRepository.getVideoListForAdmin(pageable);
+
+        List<VideoShortInfoPaginationMapper> entityList = entityPage.getContent();
+        long totalElements = entityPage.getTotalElements();
+
+        List<VideoListPaginationDTO> dtoList = new LinkedList<>();
+        for (VideoShortInfoPaginationMapper entity : entityList) {
+            VideoListPaginationDTO videoDTO = new VideoListPaginationDTO();
+            videoDTO.setId(entity.getId());
+            videoDTO.setTitle(entity.getTitle());
+            if (entity.getPreviewAttachId() != null) {
+                videoDTO.setPreviewAttach(attachService.getURL(entity.getPreviewAttachId(), language));
+            }
+            videoDTO.setPublishedDate(entity.getPublishedDate());
+
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getChannelName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            videoDTO.setChannel(channelDTO);
+
+            ProfileDTO profileDTO = new ProfileDTO();
+            profileDTO.setId(entity.getProfileId());
+            profileDTO.setName(entity.getProfileName());
+            profileDTO.setSurname(entity.getProfileSurname());
+            videoDTO.setOwner(profileDTO);
+
+            videoDTO.setPlayListJson(entity.getPlayListJson());
+            dtoList.add(videoDTO);
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+    }
+
+    private void checkProfileRole(CustomUserDetails currentUser, ProfileRole role, AppLanguage language) {
+        if (!currentUser.getRole().equals(role)) {
+            log.warn("You have not access{}", currentUser.getId());
+            throw new AppBadException(resourceBundleService.getMessage("You.have.not.access", language));
+        }
+    }
+
+
+    private void checkProfileIsOwnerThisChannel(Integer profileId, String channelId, AppLanguage language) {
+        ChannelEntity channelEntity = channelService.get(channelId, language);
+        if (!profileId.equals(channelEntity.getProfileId())) {
+            log.warn("Profile not found{}", profileId);
+            throw new AppBadException(resourceBundleService.getMessage("Profile.not.found", language) + " -->> " + profileId);
+        }
+    }
+
+
 }

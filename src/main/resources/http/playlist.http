@@ -1,15 +1,16 @@
 ### create
 POST localhost:8080/playlist
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTYwMjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODcwMjQyMSwiaXNzIjoiS3VuVXpUZXN0In0.kcO_imWAzUPUjLa7XkaoTHiknSDZHeZ8b7mCv273gG1VnnahKv2Oo1jOQbNXJDbmfKTqFCQ3tmSj5V4wra4MJQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 
 {
-  "name": "java",
-  "description": "java coding",
-  "channelId": "dc4e5f3a-bad9-407d-9014-193bac489942",
+  "name": "java JDBC",
+  "description": "java JDBC introduction",
+  "channelId": "70cb5250-fa2f-4a51-b460-27f842795eae",
   "status": "PUBLIC",
-  "orderNumber": 1
+  "orderNumber": 6
 }
+
 
 ###update
 ###

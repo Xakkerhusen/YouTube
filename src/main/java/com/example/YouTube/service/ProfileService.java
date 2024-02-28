@@ -1,6 +1,7 @@
 package com.example.YouTube.service;
 
 import com.example.YouTube.dto.*;
+import com.example.YouTube.entity.PlaylistVideoEntity;
 import com.example.YouTube.entity.ProfileEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.enums.ProfileStatus;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -49,6 +51,8 @@ public class ProfileService {
         profileRepository.save(entity);
         return dto;
     }
+
+
 
     /**
      * In the body of this method, the incoming password is checked against the conditions specified by regex.

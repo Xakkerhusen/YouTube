@@ -30,4 +30,6 @@ public class VideoEmotionDTO {
 
     private LikeStatus status;
 
+    private Boolean visible;
+
 }

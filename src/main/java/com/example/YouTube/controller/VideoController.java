@@ -1,9 +1,7 @@
 package com.example.YouTube.controller;
 
 import com.example.YouTube.config.CustomUserDetails;
-import com.example.YouTube.dto.VideoCreateDTO;
-import com.example.YouTube.dto.VideoDTO;
-import com.example.YouTube.dto.VideoStatusDTO;
+import com.example.YouTube.dto.*;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.service.VideoService;
 import com.example.YouTube.utils.SpringSecurityUtil;
@@ -49,7 +47,7 @@ public class VideoController {
                                           AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video update detail{} ", id);
-        return ResponseEntity.ok(videoService.update(id,currentUser, dto, language));
+        return ResponseEntity.ok(videoService.update(id, currentUser, dto, language));
     }
 
 
@@ -61,7 +59,7 @@ public class VideoController {
                                                 AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video update status{} ", id);
-        return ResponseEntity.ok(videoService.updateStatus(id,currentUser, dto, language));
+        return ResponseEntity.ok(videoService.updateStatus(id, currentUser, dto, language));
     }
 
 
@@ -78,11 +76,11 @@ public class VideoController {
 
     @GetMapping("/paginationCategoryId")
     @Operation(summary = "API for pagination", description = "this api is used to pagination by categoryId")
-    public ResponseEntity<PageImpl<VideoDTO>> paginationCategory(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                                                 @RequestParam(value = "size", defaultValue = "2") Integer size,
-                                                                 @RequestParam(value = "category", defaultValue = "2") Integer categoryId,
-                                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                                 AppLanguage language) {
+    public ResponseEntity<PageImpl<VideoListShortInfoDTO>> paginationCategory(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                              @RequestParam(value = "size", defaultValue = "2") Integer size,
+                                                                              @RequestParam(value = "categoryId", defaultValue = "2") Integer categoryId,
+                                                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                                              AppLanguage language) {
         log.info("Video pagination{}", categoryId);
         return ResponseEntity.ok(videoService.paginationCategoryId(page, size, categoryId, language));
     }
@@ -98,15 +96,15 @@ public class VideoController {
     }
 
 
-    @GetMapping("/paginationByTagId/{tagId}")
+    @GetMapping("/paginationByTagId/{tagName}")
     @Operation(summary = "Api for get by tag id", description = "this api is used to get by tag id")
-    public ResponseEntity<PageImpl<VideoDTO>> getByTagId(@PathVariable("tagId") Integer tagId,
-                                                         @RequestParam(value = "page", defaultValue = "1") Integer page,
-                                                         @RequestParam(value = "size", defaultValue = "2") Integer size,
-                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                         AppLanguage language) {
-        log.info("Video get by tag id{} ", tagId);
-        return ResponseEntity.ok(videoService.getByTagId(page, size, language,tagId));
+    public ResponseEntity<PageImpl<VideoListShortInfoDTO>> getByTagId(@PathVariable("tagName") String tagName,
+                                                                      @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                      @RequestParam(value = "size", defaultValue = "2") Integer size,
+                                                                      @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                                      AppLanguage language) {
+        log.info("Video get by tag id{} ", tagName);
+        return ResponseEntity.ok(videoService.getByTagId(page, size, language, tagName));
     }
 
     @GetMapping("/getById/{id}")
@@ -117,19 +115,20 @@ public class VideoController {
                                             AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video get by id{} ", id);
-        return ResponseEntity.ok(videoService.getById(id, language));
+        return ResponseEntity.ok(videoService.getById(id, currentUser, language));
     }
 
 
     @GetMapping("/videoList")
+    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Api for video list pagination", description = "this api is used to video list pagination")
-    public ResponseEntity<PageImpl<VideoDTO>> paginationVideoList(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                                                  @RequestParam(value = "size", defaultValue = "2") Integer size,
-                                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                                  AppLanguage language) {
+    public ResponseEntity<PageImpl<VideoListPaginationDTO>> paginationVideoList(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                                @RequestParam(value = "size", defaultValue = "2") Integer size,
+                                                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                                                AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         log.info("Video pagination ");
-        return ResponseEntity.ok(videoService.paginationVideoList(page, size,currentUser, language));
+        return ResponseEntity.ok(videoService.getVideoListForAdmin(page, size, currentUser, language));
     }
 
 

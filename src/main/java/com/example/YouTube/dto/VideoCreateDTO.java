@@ -42,6 +42,7 @@ public class VideoCreateDTO {
     private LocalDateTime createdDate;
     private VideoStatus videoStatus;
     private VideoType videoType;
-    private PlaylistDTO playlist;
+    private List<Integer> playlistVideo;
+    private List<String> tagList;
 
 }
