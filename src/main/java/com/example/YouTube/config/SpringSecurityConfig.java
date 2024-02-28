@@ -54,7 +54,8 @@ public class SpringSecurityConfig {
             "/video_tag/getVideoTagListByVideoId/{video_id}",
 
             "*/getAllByChannelId",
-            "*/getDetail/*"
+            "*/getDetail/*",
+            "*/getAllByPlaylistId"
 
 
     };

@@ -31,7 +31,7 @@ public class PlaylistController {
 
     @PostMapping("")
     @Operation(summary = "Api for create", description = "this api is used to create playlist ")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<?> create(@Valid @RequestBody CreatePlaylistDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("Create playlist {}", dto.getName());
@@ -92,18 +92,17 @@ public class PlaylistController {
     @GetMapping("/getAllByOwner")
     @Operation(summary = "Api for list of playlist", description = "this api is used to get list of playlist by owner ")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> getPlaylistByOwner(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+    public ResponseEntity<?> getPlaylistByOwner() {
         log.info("get list of playlist ");
         Integer id = SpringSecurityUtil.getCurrentUser().getId();
-        return ResponseEntity.ok(playlistService.getPlaylistByOwner(id, language));
+        return ResponseEntity.ok(playlistService.getPlaylistByOwner(id));
     }
 
     @GetMapping("/getAllByChannelId")
     @Operation(summary = "Api for list of playlist", description = "this api is used to get list of playlist by public ")
-    public ResponseEntity<?> getPlaylistByChannelId(@RequestParam String channelId,
-                                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+    public ResponseEntity<?> getPlaylistByChannelId(@RequestParam String channelId) {
         log.info("get list of playlist ");
-        return ResponseEntity.ok(playlistService.getPlaylistsByChannelId(channelId, language));
+        return ResponseEntity.ok(playlistService.getPlaylistsByChannelId(channelId));
     }
 
     @GetMapping("/getDetail/{id}")

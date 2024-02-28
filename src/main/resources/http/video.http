@@ -4,12 +4,19 @@ Accept-Language: RU
 Content-Type: application/json
 
 {
-  "title": "Yevropadagi O'zbeklar",
+  "title": "USAdagi O'zbeklar",
   "description": "Yevropadagi hayot haqida bilib olamiz",
+
+  "attachId": "de36f0f5-69a1-4fb3-8131-d5aa00bdcf40",
+  "categoryId": 1,
+  "channelId": "3fe9bb21-83f4-4eea-b299-f77f5d63a78d",
+  "previewAttachId": "edf3cf6b-3c5c-4b3e-b103-1dd18e21fb75",
+
   "attachId": "b8c9c96c-005d-4793-abd3-6a4faab45507",
   "categoryId": 5,
   "channelId": "852af6b4-ea6c-4aa4-a108-b6818e64db9b",
   "previewAttachId": "5cf4b677-ec45-417b-a27e-36a1c4e5b9e2",
+
   "videoStatus": "PUBLIC",
   "videoType": "VIDEO"
 }

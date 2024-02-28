@@ -60,12 +60,11 @@ public class PlaylistVideoController {
 
     @GetMapping("/getAllByPlaylistId")
     @Operation(summary = "Api for playlist", description = "this api is used to get list of playlist-video ")
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getAllByPlaylistId(@RequestParam Integer playlistId,
                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("get list of playlist-video ");
-        Integer id = SpringSecurityUtil.getCurrentUser().getId();
-        return ResponseEntity.ok(playlistVideoService.getPlaylistVideoInfo(id, playlistId, language));
+
+        return ResponseEntity.ok(playlistVideoService.getPlaylistVideoInfo(playlistId, language));
     }
 
 
