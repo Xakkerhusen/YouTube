@@ -1,22 +1,31 @@
 package com.example.YouTube.service;
 
 import com.example.YouTube.dto.*;
-import com.example.YouTube.entity.*;
+import com.example.YouTube.entity.AttachEntity;
+import com.example.YouTube.entity.PlaylistEntity;
+import com.example.YouTube.entity.PlaylistVideoEntity;
+import com.example.YouTube.entity.ProfileEntity;
 import com.example.YouTube.enums.AppLanguage;
+import com.example.YouTube.enums.PlaylistStatus;
 import com.example.YouTube.enums.ProfileRole;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.mapper.PlayListShortInfoMapper;
+import com.example.YouTube.mapper.PlaylistInfoMapper;
 import com.example.YouTube.repository.PlaylistRepository;
 import com.example.YouTube.repository.PlaylistVideoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -98,9 +107,9 @@ public class PlaylistService {
     public String update(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language) {
         PlaylistEntity entity = get(playlistId, language);
 
-        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
-
-        if (!profileId.equals(channelDTO.getProfileId())) {
+//        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
+        Integer profile = playlistRepository.findProfile(entity.getChannelId());
+        if (!profileId.equals(profile)) {
             log.warn("Profile not found{}", profileId);
             throw new AppBadException(resourceBundleService.getMessage("playlist.not.allowed", language) + "-->>" + profileId);
 
@@ -123,9 +132,9 @@ public class PlaylistService {
     public String updateStatus(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language) {
         PlaylistEntity entity = get(playlistId, language);
 
-        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
-
-        if (!profileId.equals(channelDTO.getProfileId())) {
+//        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
+        Integer profile = playlistRepository.findProfile(entity.getChannelId());
+        if (!profileId.equals(profile)) {
             log.warn("Profile not found{}", profileId);
             throw new AppBadException(resourceBundleService.getMessage("playlist.not.allowed", language) + "-->>" + profileId);
 
@@ -157,9 +166,10 @@ public class PlaylistService {
             return true;
         }
 
-        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
+//        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
+        Integer profile = playlistRepository.findProfile(entity.getChannelId());
 
-        if (!profileEntity.getId().equals(channelDTO.getProfileId())) {
+        if (!profileEntity.getId().equals(profile)) {
             log.warn("Profile not found{}", profileId);
             throw new AppBadException(resourceBundleService.getMessage("playlist.not.allowed", language) + "-->>" + profileId);
 
@@ -179,22 +189,13 @@ public class PlaylistService {
      * @return A paginated list of playlists.
      */
     public PageImpl<PlaylistInfoDTO> pagination(Integer page, Integer size, AppLanguage language) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Page<PlaylistInfoMapper> playlistPage = playlistRepository.getPlayListInfo(pageable);
+        List<PlaylistInfoDTO> playlistInfoDTOs = playlistPage.stream()
+                .map(mapper -> mapToDTO(mapper, language))
+                .collect(Collectors.toList());
 
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
-        Pageable pageable = PageRequest.of(page - 1, size, sort);
-
-        Page<PlaylistEntity> pages = playlistRepository.findAll(pageable);
-
-        List<PlaylistEntity> content = pages.getContent();
-        long totalElements = pages.getTotalElements();
-
-        List<PlaylistInfoDTO> dtoList = new ArrayList<>();
-        for (PlaylistEntity entity : content) {
-            dtoList.add(toDTO(entity, language));
-        }
-
-        return new PageImpl<>(dtoList, pageable, totalElements);
-
+        return new PageImpl<>(playlistInfoDTOs, pageable, playlistPage.getTotalElements());
     }
 
     /**
@@ -204,25 +205,19 @@ public class PlaylistService {
      * @param language  Language for error messages.
      * @return A list of playlists.
      */
+
     public List<PlaylistInfoDTO> getPlaylistByUserId(Integer profileId, AppLanguage language) {
-        // Retrieve all playlists from repository
-        List<PlaylistEntity> playlistEntities = playlistRepository.find();
+        // Retrieve playlist information from the repository
+        ProfileEntity profileEntity = profileService.get(profileId, language);
+        List<PlaylistInfoMapper> playlistInfoMappers = playlistRepository.getPlayListInfoList(profileEntity.getId());
 
-        // Initialize a list to store playlist DTOs
-        List<PlaylistInfoDTO> dtoList = new LinkedList<>();
+        // Convert PlaylistInfoMapper objects to PlaylistInfoDTO objects
+        List<PlaylistInfoDTO> playlistInfoDTOs = playlistInfoMappers.stream()
+                .map(mapper -> mapToDTO(mapper, language))
+                .collect(Collectors.toList());
 
-        // Iterate through playlist entities
-        for (PlaylistEntity playlistEntity : playlistEntities) {
-            // Retrieve channel entity for the playlist
-            ChannelEntity channelEntity = channelService.get(playlistEntity.getChannelId(), language);
-            // Check if channel exists and profile ID matches
-            if (channelEntity != null && channelEntity.getProfileId().equals(profileId)) {
-                // Convert playlist entity to DTO and add to list
-                dtoList.add(toDTO(playlistEntity, language));
-            }
-        }
 
-        return dtoList;
+        return playlistInfoDTOs;
     }
 
 
@@ -230,48 +225,40 @@ public class PlaylistService {
      * Retrieves a list of playlists by OWNER AND USER.
      *
      * @param profileId The profile ID of the owner/user.
-     * @param language  Language for error messages.
      * @return A list of playlist short info DTOs.
      */
-    public List<PlaylistShortInfoDTO> getPlaylistByOwner(Integer profileId, AppLanguage language) {
-        // Retrieve all playlists ordered by order number
-        Iterable<PlaylistEntity> all = playlistRepository.findAllByOrderByOrderNumberDesc();
+    public List<PlaylistShortInfoDTO> getPlaylistByOwner(Integer profileId) {
+        // Biz profileId boyicha playlistlarni qaytarish uchun repositorydan foydalanamiz
+        List<PlayListShortInfoMapper> playlistInfoMappers = playlistRepository.getPlayListShortInfoByOwner(profileId);
 
-        // Initialize a list to store playlist short info DTOs
-        List<PlaylistShortInfoDTO> dtoList = new ArrayList<>();
-
-        // Iterate through playlist entities
-        for (PlaylistEntity entity : all) {
-            // Retrieve channel entity for the playlist
-            ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
-            // Check if channel exists and profile ID matches
-            if (channelEntity != null && channelEntity.getProfileId().equals(profileId)) {
-                // Convert playlist entity to short info DTO and add to list
-                dtoList.add(toShortDTO(entity, language));
-            }
+        // PlayListShortInfoMapper ni PlaylistShortInfoDTO ga o'tkazish
+        List<PlaylistShortInfoDTO> playlistShortInfoDTOs = new ArrayList<>();
+        for (PlayListShortInfoMapper mapper : playlistInfoMappers) {
+            playlistShortInfoDTOs.add(mapToDTO(mapper));
         }
-
-        return dtoList;
+        return playlistShortInfoDTOs;
     }
+
+
+
 
     /**
      * Retrieves a list of playlists by PUBLIC using the channel ID.
      *
      * @param channelId The channel ID.
-     * @param language  Language for error messages.
      * @return A list of playlist short info DTOs.
      */
-    public List<PlaylistShortInfoDTO> getPlaylistsByChannelId(String channelId, AppLanguage language) {
+    public List<PlaylistShortInfoDTO> getPlaylistsByChannelId(String channelId) {
         // Retrieve playlists by channel ID ordered by order number
-        List<PlaylistEntity> list = playlistRepository.findAllByChannelIdOrderByOrderNumberDesc(channelId);
+        List<PlayListShortInfoMapper> playListShortInfoByChannel = playlistRepository.getPlayListShortInfoByChannel(channelId);
 
         // Initialize a list to store playlist short info DTOs
         List<PlaylistShortInfoDTO> dtoList = new ArrayList<>();
 
         // Iterate through playlist entities
-        for (PlaylistEntity entity : list) {
+        for (PlayListShortInfoMapper mapper : playListShortInfoByChannel) {
             // Convert playlist entity to short info DTO and add to list
-            dtoList.add(toShortDTO(entity, language));
+            dtoList.add(mapToDTO(mapper));
         }
 
         return dtoList;
@@ -318,94 +305,68 @@ public class PlaylistService {
     /**
      * Converts a PlaylistEntity object to a PlaylistInfoDTO object.
      *
-     * @param entity   The PlaylistEntity object to be converted.
-     * @param language Language for error messages.
-     * @return Converted PlaylistInfoDTO object.
+     * @param mapper   The PlaylistInfoMapper object representing playlist information retrieved from the database.
+     *                 This object contains raw data obtained from the database query.
+     * @param language The language setting used for localization and fetching data in the desired language.
+     *                 This parameter influences the fetching of attach entities such as channel and profile photos.
+     * @return PlaylistInfoDTO object representing playlist information suitable for presentation or further processing.
+     * This object contains transformed data ready to be used by the application.
      */
-    public PlaylistInfoDTO toDTO(PlaylistEntity entity, AppLanguage language) {
-        // Retrieve channel information
-        ChannelDTO channel = channelService.getById(entity.getChannelId(), language);
-        ProfileEntity profile = profileService.get(channel.getProfileId(), language);
-        AttachEntity attachChannel = attachService.get(channel.getPhotoId(), language);
-        AttachEntity attachProfile = attachService.get(profile.getAttachId(), language);
 
-        // Create and populate ChannelDTO object
-        ChannelDTO channelDTO = new ChannelDTO();
-        channelDTO.setId(channel.getId());
-        channelDTO.setName(channel.getName());
-        AttachDTO channelPhoto = new AttachDTO();
-        channelPhoto.setId(attachChannel.getId());
-        channelPhoto.setUrl(attachChannel.getUrl());
-        channelDTO.setPhoto(channelPhoto);
-
-        // Create and populate ProfileDTO object
-        ProfileDTO profileDTO = new ProfileDTO();
-        profileDTO.setId(profile.getId());
-        profileDTO.setName(profile.getName());
-        profileDTO.setSurname(profile.getSurname());
-        AttachDTO profilePhoto = new AttachDTO();
-        profilePhoto.setId(attachProfile.getId());
-        profilePhoto.setUrl(attachProfile.getUrl());
-        profileDTO.setAttach(profilePhoto);
-
-        // Create and populate PlaylistInfoDTO object
+    private PlaylistInfoDTO mapToDTO(PlaylistInfoMapper mapper, AppLanguage language) {
         PlaylistInfoDTO dto = new PlaylistInfoDTO();
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
-        dto.setStatus(entity.getStatus());
-        dto.setOrderNumber(entity.getOrderNumber());
+        dto.setId(mapper.getPlaylistId());
+        dto.setName(mapper.getPlaylistName());
+        dto.setDescription(mapper.getPlaylistDescription());
+        dto.setStatus(PlaylistStatus.valueOf(mapper.getPlaylistStatus()));
+        dto.setOrderNumber(mapper.getPlaylistOrderNumber());
+
+        ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setId(mapper.getChannelId());
+        channelDTO.setName(mapper.getChannelName());
+        AttachDTO channelPhoto = new AttachDTO();
+        if (mapper.getChannelPhotoId() != null) {
+            AttachEntity attachEntity = attachService.get(mapper.getChannelPhotoId(), language);
+            channelPhoto.setId(mapper.getChannelPhotoId());
+            channelPhoto.setUrl(attachEntity.getUrl());
+        }
+
+        channelDTO.setPhoto(channelPhoto);
         dto.setChannel(channelDTO);
+
+        ProfileDTO profileDTO = new ProfileDTO();
+        profileDTO.setId(mapper.getProfileId());
+        profileDTO.setName(mapper.getProfileName());
+        profileDTO.setSurname(mapper.getProfileSurname());
+        AttachDTO profilePhoto = new AttachDTO();
+        if (mapper.getProfilePhotoId() != null) {
+            AttachEntity attachEntity1 = attachService.get(mapper.getProfilePhotoId(), language);
+            profilePhoto.setId(mapper.getProfilePhotoId());
+            profilePhoto.setUrl(attachEntity1.getUrl());
+        }
+        profileDTO.setAttach(profilePhoto);
         dto.setProfile(profileDTO);
 
         return dto;
     }
 
-
-    /**
-     * Converts a PlaylistEntity object to a PlaylistShortInfoDTO object.
-     *
-     * @param entity   The PlaylistEntity object to be converted.
-     * @param language Language for error messages.
-     * @return Converted PlaylistShortInfoDTO object.
-     */
-    public PlaylistShortInfoDTO toShortDTO(PlaylistEntity entity, AppLanguage language) {
-        // Initialize PlaylistShortInfoDTO object
+    private PlaylistShortInfoDTO mapToDTO(PlayListShortInfoMapper mapper) {
         PlaylistShortInfoDTO dto = new PlaylistShortInfoDTO();
+        dto.setPlaylistId(mapper.getPlaylistId());
+        dto.setPlaylistName(mapper.getPlaylistName());
+        dto.setPlaylistCreatedDate(mapper.getPlaylistCreatedDate());
+        dto.setPlaylistVideoCount(mapper.getPlaylistVideoCount());
 
-        // Retrieve playlist videos and channel information
-        Iterable<PlaylistVideoEntity> allVideos = playlistVideoRepository.findAllByPlaylistId(entity.getId());
-        ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
-
-        // Initialize list to store video DTOs
-        List<VideoDTO> dtoList = new LinkedList<>();
-        for (PlaylistVideoEntity playlistVideoEntity : allVideos) {
-            // Retrieve video information for each playlist video
-            VideoDTO videoDTO = new VideoDTO();
-            VideoEntity videoEntity = videoService.get(playlistVideoEntity.getVideoId(), language);
-            videoDTO.setId(videoEntity.getId());
-            videoDTO.setTitle(videoEntity.getTitle());
-            videoDTO.setDuration(videoEntity.getDuration());
-            // Add video DTO to the list
-            dtoList.add(videoDTO);
-        }
-
-        // Create and populate ChannelDTO object
-        ChannelDTO channelDTO = new ChannelDTO();
-        channelDTO.setId(channelEntity.getId());
-        channelDTO.setName(channelEntity.getName());
-
-        // Populate PlaylistShortInfoDTO object
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setCreatedDate(entity.getCreatedDate());
-        dto.setVideoCount(entity.getVideoCount());
+        ChannelDTO channelDTO=new ChannelDTO();
+        channelDTO.setId(mapper.getChannelId());
+        channelDTO.setName(mapper.getChannelName());
         dto.setChannel(channelDTO);
-        dto.setVideos(dtoList);
-
+        String playListJson = mapper.getPlayListJson();
+        if (playListJson != null && !playListJson.isEmpty()) {
+            dto.setPlayListJson(playListJson);
+        }
         return dto;
     }
-
 
     /**
      * Retrieves a playlist entity by its ID.
@@ -421,6 +382,7 @@ public class PlaylistService {
             return new AppBadException(resourceBundleService.getMessage("playlist.not.found", language) + "-->" + playlistId);
         });
     }
+
 
 
 }

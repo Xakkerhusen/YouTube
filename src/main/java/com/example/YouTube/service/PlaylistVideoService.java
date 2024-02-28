@@ -1,9 +1,13 @@
 package com.example.YouTube.service;
 
 import com.example.YouTube.dto.*;
-import com.example.YouTube.entity.*;
+import com.example.YouTube.entity.AttachEntity;
+import com.example.YouTube.entity.PlaylistEntity;
+import com.example.YouTube.entity.PlaylistVideoEntity;
+import com.example.YouTube.entity.VideoEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.mapper.PlaylistVideoInfoMapper;
 import com.example.YouTube.repository.PlaylistVideoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,49 +101,39 @@ public class PlaylistVideoService {
         return "Deleted successfully";
     }
 
-
-    public List<PlaylistVideoInfoDTO> getPlaylistVideoInfo(Integer profileId, Integer playlistId, AppLanguage language) {
-
-        List<PlaylistVideoEntity> allByPlaylistId = playlistVideoRepository.findAllByPlaylistId(playlistId);
-
-        PlaylistEntity playlist = playlistService.get(playlistId, language);
-        ChannelEntity channelEntity = channelService.get(playlist.getChannelId(), language);
-        if (!channelEntity.getProfileId().equals(profileId)) {
-            log.warn("Profile not found{}", profileId);
-            throw new AppBadException(resourceBundleService.getMessage("playlist.not.allowed", language) + "-->>" + profileId);
-        }
-
+    public List<PlaylistVideoInfoDTO> getPlaylistVideoInfo(Integer playlistId, AppLanguage language) {
+        List<PlaylistVideoInfoMapper> playlistVideoInfoMappers = playlistVideoRepository.getPlaylistVideoInfo(playlistId);
         List<PlaylistVideoInfoDTO> dtoList = new ArrayList<>();
-
-        for (PlaylistVideoEntity entity : allByPlaylistId) {
-            PlaylistVideoInfoDTO playlistVideoInfoDTO = new PlaylistVideoInfoDTO();
-            VideoDTO videoDTO = new VideoDTO();
-            VideoEntity videoEntity = videoService.get(entity.getVideoId(), language);
-            videoDTO.setId(videoEntity.getId());
-            AttachDTO attachDTO = new AttachDTO();
-            AttachEntity attachEntity = attachService.get(videoEntity.getAttachId(), language);
-            attachDTO.setId(attachEntity.getId());
-            attachDTO.setUrl(attachEntity.getUrl());
-            videoDTO.setPreviewAttach(attachDTO);
-            videoDTO.setTitle(videoEntity.getTitle());
-            videoDTO.setDuration(videoEntity.getDuration());
-
-            playlistVideoInfoDTO.setPlaylistId(entity.getPlaylistId());
-            playlistVideoInfoDTO.setVideo(videoDTO);
-
-            ChannelDTO channelDTO = new ChannelDTO();
-            channelDTO.setId(channelEntity.getId());
-            channelDTO.setName(channelEntity.getName());
-            playlistVideoInfoDTO.setChannel(channelDTO);
-
-            playlistVideoInfoDTO.setCreatedDate(entity.getCreatedDate());
-            playlistVideoInfoDTO.setOrderNumber(entity.getOrderNumber());
-
-            dtoList.add(playlistVideoInfoDTO);
-
-
+        for (PlaylistVideoInfoMapper mapper : playlistVideoInfoMappers) {
+            dtoList.add(mapToDTO(mapper,language));
         }
+
         return dtoList;
+    }
+    private PlaylistVideoInfoDTO mapToDTO(PlaylistVideoInfoMapper mapper,AppLanguage language) {
+        PlaylistVideoInfoDTO dto = new PlaylistVideoInfoDTO();
+        dto.setPlaylistId(mapper.getPlaylistId());
+
+        VideoDTO videoDTO = new VideoDTO();
+        videoDTO.setId(mapper.getVideoId());
+        AttachDTO attachDTO=new AttachDTO();
+        AttachEntity attachEntity = attachService.get(mapper.getVideoPreviewAttachId(), language);
+        attachDTO.setId(attachEntity.getId());
+        attachDTO.setUrl(attachEntity.getUrl());
+        videoDTO.setAttach(attachDTO);
+        videoDTO.setTitle(mapper.getVideoTitle());
+        videoDTO.setDuration(mapper.getVideoDuration());
+        dto.setVideo(videoDTO);
+
+        ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setId(mapper.getChannelId());
+        channelDTO.setName(mapper.getChannelName());
+        dto.setChannel(channelDTO);
+
+        dto.setCreatedDate(mapper.getPlaylistVideoCreatedDate());
+        dto.setOrderNumber(mapper.getPlaylistVideoOrderNumber());
+
+        return dto;
     }
 
 

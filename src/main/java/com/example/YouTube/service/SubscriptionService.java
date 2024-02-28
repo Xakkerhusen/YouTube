@@ -11,7 +11,9 @@ import com.example.YouTube.entity.ChannelEntity;
 import com.example.YouTube.entity.ProfileEntity;
 import com.example.YouTube.entity.SubscriptionEntity;
 import com.example.YouTube.enums.AppLanguage;
+import com.example.YouTube.enums.Status;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.mapper.SubscriptionInfoMapper;
 import com.example.YouTube.repository.SubscriptionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Slf4j
 @Service
 public class SubscriptionService {
@@ -45,9 +48,9 @@ public class SubscriptionService {
     }
 
 
-    public String create(Integer profileId,SubscriptionCreateDTO dto, AppLanguage language){
+    public String create(Integer profileId, SubscriptionCreateDTO dto, AppLanguage language) {
 
-        SubscriptionEntity entity=new SubscriptionEntity();
+        SubscriptionEntity entity = new SubscriptionEntity();
         ChannelEntity channelEntity = channelService.get(dto.getChannelId(), language);
         ProfileEntity profileEntity = profileService.get(profileId, language);
 
@@ -55,21 +58,22 @@ public class SubscriptionService {
         entity.setNotificationType(dto.getNotificationType());
         entity.setProfileId(profileEntity.getId());
         entity.setCreatedDate(LocalDateTime.now());
+        entity.setStatus(Status.ACTIVE);
 
         subscriptionRepository.save(entity);
 
         return "Success!!!";
     }
 
-    public String changeSubscriptionStatus(Integer profileId, ChangeSubscriptionStatusDTO dto, AppLanguage language){
+    public String changeSubscriptionStatus(Integer profileId, ChangeSubscriptionStatusDTO dto, AppLanguage language) {
 
         ProfileEntity profileEntity = profileService.get(profileId, language);
-        Optional<SubscriptionEntity> subscription = subscriptionRepository.findByChannelIdAndProfileId(dto.getChannelId(),profileEntity.getId());
+        Optional<SubscriptionEntity> subscription = subscriptionRepository.findByChannelIdAndProfileId(dto.getChannelId(), profileEntity.getId());
 
 
-        if (subscription.isEmpty()){
+        if (subscription.isEmpty()) {
             log.warn("Subscription not found with this Channel");
-            throw new AppBadException(resourceBundleService.getMessage("subscription.not.found",language));
+            throw new AppBadException(resourceBundleService.getMessage("subscription.not.found", language));
         }
 
         SubscriptionEntity entity = subscription.get();
@@ -81,14 +85,14 @@ public class SubscriptionService {
         return "Status has changed";
     }
 
-    public String changeNotificationType(Integer profileId, ChangeSubscriptionNotificationDTO dto, AppLanguage language){
+    public String changeNotificationType(Integer profileId, ChangeSubscriptionNotificationDTO dto, AppLanguage language) {
 
         ProfileEntity profileEntity = profileService.get(profileId, language);
-        Optional<SubscriptionEntity> subscription = subscriptionRepository.findByChannelIdAndProfileId(dto.getChannelId(),profileEntity.getId());
+        Optional<SubscriptionEntity> subscription = subscriptionRepository.findByChannelIdAndProfileId(dto.getChannelId(), profileEntity.getId());
 
-        if (subscription.isEmpty()){
+        if (subscription.isEmpty()) {
             log.warn("Subscription not found with this Channel");
-            throw new AppBadException(resourceBundleService.getMessage("subscription.not.found",language));
+            throw new AppBadException(resourceBundleService.getMessage("subscription.not.found", language));
         }
 
         SubscriptionEntity entity = subscription.get();
@@ -102,87 +106,89 @@ public class SubscriptionService {
 
 
     //bunda profileId SpringSecurityUtil.getCurrentUser() orqali kirib keladi
-    public List<SubscriptionInfoDTO> getInfo(Integer profileId, AppLanguage language){
+//    public List<SubscriptionInfoDTO> getInfo(Integer profileId, AppLanguage language){
+//
+//        ProfileEntity profileEntity = profileService.get(profileId, language);
+//
+//        List<SubscriptionEntity> list = subscriptionRepository.findByProfileId(profileEntity.getId());
+//
+//        List<SubscriptionInfoDTO> dtoList=new ArrayList<>();
+//
+//        for (SubscriptionEntity entity : list) {
+//
+//            dtoList.add(toDTOForUser(entity,language));
+//        }
+//
+//        return dtoList;
+//
+//    }
 
-        ProfileEntity profileEntity = profileService.get(profileId, language);
+    public List<SubscriptionInfoDTO> getInfo(Integer profileId, AppLanguage language) {
 
-        List<SubscriptionEntity> list = subscriptionRepository.findByProfileId(profileEntity.getId());
+        List<SubscriptionInfoMapper> subscriptionInfo = subscriptionRepository.getSubscriptionInfo(profileId);
 
-        List<SubscriptionInfoDTO> dtoList=new ArrayList<>();
+        List<SubscriptionInfoDTO> dtoList = new ArrayList<>();
 
-        for (SubscriptionEntity entity : list) {
-
-            dtoList.add(toDTOForUser(entity,language));
+        for (SubscriptionInfoMapper subscriptionInfoMapper : subscriptionInfo) {
+            dtoList.add(mapToDTO(subscriptionInfoMapper,language));
         }
-
         return dtoList;
-
-
     }
+
 
     // bunda profile id @RequestParam orqali kirib keladi
-    public List<SubscriptionInfoDTO> getInfoByAdmin(Integer profileId, AppLanguage language){
+    public List<SubscriptionInfoDTO> getInfoByAdmin(Integer profileId, AppLanguage language) {
 
-        ProfileEntity profileEntity = profileService.get(profileId, language);
+        List<SubscriptionInfoMapper> subscriptionInfo = subscriptionRepository.getSubscriptionInfo(profileId);
 
-        List<SubscriptionEntity> list = subscriptionRepository.findByProfileId(profileEntity.getId());
+        List<SubscriptionInfoDTO> dtoList = new ArrayList<>();
 
-        List<SubscriptionInfoDTO> dtoList=new ArrayList<>();
-
-        for (SubscriptionEntity entity : list) {
-
-            dtoList.add(toDTOForAdmin(entity,language));
+        for (SubscriptionInfoMapper subscriptionInfoMapper : subscriptionInfo) {
+            dtoList.add(mapToDTOAdmin(subscriptionInfoMapper,language));
         }
-
         return dtoList;
 
 
     }
+    public SubscriptionInfoDTO mapToDTO(SubscriptionInfoMapper mapper, AppLanguage language) {
+        SubscriptionInfoDTO dto = new SubscriptionInfoDTO();
 
-
-    public SubscriptionInfoDTO toDTOForUser(SubscriptionEntity entity,AppLanguage language){
-        SubscriptionInfoDTO dto=new SubscriptionInfoDTO();
-
-        ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
-        AttachEntity attachEntity = attachService.get(channelEntity.getPhotoId(), language);
-
+        dto.setId(mapper.getSubscriptionsId());
         ChannelDTO channelDTO=new ChannelDTO();
+        ChannelEntity channelEntity = channelService.get(mapper.getChannelId(), language);
         channelDTO.setId(channelEntity.getId());
         channelDTO.setName(channelEntity.getName());
-
+        AttachEntity attachEntity = attachService.get(channelEntity.getPhotoId(), language);
         AttachDTO attachDTO=new AttachDTO();
         attachDTO.setId(attachEntity.getId());
         attachDTO.setUrl(attachEntity.getUrl());
         channelDTO.setPhoto(attachDTO);
-        dto.setId(entity.getId());
         dto.setChannel(channelDTO);
-        dto.setNotificationType(entity.getNotificationType());
+        dto.setNotificationType(mapper.getSubscriptionsNotificationType());
 
         return dto;
-
     }
 
-    public SubscriptionInfoDTO toDTOForAdmin(SubscriptionEntity entity,AppLanguage language){
-        SubscriptionInfoDTO dto=new SubscriptionInfoDTO();
+    public SubscriptionInfoDTO mapToDTOAdmin(SubscriptionInfoMapper mapper, AppLanguage language) {
+        SubscriptionInfoDTO dto = new SubscriptionInfoDTO();
 
-        ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
-        AttachEntity attachEntity = attachService.get(channelEntity.getPhotoId(), language);
-
+        dto.setId(mapper.getSubscriptionsId());
         ChannelDTO channelDTO=new ChannelDTO();
+        ChannelEntity channelEntity = channelService.get(mapper.getChannelId(), language);
         channelDTO.setId(channelEntity.getId());
         channelDTO.setName(channelEntity.getName());
-
+        AttachEntity attachEntity = attachService.get(channelEntity.getPhotoId(), language);
         AttachDTO attachDTO=new AttachDTO();
         attachDTO.setId(attachEntity.getId());
         attachDTO.setUrl(attachEntity.getUrl());
         channelDTO.setPhoto(attachDTO);
-        dto.setId(entity.getId());
         dto.setChannel(channelDTO);
-        dto.setNotificationType(entity.getNotificationType());
-        dto.setCreatedDate(entity.getCreatedDate());
-        return dto;
+        dto.setNotificationType(mapper.getSubscriptionsNotificationType());
+        dto.setCreatedDate(mapper.getSubscriptionCreatedDate());
 
+        return dto;
     }
+
 
 
 

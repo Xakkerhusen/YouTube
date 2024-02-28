@@ -1,6 +1,7 @@
 package com.example.YouTube.repository;
 
 import com.example.YouTube.entity.PlaylistVideoEntity;
+import com.example.YouTube.mapper.PlaylistVideoInfoMapper;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -21,5 +22,23 @@ public interface PlaylistVideoRepository extends CrudRepository<PlaylistVideoEnt
 
 
     Optional<PlaylistVideoEntity> findByPlaylistIdAndVideoId(Integer playlistId, String videoId);
+
+    @Query(value = "select p.id as playlistId,\n" +
+            "       v.id as videoId,\n" +
+            "       v.preview_attach_id as videoPreviewAttachId,\n" +
+            "       v.title as videoTitle,\n" +
+            "       v.duration as videoDuration,\n" +
+            "       c.id as channelId,\n" +
+            "       c.name as channelName,\n" +
+            "       pv.created_date as playlistVideoCreatedDate,\n" +
+            "       pv.oreder_number as playlistVideoOrderNumber\n" +
+            "           from\n" +
+            "        playlist p\n" +
+            "inner join public.playlist_video pv on p.id = pv.playlist_id\n" +
+            "inner join public.video v on v.id = pv.video_id\n" +
+            "inner join public.channel c on c.id = p.channel_id\n" +
+            "where p.id=?1 and v.video_status='PUBLIC'",nativeQuery = true)
+
+    List<PlaylistVideoInfoMapper> getPlaylistVideoInfo(Integer playlistId);
 
 }

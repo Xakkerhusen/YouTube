@@ -12,10 +12,17 @@ import java.util.List;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaylistShortInfoDTO {
+    private Integer playlistId;
+    private String playlistName;
+    private LocalDateTime playlistCreatedDate;
+    private Integer playlistVideoCount;
+    private ChannelDTO channel;
+    private String playListJson;
+
     private Integer id;
     private String name;
     private LocalDateTime createdDate;
-    private ChannelDTO channel;
+//    private ChannelDTO channel;
     private  Integer videoCount;
     private List<VideoDTO> videos;
 

@@ -3,12 +3,12 @@ POST http://localhost:8080/video/create
 Content-Type: application/json
 
 {
-  "title": "Yevropadagi O'zbeklar",
+  "title": "USAdagi O'zbeklar",
   "description": "Yevropadagi hayot haqida bilib olamiz",
-  "attachId": "e9428584-4126-4d40-a705-c8cd697728c8",
-  "categoryId": 5,
-  "channelId": "d72b61cb-e0f6-49be-a41d-2e2cea7518d7",
-  "previewAttachId": "0994f7a7-5cfb-4180-9ff0-f11265a73e0a",
+  "attachId": "de36f0f5-69a1-4fb3-8131-d5aa00bdcf40",
+  "categoryId": 1,
+  "channelId": "3fe9bb21-83f4-4eea-b299-f77f5d63a78d",
+  "previewAttachId": "edf3cf6b-3c5c-4b3e-b103-1dd18e21fb75",
   "videoStatus": "PUBLIC",
   "videoType": "VIDEO"
 }
