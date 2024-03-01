@@ -80,7 +80,7 @@ public class ProfileController {
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         return ResponseEntity.ok(profileService.updateProfileDetail(profileId, dto, language));
     }
-     @PostMapping("/any/photo")
+    @PostMapping("/any/photo")
     @Operation(summary = "Api for updateProfileAttach", description = "this api is used to updated photo ")
     @PreAuthorize("hasAnyRole('ADMIN','USER','MODERATOR')")
     public ResponseEntity<?> updateProfileAttach(@RequestParam("file") MultipartFile file,

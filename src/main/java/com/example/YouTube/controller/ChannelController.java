@@ -86,4 +86,6 @@ public class ChannelController {
     public ResponseEntity<List<ChannelDTO>> getChannelList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(channelService.getChannelList(language));
     }
+
+
 }

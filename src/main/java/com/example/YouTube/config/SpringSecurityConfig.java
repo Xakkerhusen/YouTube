@@ -23,7 +23,7 @@ public class SpringSecurityConfig {
     private UserDetailsService userDetailsService;
     @Autowired
     private JWTTokenFilter jwtTokenFilter;
-        public static String[] AUTH_WHITELIST = {"/profile/adm",
+    public static String[] AUTH_WHITELIST = {
 
 
             "/auth/*",
@@ -53,6 +53,7 @@ public class SpringSecurityConfig {
             "/channel/getById/*",
             "/channel/",
             "/video_tag/getVideoTagListByVideoId/{video_id}",
+
             "/video_tag/**",
             "/video/increaseViewCountByVideoId/{vId}/{pId}",
             "/video_emotion/like",
@@ -62,6 +63,11 @@ public class SpringSecurityConfig {
             "video/paginationCategoryId",
             "video/search",
             "video/channelVideoList/{id}",
+
+            "*/getAllByChannelId",
+            "*/getDetail/*",
+            "*/getAllByPlaylistId"
+
 
 
     };

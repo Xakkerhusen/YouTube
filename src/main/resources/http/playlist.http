@@ -1,6 +1,7 @@
 ### create
 POST localhost:8080/playlist
 Content-Type: application/json
+
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 
 {
@@ -9,6 +10,16 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiY
   "channelId": "70cb5250-fa2f-4a51-b460-27f842795eae",
   "status": "PUBLIC",
   "orderNumber": 6
+
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4ODA2OTgsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk2NzA5OCwiaXNzIjoiS3VuVXpUZXN0In0.3Fc_lUxOr5EY3TZb7fZwu87g2eIfyLyLsP3LIL_HfQW9XZr8TTCbGng0mP_ovx5GFl_yj0tr1WWaNlzANZR1aQ
+
+{
+  "name": "Flutter",
+  "description": "Flutter coding3",
+  "channelId": "3fe9bb21-83f4-4eea-b299-f77f5d63a78d",
+  "status": "PUBLIC",
+  "orderNumber": 4
+
 }
 
 
@@ -16,19 +27,38 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiY
 ###
 PUT http://localhost:8080/playlist/update/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTYwMjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODcwMjQyMSwiaXNzIjoiS3VuVXpUZXN0In0.kcO_imWAzUPUjLa7XkaoTHiknSDZHeZ8b7mCv273gG1VnnahKv2Oo1jOQbNXJDbmfKTqFCQ3tmSj5V4wra4MJQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
 
 {
   "name": "java 3",
   "description": "java coding 2",
-  "channelId": "dc4e5f3a-bad9-407d-9014-193bac489942",
+  "channelId": "1db51e78-2680-4cc3-98c0-21d212270d8b",
   "orderNumber": 2,
-  "status": "PUBLIC"
+  "status": "PRIVATE"
 }
 
+### delete by USER AND ADMIN
+DELETE http://localhost:8080/playlist/delete/3
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjgyMzcsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk1NDYzNywiaXNzIjoiS3VuVXpUZXN0In0.Jn4RalzmBSdy6Gr650iVFKv1fHajV-vhEHpdYmJ47SBLyEPXQej6u8WDBVS8P98eBBQDhNQaEMIHgR9rVs00Rg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjcyMTMsImVtYWlsIjoic2hha2h6b2RhbGxheW9yb3YyM0BnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwODk1MzYxMywiaXNzIjoiS3VuVXpUZXN0In0.3WxNvQaYv3tm0McETQMtHCLksIB-gTZ6uqzNPh07qutArj-XtY-53r-OUy1tFm6RRMILU_n1aIwQ8Am3Qg0P3g
 
+### pagination
+GET http://localhost:8080/playlist/pagination?page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzQ5NjEsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MTM2MSwiaXNzIjoiS3VuVXpUZXN0In0.dky1DFEka-UwV7i_PdAl4sie06gh5aVhVhADqF5vL527XTreCMBrkUPz2rkn5IdurdhmhMHqi6QMDZKpc7exwg
 
+### get all by Userid by ADMIN
+GET http://localhost:8080/playlist/getAll?profileId=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjcyMTMsImVtYWlsIjoic2hha2h6b2RhbGxheW9yb3YyM0BnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwODk1MzYxMywiaXNzIjoiS3VuVXpUZXN0In0.3WxNvQaYv3tm0McETQMtHCLksIB-gTZ6uqzNPh07qutArj-XtY-53r-OUy1tFm6RRMILU_n1aIwQ8Am3Qg0P3g
 
+###
+GET http://localhost:8080/playlist/getAllByOwner
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjgyMzcsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk1NDYzNywiaXNzIjoiS3VuVXpUZXN0In0.Jn4RalzmBSdy6Gr650iVFKv1fHajV-vhEHpdYmJ47SBLyEPXQej6u8WDBVS8P98eBBQDhNQaEMIHgR9rVs00Rg
+
+### get all by channel public
+GET http://localhost:8080/playlist/getAllByChannelId?channelId=1db51e78-2680-4cc3-98c0-21d212270d8b
+
+### get detail playlist
+GET http://localhost:8080/playlist/getDetail/4
 
 
 

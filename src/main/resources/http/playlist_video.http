@@ -1,0 +1,45 @@
+### create
+POST http://localhost:8080/playlist_video/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjM0NDcsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk0OTg0NywiaXNzIjoiS3VuVXpUZXN0In0.8vzaimzNDguS8WdDZTXgdN17-fQhM5wMuZbSVav3qJTdEBoaorS1Vmk1KqUX603ZT4CEm5xhckUlqxFjhyo4_Q
+
+{
+  "playlistId": 5,
+  "videoId": "a9a09598-c9f3-4c18-9e6b-7022786759b6",
+  "orderNumber": 999
+}
+
+### update
+PUT http://localhost:8080/playlist_video/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjM0NDcsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk0OTg0NywiaXNzIjoiS3VuVXpUZXN0In0.8vzaimzNDguS8WdDZTXgdN17-fQhM5wMuZbSVav3qJTdEBoaorS1Vmk1KqUX603ZT4CEm5xhckUlqxFjhyo4_Q
+
+{
+  "playlistId": 4,
+  "videoId": "4f243ffe-9b2a-4228-b2ab-76d0544a4a16",
+  "orderNumber": 3
+}
+
+### delete
+DELETE http://localhost:8080/playlist_video/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjM0NDcsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk0OTg0NywiaXNzIjoiS3VuVXpUZXN0In0.8vzaimzNDguS8WdDZTXgdN17-fQhM5wMuZbSVav3qJTdEBoaorS1Vmk1KqUX603ZT4CEm5xhckUlqxFjhyo4_Q
+
+{
+  "playlistId": 5,
+  "videoId": "4f243ffe-9b2a-4228-b2ab-76d0544a4a16"
+}
+
+### get all by playlistId
+GET http://localhost:8080/playlist_video/getAllByPlaylistId?playlistId=1
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjM0NDcsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk0OTg0NywiaXNzIjoiS3VuVXpUZXN0In0.8vzaimzNDguS8WdDZTXgdN17-fQhM5wMuZbSVav3qJTdEBoaorS1Vmk1KqUX603ZT4CEm5xhckUlqxFjhyo4_Q
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjcyMTMsImVtYWlsIjoic2hha2h6b2RhbGxheW9yb3YyM0BnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwODk1MzYxMywiaXNzIjoiS3VuVXpUZXN0In0.3WxNvQaYv3tm0McETQMtHCLksIB-gTZ6uqzNPh07qutArj-XtY-53r-OUy1tFm6RRMILU_n1aIwQ8Am3Qg0P3g
+
+
+
+
+
+
+
+
+

@@ -1,16 +1,32 @@
 ### Create video
 POST http://localhost:8080/video/create
+Accept-Language: RU
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyMjM0NjYsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTMwOTg2NiwiaXNzIjoiS3VuVXpUZXN0In0.uU6GkcHEAOd8ItzFORopiXYrmaPCPsVICdboBSybmVxnIT2qp87LIIkFosnCFM3Odis8vMBHQnkTv0QSq7sSEQ
 Accept-Language: UZ
 
 {
+
   "title": "Programming languages",
   "description": "How many programming languages do you know? ",
   "attachId": "54e8f048-e9ad-4209-ad7b-ec0a1a3a6d4c",
   "categoryId": 6,
   "channelId": "3be090e2-04ab-45ca-904b-47c198f11077",
   "previewAttachId": "fc8697cf-05c3-4924-8923-b24cc6fe49d4",
+
+  "title": "USAdagi O'zbeklar",
+  "description": "Yevropadagi hayot haqida bilib olamiz",
+
+  "attachId": "de36f0f5-69a1-4fb3-8131-d5aa00bdcf40",
+  "categoryId": 1,
+  "channelId": "3fe9bb21-83f4-4eea-b299-f77f5d63a78d",
+  "previewAttachId": "edf3cf6b-3c5c-4b3e-b103-1dd18e21fb75",
+
+  "attachId": "b8c9c96c-005d-4793-abd3-6a4faab45507",
+  "categoryId": 5,
+  "channelId": "852af6b4-ea6c-4aa4-a108-b6818e64db9b",
+  "previewAttachId": "5cf4b677-ec45-417b-a27e-36a1c4e5b9e2",
+
   "videoStatus": "PUBLIC",
   "videoType": "VIDEO",
   "playlistVideo": [2,3,4],

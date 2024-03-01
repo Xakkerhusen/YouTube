@@ -13,10 +13,11 @@ import java.time.LocalDateTime;
 public class PlaylistVideoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "playlist_id")
     private Integer playlistId;
+
     @ManyToOne
     @JoinColumn(name = "playlist_id", insertable = false, updatable = false)
     private PlaylistEntity playlist;
@@ -24,7 +25,11 @@ public class PlaylistVideoEntity {
     @Column(name = "video_id")
     private String videoId;
     @ManyToOne
+
     @JoinColumn(name = "video_id", insertable = false, updatable = false)
+
+    @JoinColumn(name = "video_id",insertable = false,updatable = false)
+
     private VideoEntity video;
 
     @Column(name = "created_date")
