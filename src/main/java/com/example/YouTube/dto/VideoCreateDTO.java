@@ -32,7 +32,7 @@ public class VideoCreateDTO {
     @NotBlank(message = "PreviewAttachId must be 36 character")
     private String previewAttachId;
 
-    @Size(min = 5, message = "Title should not be empty")
+    @Size(min = 3, message = "Title should not be empty")
     @NotBlank(message = "Title should not be empty")
     private String title;
     @Size(min = 5, message = "Description should not be empty")
@@ -42,4 +42,7 @@ public class VideoCreateDTO {
     private LocalDateTime createdDate;
     private VideoStatus videoStatus;
     private VideoType videoType;
+    private List<Integer> playlistVideo;
+    private List<String> tagList;
+
 }

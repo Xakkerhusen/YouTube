@@ -9,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FrameGrabber;
 
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.FrameGrabber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -21,9 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -78,7 +79,11 @@ public class AttachService {
             entity.setId(key);
             entity.setPath(pathFolder);
             entity.setDuration(durationInSeconds);
+
+            entity.setUrl(serverUrl + "/attach/open/" + entity.getId() + "." + entity.getExtension());
+
             entity.setUrl(url);
+
 
             attachRepository.save(entity);
 
@@ -211,8 +216,12 @@ public class AttachService {
         dto.setDuration(entity.getDuration());
         return dto;
     }
-    /**This method takes the data and
-     returns the url 👇🏻*/
+
+
+    /**
+     * This method takes the data and
+     * returns the url 👇🏻
+     */
     public AttachDTO toDTOForProfile(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setUrl(serverUrl + "/attach/open/" + entity.getId() + "." + entity.getExtension());
@@ -246,7 +255,7 @@ public class AttachService {
     }
 
 
-    public  long getDurationInSeconds(Path videoFilePath) {
+    public long getDurationInSeconds(Path videoFilePath) {
         Path absolutePath = videoFilePath.toAbsolutePath();
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(absolutePath.toString())) {
             grabber.start();
@@ -259,4 +268,11 @@ public class AttachService {
     }
 
 
+    public AttachDTO getURL(String previewAttachId, AppLanguage language) {
+        AttachDTO attachDTO = new AttachDTO();
+        AttachEntity attachEntity = get(previewAttachId, language);
+        attachDTO.setId(previewAttachId);
+        attachDTO.setUrl(attachEntity.getUrl());
+        return attachDTO;
+    }
 }

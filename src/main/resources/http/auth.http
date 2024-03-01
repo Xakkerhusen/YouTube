@@ -1,14 +1,37 @@
-
-###Created Admin
+### Login  1
 POST localhost:8080/auth/login
 Accept-Language: UZ
 Content-Type: application/json
-#admin1
+#user
+
+{
+  "email": "shakhzodallayorov23@gmail.com",
+  "password": "User1234@"
+}
+
+
+
+### Login 2
+
+###Created Admin
+
+POST localhost:8080/auth/login
+Accept-Language: UZ
+Content-Type: application/json
+#user
 
 {
   "email": "user@gmail.com",
   "password": "$1User1$"
 }
+
+
+
+### Login Admin
+POST localhost:8080/auth/login
+Accept-Language: UZ
+Content-Type: application/json
+#admin1
 
 ###
 //#admin
@@ -25,6 +48,11 @@ Content-Type: application/json
 ###
 
 
+{
+  "email": "Adminceek123@gmail.com",
+  "password": "User1234@"
+}
+
 
 
 ####Registration
@@ -33,6 +61,16 @@ Accept-Language: RU
 Content-Type: application/json
 
 {
+
+  "name": "Ali",
+  "surname": "Aliyev",
+  "email": "shakhzodallayorov23@gmail.com",
+  "password": "User1234@"
+}
+
+###Verification By email
+GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODI3ODYsImlkIjo3LCJleHAiOjE3MDg3ODMwODYsImlzcyI6Ikt1blV6VGVzdCJ9.aPfyNJlVv3zUhMLxMcqRtMbGiNa3trCfJv0dP3420megbsq_nnNcqOSQcP5O4W21jbWlNpGQE7VzreIURWCA7w
+
   "name": "User2",
   "surname": "userjon",
   "email": "husenteshayiv@gmail.com",
@@ -41,7 +79,10 @@ Content-Type: application/json
 
 ###Verification By email
 GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTE1NzAsImlkIjo0LCJleHAiOjE3MDg1OTE4NzAsImlzcyI6Ikt1blV6VGVzdCJ9.oPBpht71NAnuts3skQX6BMjJq2KW2DIiLyKF2IKT9prH9s7wBo639BBPTtoCp-yZnaMGaLEvsgyjFg8fuRi_Pg
+
 Accept-Language: EN
+
+
 ###Verification By phone number
 POST localhost:8080/auth/verification/phone
 Accept-Language: EN

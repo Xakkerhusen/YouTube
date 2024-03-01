@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "video")
 public class VideoEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
@@ -54,9 +54,6 @@ public class VideoEntity {
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
 
-    @Column(name = "duration")
-    private long duration;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "video_status")
     private VideoStatus videoStatus;
@@ -64,6 +61,8 @@ public class VideoEntity {
     @Column(name = "video_type")
     private VideoType videoType;
 
+    @Column(name = "duration")
+    private Long duration = 0l;
     @Column(name = "view_count")
     private Long viewCount = 0l;
     @Column(name = "shared_count")
@@ -72,6 +71,12 @@ public class VideoEntity {
     private Long likeCount = 0l;
     @Column(name = "dislike_count")
     private Long dislikeCount = 0l;
+
+    @OneToMany(mappedBy = "video", fetch = FetchType.LAZY)
+    private List<PlaylistVideoEntity> playlistVideoEntityList;
+
+    @OneToMany(mappedBy = "video", fetch = FetchType.LAZY)
+    private List<VideoTagEntity> videoTagEntityList;
 
 }
 

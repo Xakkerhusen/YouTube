@@ -2,8 +2,18 @@
 POST http://localhost:8080/video/create
 Accept-Language: RU
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyMjM0NjYsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTMwOTg2NiwiaXNzIjoiS3VuVXpUZXN0In0.uU6GkcHEAOd8ItzFORopiXYrmaPCPsVICdboBSybmVxnIT2qp87LIIkFosnCFM3Odis8vMBHQnkTv0QSq7sSEQ
+Accept-Language: UZ
 
 {
+
+  "title": "Programming languages",
+  "description": "How many programming languages do you know? ",
+  "attachId": "54e8f048-e9ad-4209-ad7b-ec0a1a3a6d4c",
+  "categoryId": 6,
+  "channelId": "3be090e2-04ab-45ca-904b-47c198f11077",
+  "previewAttachId": "fc8697cf-05c3-4924-8923-b24cc6fe49d4",
+
   "title": "USAdagi O'zbeklar",
   "description": "Yevropadagi hayot haqida bilib olamiz",
 
@@ -18,48 +28,63 @@ Content-Type: application/json
   "previewAttachId": "5cf4b677-ec45-417b-a27e-36a1c4e5b9e2",
 
   "videoStatus": "PUBLIC",
-  "videoType": "VIDEO"
+  "videoType": "VIDEO",
+  "playlistVideo": [2,3,4],
+  "tagList": ["java","spring"]
 }
 
 
 ### Update
-PUT http://localhost:8080/video/update/8db5a764-5d44-4b64-9094-d9189ad83311
+PUT http://localhost:8080/video/update/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 
 {
-  "description": "Yevropadagi hayot haqida O'zbekistonliklardan eshitamiz"
+  "tagList": ["python","kotlin"]
 }
+
 
 ### Update status
-PUT http://localhost:8080/video/updateStatus/8db5a764-5d44-4b64-9094-d9189ad83311
+PUT http://localhost:8080/video/updateStatus/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
 
 {
-  "videoStatus": "PRIVATE"
+  "videoStatus": "PUBLIC",
+  "channelId": "3be090e2-04ab-45ca-904b-47c198f11077"
 }
 
 
-### Update view count
-PUT http://localhost:8080/video/increaseViewCountByVideoId/8db5a764-5d44-4b64-9094-d9189ad83311
+### Increase view count
+PUT http://localhost:8080/video/increaseViewCountByVideoId/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e/7
 Content-Type: application/x-www-form-urlencoded
 
 
 ### Pagination
-GET http://localhost:8080/video/paginationCategoryId?category=5
+GET http://localhost:8080/video/paginationCategoryId?categoryId=5
 
 
 ### Search
-GET http://localhost:8080/video/search?title=vro
+GET http://localhost:8080/video/search?title=prog
+
+
+### Get by tagId pagination
+GET http://localhost:8080/video/paginationByTagId/30
+Accept-Language: UZ
 
 
 ### Get by id
-GET http://localhost:8080/video/getById/8db5a764-5d44-4b64-9094-d9189ad83311
+GET http://localhost:8080/video/getById/5c4f740d-0eeb-4d14-b43f-7e3f9d82529e
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTQ3NDAsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4MTE0MCwiaXNzIjoiS3VuVXpUZXN0In0.TPi8m3nED7jg8P99R2lc5ElRIlhV56d1QaKq5fT13KMjUEyUjoXRS_pzafH9IyBR79b_suxfQsSHjbXGzbSRew
+
 
 
 ### Pagination video list
 GET http://localhost:8080/video/videoList
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk2OTYsImVtYWlsIjoiQWRtaW5jZWVrMTIzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNzA5Mjg2MDk2LCJpc3MiOiJLdW5VelRlc3QifQ.ksyYNBtvWNY19ho3tdmWC63vRba7rFPDGm35O74be63_8JV6yEoYJTAXYUJk34HpNYIrfo4tf2YPMZZAglUGog
 
 
 ### Pagination by channelId
-GET http://localhost:8080/video/channelVideoList/d72b61cb-e0f6-49be-a41d-2e2cea7518d7
+GET http://localhost:8080/video/channelVideoList/3be090e2-04ab-45ca-904b-47c198f11077
 

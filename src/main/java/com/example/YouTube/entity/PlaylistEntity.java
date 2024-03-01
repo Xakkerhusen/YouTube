@@ -13,10 +13,10 @@ public class PlaylistEntity extends BaseEntity {
 
     @Column(name = "channel_id")
     private String channelId;
-
     @ManyToOne
     @JoinColumn(name = "channel_id",insertable = false,updatable = false)
     private ChannelEntity channel;
+
     @Column(name = "name")
     private String name;
     @Column(name = "description",columnDefinition = "text")

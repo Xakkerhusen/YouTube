@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,5 +33,9 @@ public class VideoDTO {
     private Long sharedCount;
     private Long likeCount;
     private Long dislikeCount;
-    private long duration;
+    private Long duration;
+    private ProfileDTO owner;
+    private String playListJson;
+    private List<Integer> playlistVideo;
+    private List<String> tagList;
 }

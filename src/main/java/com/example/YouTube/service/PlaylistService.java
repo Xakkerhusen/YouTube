@@ -104,7 +104,11 @@ public class PlaylistService {
      * @return Success message on playlist update.
      * @throws AppBadException If profile lacks permission to update the playlist.
      */
+
+    public String update(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language){
+
     public String update(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language) {
+
         PlaylistEntity entity = get(playlistId, language);
 
 //        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
@@ -131,6 +135,13 @@ public class PlaylistService {
      */
     public String updateStatus(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language) {
         PlaylistEntity entity = get(playlistId, language);
+
+
+    private PlaylistEntity get(Integer playlistId, AppLanguage language) {
+        return playlistRepository.findById(playlistId).orElseThrow(() -> {
+            log.warn("Profile not found{}", playlistId);
+            return new AppBadException(resourceBundleService.getMessage("playlist.not.found", language)+"-->"+playlistId);
+        });
 
 //        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
         Integer profile = playlistRepository.findProfile(entity.getChannelId());
@@ -210,6 +221,7 @@ public class PlaylistService {
         // Retrieve playlist information from the repository
         ProfileEntity profileEntity = profileService.get(profileId, language);
         List<PlaylistInfoMapper> playlistInfoMappers = playlistRepository.getPlayListInfoList(profileEntity.getId());
+
 
         // Convert PlaylistInfoMapper objects to PlaylistInfoDTO objects
         List<PlaylistInfoDTO> playlistInfoDTOs = playlistInfoMappers.stream()

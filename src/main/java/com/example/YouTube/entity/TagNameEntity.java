@@ -18,5 +18,5 @@ public class TagNameEntity {
     private String tagName;
 
     @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate = LocalDateTime.now();
 }

@@ -1,5 +1,8 @@
 package com.example.YouTube.service;
 
+
+import com.example.YouTube.entity.PlaylistVideoEntity;
+
 import com.example.YouTube.dto.*;
 import com.example.YouTube.entity.AttachEntity;
 import com.example.YouTube.entity.PlaylistEntity;
@@ -8,16 +11,21 @@ import com.example.YouTube.entity.VideoEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.mapper.PlaylistVideoInfoMapper;
+
 import com.example.YouTube.repository.PlaylistVideoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
+import java.util.List;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+
 @Service
 public class PlaylistVideoService {
 
@@ -133,6 +141,19 @@ public class PlaylistVideoService {
         dto.setCreatedDate(mapper.getPlaylistVideoCreatedDate());
         dto.setOrderNumber(mapper.getPlaylistVideoOrderNumber());
 
+
+    public void create(String videoId, List<Integer> playListVideo) {
+        for (Integer play : playListVideo) {
+            create(videoId, play);
+        }
+    }
+
+    public void create(String videoId, Integer playListVideoId) {
+        PlaylistVideoEntity entity = new PlaylistVideoEntity();
+        entity.setVideoId(videoId);
+        entity.setPlaylistId(playListVideoId);
+        playlistVideoRepository.save(entity);
+
         return dto;
     }
 
@@ -142,6 +163,7 @@ public class PlaylistVideoService {
             log.warn("Playlist_video not found");
             return new AppBadException(resourceBundleService.getMessage("playlist_video.not.found", language));
         });
+
     }
 
 }

@@ -8,9 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,7 +42,7 @@ public class AttachController {
     @GetMapping(value = "/open/{fileName}", produces = MediaType.IMAGE_PNG_VALUE)
     @Operation(summary = "Api for to open file", description = "this api is used to loadImage")
     public byte[] open(@PathVariable("fileName") String fileName,
-                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+                       @RequestParam(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         if (fileName != null && !fileName.isEmpty()) {
             try {
                 return this.attachService.loadImage(fileName, language);
@@ -63,7 +61,7 @@ public class AttachController {
     @GetMapping("/download/{fineName}")
     @Operation(summary = "Api for download", description = "this api is used to download attach")
     public ResponseEntity<Resource> download(@PathVariable("fineName") String fileName,
-                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+                                             @RequestParam(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return attachService.download(fileName, language);
     }
 
@@ -87,9 +85,10 @@ public class AttachController {
 //    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Api for delete", description = "this api is used to delete attach")
     public ResponseEntity<Boolean> delete(@PathVariable("id") String id,
-                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+                                          @RequestParam(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(attachService.delete(id, language));
     }
+
 
 
 }

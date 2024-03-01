@@ -42,9 +42,15 @@ public class PlaylistController {
     @PutMapping("/update/{playlist_id}")
     @Operation(summary = "Api for update", description = "this api is used to updated playlist ")
     @PreAuthorize("hasRole('USER')")
+
+    public ResponseEntity<?> updatePlaylist( @PathVariable("playlist_id") Integer playlistId,
+                                             @Valid @RequestBody(required = false) PlaylistDTO dto,
+                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
     public ResponseEntity<?> update(@PathVariable("playlist_id") Integer playlistId,
                                     @Valid @RequestBody(required = false) PlaylistDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
         log.info("update  playlist ");
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         return ResponseEntity.ok(playlistService.update(playlistId, profileId, dto, language));

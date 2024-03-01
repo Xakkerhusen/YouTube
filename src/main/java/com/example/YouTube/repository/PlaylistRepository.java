@@ -128,5 +128,8 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
 //    id, name,created_date,channel(id,name),video_count,video_list[{id,name,duration}]
 
 
+public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integer> {
+
+
 
 }

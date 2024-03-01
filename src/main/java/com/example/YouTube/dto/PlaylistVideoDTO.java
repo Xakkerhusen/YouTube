@@ -15,6 +15,7 @@ public class PlaylistVideoDTO {
     private Long id;
 
     @NotNull(message = "Playlist ID must not be null")
+
     private Integer playlistId;
 
     @NotNull(message = "Video ID must not be null")

@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableMethodSecurity()
@@ -50,12 +52,22 @@ public class SpringSecurityConfig {
 
             "/channel/getById/*",
             "/channel/",
-            "/video/**",
             "/video_tag/getVideoTagListByVideoId/{video_id}",
+
+            "/video_tag/**",
+            "/video/increaseViewCountByVideoId/{vId}/{pId}",
+            "/video_emotion/like",
+            "/video_emotion/dislike",
+            "/video_emotion/remove/{pId}/{vId}",
+            "video/paginationByTagId/{tagId}",
+            "video/paginationCategoryId",
+            "video/search",
+            "video/channelVideoList/{id}",
 
             "*/getAllByChannelId",
             "*/getDetail/*",
             "*/getAllByPlaylistId"
+
 
 
     };
@@ -83,6 +95,15 @@ public class SpringSecurityConfig {
         };
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**");
+            }
+        };
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

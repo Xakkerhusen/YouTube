@@ -1,6 +1,16 @@
 ### create
 POST localhost:8080/playlist
 Content-Type: application/json
+
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNjQxNDIsImVtYWlsIjoiYXNhZGJla3hvamFtdXJvZG92NjhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTE1MDU0MiwiaXNzIjoiS3VuVXpUZXN0In0.fr6DZQ7TWFD-Yrnr0LY3Da5G9-3JyPs_tQ8UbnlSc2chCjAF-oDMlyvqK1exzaf7OFCoCE0WKpegMFruY-5Q4g
+
+{
+  "name": "java JDBC",
+  "description": "java JDBC introduction",
+  "channelId": "70cb5250-fa2f-4a51-b460-27f842795eae",
+  "status": "PUBLIC",
+  "orderNumber": 6
+
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4ODA2OTgsImVtYWlsIjoiYWxsYXlhcm92c2hhaHpvZGJla3pAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk2NzA5OCwiaXNzIjoiS3VuVXpUZXN0In0.3Fc_lUxOr5EY3TZb7fZwu87g2eIfyLyLsP3LIL_HfQW9XZr8TTCbGng0mP_ovx5GFl_yj0tr1WWaNlzANZR1aQ
 
 {
@@ -9,7 +19,9 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4ODA2OTgsImVtYWlsIjoiY
   "channelId": "3fe9bb21-83f4-4eea-b299-f77f5d63a78d",
   "status": "PUBLIC",
   "orderNumber": 4
+
 }
+
 
 ###update
 ###

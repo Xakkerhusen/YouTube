@@ -13,12 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//1. Add tag to video. (USER and OWNER)
-//        (video_id,tag_id) keladigan malumot.
-//    2. Delete tag from vide (USER and OWNER)
-//        (video_id,tag_id) keladigan malumot.
-//    3. Get video Tag List by videoId
-//       (id,video_id,tag(id,name),created_date)
 @RestController
 @RequestMapping("/video_tag")
 public class VideoTagController {
@@ -27,18 +21,20 @@ public class VideoTagController {
 
     @Operation(summary = "Api for create", description = "this api used for create video tag")
     @PreAuthorize("hasRole('USER')")
-    @PostMapping("add")
+    @PostMapping("/add")
     public void add(@Valid  @RequestBody VideoTagCreateDTO tagCreateDTO,
                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language){
         videoTagService.add(tagCreateDTO,language);
     }
+
     @Operation(summary = "Api for delete", description = "this api used for delete video tag")
     @PreAuthorize("hasRole('USER')")
-    @DeleteMapping("delete")
+    @DeleteMapping("/delete")
     public void delete(@Valid  @RequestBody VideoTagCreateDTO tagCreateDTO,
                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language){
         videoTagService.delete(tagCreateDTO,language);
     }
+
     @Operation(summary = "Api for get", description = "this api used for get Video Tag List By VideoId")
     @GetMapping("/getVideoTagListByVideoId/{video_id}")
     public ResponseEntity<List<VideoTagDTO>> getVideoTagListByVideoId(@PathVariable("video_id") String videoId,

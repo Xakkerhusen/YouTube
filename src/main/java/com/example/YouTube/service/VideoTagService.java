@@ -9,6 +9,8 @@ import com.example.YouTube.entity.VideoEntity;
 import com.example.YouTube.entity.VideoTagEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.mapper.TagsMapper;
+import com.example.YouTube.repository.TagNameRepository;
 import com.example.YouTube.repository.VideoRepository;
 import com.example.YouTube.repository.VideoTagRepository;
 import com.example.YouTube.utils.SpringSecurityUtil;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -26,50 +29,61 @@ public class VideoTagService {
     @Autowired
     private VideoTagRepository videoTagRepository;
     @Autowired
+    private TagNameRepository tagNameRepository;
+    @Autowired
     private VideoRepository videoRepository;
     @Autowired
     private ChannelService channelService;
     @Autowired
     private ResourceBundleService resourceBundleService;
 
-    /**This method used to create tag to video*/
+    /**
+     * This method used to create tag to video
+     */
     public void add(VideoTagCreateDTO tagCreateDTO, AppLanguage language) {
         /*For checking*/
         tagNameService.get(tagCreateDTO.getTagId(), language);
         Optional<VideoEntity> optional = videoRepository.findById(tagCreateDTO.getVideoId());
         if (optional.isEmpty()) {
-            throw new AppBadException(resourceBundleService.getMessage("video.not.found",language));
+            throw new AppBadException(resourceBundleService.getMessage("video.not.found", language));
         }
         ChannelDTO channelDTO = channelService.getById(optional.get().getChannelId(), language);
         if (!channelDTO.getProfileId().equals(SpringSecurityUtil.getCurrentUser().getId())) {
-            throw new AppBadException(resourceBundleService.getMessage("you.cannot.add.tag.to.this.video",language));
+            throw new AppBadException(resourceBundleService.getMessage("you.cannot.add.tag.to.this.video", language));
         }
 
-        VideoTagEntity videoTag=new VideoTagEntity();
+        VideoTagEntity videoTag = new VideoTagEntity();
         videoTag.setTagId(tagCreateDTO.getTagId());
         videoTag.setVideoId(tagCreateDTO.getVideoId());
         videoTagRepository.save(videoTag);
     }
-    /**This method used to delete tag from video*/
+
+    /**
+     * This method used to delete tag from video
+     */
     public void delete(VideoTagCreateDTO tagCreateDTO, AppLanguage language) {
         tagNameService.get(tagCreateDTO.getTagId(), language);
         Optional<VideoEntity> optional = videoRepository.findById(tagCreateDTO.getVideoId());
         if (optional.isEmpty()) {
-            throw new AppBadException(resourceBundleService.getMessage("video.not.found",language));
+            throw new AppBadException(resourceBundleService.getMessage("video.not.found", language));
         }
         ChannelDTO channelDTO = channelService.getById(optional.get().getChannelId(), language);
         if (!channelDTO.getProfileId().equals(SpringSecurityUtil.getCurrentUser().getId())) {
-            throw new AppBadException(resourceBundleService.getMessage("you.cannot.add.tag.to.this.video",language));
+            throw new AppBadException(resourceBundleService.getMessage("you.cannot.add.tag.to.this.video", language));
         }
 
         Integer result = videoTagRepository.deleteByVideoIdAndTagId(tagCreateDTO.getVideoId(), tagCreateDTO.getTagId());
-        if (result<1) throw new AppBadException(resourceBundleService.getMessage("no.such.tag.found.in.this.video",language));
+        if (result < 1)
+            throw new AppBadException(resourceBundleService.getMessage("no.such.tag.found.in.this.video", language));
     }
-    /**This method used to get all video tag by video id*/
+
+    /**
+     * This method used to get all video tag by video id
+     */
     public List<VideoTagDTO> getVideoTagListByVideoId(String videoId, AppLanguage language) {
-        List<VideoTagDTO> dtoList=new LinkedList<>();
+        List<VideoTagDTO> dtoList = new LinkedList<>();
         for (VideoTagEntity entity : videoTagRepository.findByVideoId(videoId)) {
-            dtoList.add(toDTO(entity,language));
+            dtoList.add(toDTO(entity, language));
         }
         return dtoList;
     }
@@ -78,17 +92,45 @@ public class VideoTagService {
     /**
      * This method is used to load object data from Entity class to DTO class
      */
-    private VideoTagDTO toDTO(VideoTagEntity entity, AppLanguage language){
+    private VideoTagDTO toDTO(VideoTagEntity entity, AppLanguage language) {
         TagNameEntity tagNameEntity = tagNameService.get(entity.getTagId(), language);
-        TagNameDTO tagNameDTO=new TagNameDTO();
+        TagNameDTO tagNameDTO = new TagNameDTO();
         tagNameDTO.setId(tagNameEntity.getId());
         tagNameDTO.setTagName(tagNameEntity.getTagName());
 
-        VideoTagDTO dto=new VideoTagDTO();
+        VideoTagDTO dto = new VideoTagDTO();
         dto.setId(entity.getId());
         dto.setVideoId(entity.getVideoId());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setTag(tagNameDTO);
         return dto;
     }
+
+
+    public void create(String videoId, List<String> tagList) {
+//        List<TagsMapper> allTagNameIds = tagNameRepository.getAllTagNameIds();
+//        List<String> tagNameList = new LinkedList<>();
+//        List<Integer> tagIdList = new LinkedList<>();
+//
+//        for (TagsMapper allTags : allTagNameIds) {
+//
+//            tagNameList.add(allTags.getTagName());
+//            tagIdList.add(allTags.getId());
+//        }
+
+
+
+        for (String play : tagList) {
+            create(videoId, play);
+        }
+    }
+
+    public void create(String videoId, String tagListId) {
+        VideoTagEntity entity = new VideoTagEntity();
+        entity.setVideoId(videoId);
+        entity.setTagName(tagListId);
+        videoTagRepository.save(entity);
+    }
+
+
 }
