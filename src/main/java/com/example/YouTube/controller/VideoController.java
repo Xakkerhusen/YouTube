@@ -88,7 +88,7 @@ public class VideoController {
 
     @GetMapping("/search")
     @Operation(summary = "Api for search by title", description = "this api is used to search by title")
-    public ResponseEntity<List<VideoDTO>> search(@RequestParam("title") String title,
+    public ResponseEntity<List<VideoListShortInfoDTO>> search(@RequestParam("title") String title,
                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                  AppLanguage language) {
         log.info("Video search by title{} ", title);
@@ -96,21 +96,21 @@ public class VideoController {
     }
 
 
-    @GetMapping("/paginationByTagId/{tagName}")
+    @GetMapping("/paginationByTagId/{tagId}")
     @Operation(summary = "Api for get by tag id", description = "this api is used to get by tag id")
-    public ResponseEntity<PageImpl<VideoListShortInfoDTO>> getByTagId(@PathVariable("tagName") String tagName,
+    public ResponseEntity<PageImpl<VideoListShortInfoDTO>> getByTagId(@PathVariable("tagId") Integer tagId,
                                                                       @RequestParam(value = "page", defaultValue = "1") Integer page,
                                                                       @RequestParam(value = "size", defaultValue = "2") Integer size,
                                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                                       AppLanguage language) {
-        log.info("Video get by tag id{} ", tagName);
-        return ResponseEntity.ok(videoService.getByTagId(page, size, language, tagName));
+        log.info("Video get by tag id{} ", tagId);
+        return ResponseEntity.ok(videoService.getByTagId(page, size, language, tagId));
     }
 
     @GetMapping("/getById/{id}")
     @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Api for get by id", description = "this api is used to get by id")
-    public ResponseEntity<VideoDTO> getById(@PathVariable("id") String id,
+    public ResponseEntity<VideoFullInfoDTO> getById(@PathVariable("id") String id,
                                             @RequestParam(value = "Accept-Language", defaultValue = "UZ")
                                             AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();

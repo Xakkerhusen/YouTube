@@ -61,6 +61,7 @@ public class SpringSecurityConfig {
             "video/paginationByTagId/{tagId}",
             "video/paginationCategoryId",
             "video/search",
+            "video/channelVideoList/{id}",
 
 
     };

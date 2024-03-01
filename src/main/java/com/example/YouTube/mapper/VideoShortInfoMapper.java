@@ -6,6 +6,8 @@ public interface VideoShortInfoMapper {
 
     String getId();
 
+    String getVideoId();
+
     String getTitle();
 
     String getPreviewAttachId();
@@ -21,5 +23,4 @@ public interface VideoShortInfoMapper {
     String getChannelName();
 
     String getPhotoId();
-
 }

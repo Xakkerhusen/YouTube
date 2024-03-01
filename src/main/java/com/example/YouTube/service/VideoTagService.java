@@ -4,12 +4,13 @@ import com.example.YouTube.dto.ChannelDTO;
 import com.example.YouTube.dto.TagNameDTO;
 import com.example.YouTube.dto.VideoTagCreateDTO;
 import com.example.YouTube.dto.VideoTagDTO;
-import com.example.YouTube.entity.PlaylistVideoEntity;
 import com.example.YouTube.entity.TagNameEntity;
 import com.example.YouTube.entity.VideoEntity;
 import com.example.YouTube.entity.VideoTagEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
+import com.example.YouTube.mapper.TagsMapper;
+import com.example.YouTube.repository.TagNameRepository;
 import com.example.YouTube.repository.VideoRepository;
 import com.example.YouTube.repository.VideoTagRepository;
 import com.example.YouTube.utils.SpringSecurityUtil;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -26,6 +28,8 @@ public class VideoTagService {
     private TagNameService tagNameService;
     @Autowired
     private VideoTagRepository videoTagRepository;
+    @Autowired
+    private TagNameRepository tagNameRepository;
     @Autowired
     private VideoRepository videoRepository;
     @Autowired
@@ -104,6 +108,18 @@ public class VideoTagService {
 
 
     public void create(String videoId, List<String> tagList) {
+//        List<TagsMapper> allTagNameIds = tagNameRepository.getAllTagNameIds();
+//        List<String> tagNameList = new LinkedList<>();
+//        List<Integer> tagIdList = new LinkedList<>();
+//
+//        for (TagsMapper allTags : allTagNameIds) {
+//
+//            tagNameList.add(allTags.getTagName());
+//            tagIdList.add(allTags.getId());
+//        }
+
+
+
         for (String play : tagList) {
             create(videoId, play);
         }
