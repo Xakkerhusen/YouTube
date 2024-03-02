@@ -25,11 +25,7 @@ public class PlaylistVideoEntity {
     @Column(name = "video_id")
     private String videoId;
     @ManyToOne
-
-    @JoinColumn(name = "video_id", insertable = false, updatable = false)
-
     @JoinColumn(name = "video_id",insertable = false,updatable = false)
-
     private VideoEntity video;
 
     @Column(name = "created_date")

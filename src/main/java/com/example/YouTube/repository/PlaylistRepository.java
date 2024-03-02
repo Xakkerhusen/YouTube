@@ -28,39 +28,33 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
 
     List<PlaylistEntity> findAllByChannelIdOrderByOrderNumberDesc(String channelId);
 
-
-    //    @Query("from PlaylistEntity where visible=true ")
     Optional<PlaylistEntity> findByIdAndVisibleTrue(Integer id);
 
     List<PlaylistEntity> findAllByOrderByOrderNumberDesc();
 
     @Query(value = "select p.id from channel c" +
             " inner join profile p on p.id = c.profile_id\n" +
-            " where c.id=?1",nativeQuery = true)
-
+            " where c.id=?1", nativeQuery = true)
     Integer findProfile(String channelId);
 
 
-
-
-
     @Query(value = "select p.id as playlistId, p.name as playlistName, p.description as playlistDescription, p.status as playlistStatus, p.order_number as playlistOrderNumber, " +
             "c.id as channelId, c.name as channelName, c.photo_id as channelPhotoId, " +
             "pp.id as profileId, pp.name as profileName, pp.surname as profileSurname, pp.main_photo as profilePhotoId " +
             "from playlist p " +
-            "inner join channel c on c.id = p.channel_id "+
+            "inner join channel c on c.id = p.channel_id " +
             "inner join profile pp on pp.id = c.profile_id ",
             countQuery = "select count(p.id) from playlist p " +
-                    "inner join channel c on c.id = p.channel_id "+
-                    "inner join profile pp on pp.id = c.profile_id " ,
+                    "inner join channel c on c.id = p.channel_id " +
+                    "inner join profile pp on pp.id = c.profile_id ",
             nativeQuery = true)
-    Page<PlaylistInfoMapper> getPlayListInfo( Pageable pageable);
+    Page<PlaylistInfoMapper> getPlayListInfo(Pageable pageable);
 
     @Query(value = "select p.id as playlistId, p.name as playlistName, p.description as playlistDescription, p.status as playlistStatus, p.order_number as playlistOrderNumber, " +
             "c.id as channelId, c.name as channelName, c.photo_id as channelPhotoId, " +
             "pp.id as profileId, pp.name as profileName, pp.surname as profileSurname, pp.main_photo as profilePhotoId " +
             "from playlist p " +
-            "inner join channel c on c.id = p.channel_id "+
+            "inner join channel c on c.id = p.channel_id " +
             "inner join profile pp on pp.id = c.profile_id where pp.id=?1",
             nativeQuery = true)
     List<PlaylistInfoMapper> getPlayListInfoList(Integer profileId);
@@ -92,8 +86,7 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
             "         inner join public.channel c on c.id = pl.channel_id\n" +
             "        inner join public.profile p2 on p2.id = c.profile_id\n" +
             "where p2.id=?1\n" +
-            "order by pl.created_date desc;",nativeQuery = true)
-
+            "order by pl.created_date desc;", nativeQuery = true)
     List<PlayListShortInfoMapper> getPlayListShortInfoByOwner(Integer profileId);
 
     @Query(value = "select\n" +
@@ -122,14 +115,8 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
             "         inner join public.channel c on c.id = pl.channel_id\n" +
             "        inner join public.profile p2 on p2.id = c.profile_id\n" +
             "where c.id=?1\n" +
-            "order by pl.created_date desc;",nativeQuery = true)
-
+            "order by pl.created_date desc;", nativeQuery = true)
     List<PlayListShortInfoMapper> getPlayListShortInfoByChannel(String channelId);
-//    id, name,created_date,channel(id,name),video_count,video_list[{id,name,duration}]
-
-
-public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integer> {
-
-
-
 }
+
+

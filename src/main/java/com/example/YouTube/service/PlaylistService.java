@@ -36,7 +36,6 @@ public class PlaylistService {
     private final ProfileService profileService;
     private final AttachService attachService;
     private final PlaylistVideoRepository playlistVideoRepository;
-    private final VideoService videoService;
 
     /**
      * Constructs a new PlaylistService with the specified dependencies.
@@ -46,21 +45,17 @@ public class PlaylistService {
      * @param resourceBundleService   The service for handling resource bundles.
      * @param profileService          The service for profile entities.
      * @param attachService           The service for attach entities.
-     * @param playlistVideoRepository The repository for playlist video entities.
-     * @param videoService            The service for video entities.
-     */
+     * @param playlistVideoRepository The repository for playlist video entities.*/
     @Autowired
     public PlaylistService(PlaylistRepository playlistRepository, ChannelService channelService,
                            ResourceBundleService resourceBundleService, ProfileService profileService,
-                           AttachService attachService, PlaylistVideoRepository playlistVideoRepository,
-                           VideoService videoService) {
+                           AttachService attachService, PlaylistVideoRepository playlistVideoRepository) {
         this.playlistRepository = playlistRepository;
         this.channelService = channelService;
         this.resourceBundleService = resourceBundleService;
         this.profileService = profileService;
         this.attachService = attachService;
         this.playlistVideoRepository = playlistVideoRepository;
-        this.videoService = videoService;
     }
 
     /**
@@ -105,13 +100,9 @@ public class PlaylistService {
      * @throws AppBadException If profile lacks permission to update the playlist.
      */
 
-    public String update(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language){
-
     public String update(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language) {
 
         PlaylistEntity entity = get(playlistId, language);
-
-//        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
         Integer profile = playlistRepository.findProfile(entity.getChannelId());
         if (!profileId.equals(profile)) {
             log.warn("Profile not found{}", profileId);
@@ -136,14 +127,6 @@ public class PlaylistService {
     public String updateStatus(Integer playlistId, Integer profileId, PlaylistDTO dto, AppLanguage language) {
         PlaylistEntity entity = get(playlistId, language);
 
-
-    private PlaylistEntity get(Integer playlistId, AppLanguage language) {
-        return playlistRepository.findById(playlistId).orElseThrow(() -> {
-            log.warn("Profile not found{}", playlistId);
-            return new AppBadException(resourceBundleService.getMessage("playlist.not.found", language)+"-->"+playlistId);
-        });
-
-//        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
         Integer profile = playlistRepository.findProfile(entity.getChannelId());
         if (!profileId.equals(profile)) {
             log.warn("Profile not found{}", profileId);
@@ -176,8 +159,6 @@ public class PlaylistService {
             playlistRepository.delete(entity.getId());
             return true;
         }
-
-//        ChannelDTO channelDTO = channelService.getById(entity.getChannelId(), language);
         Integer profile = playlistRepository.findProfile(entity.getChannelId());
 
         if (!profileEntity.getId().equals(profile)) {

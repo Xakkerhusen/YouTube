@@ -1,8 +1,6 @@
 package com.example.YouTube.service;
 
 
-import com.example.YouTube.entity.PlaylistVideoEntity;
-
 import com.example.YouTube.dto.*;
 import com.example.YouTube.entity.AttachEntity;
 import com.example.YouTube.entity.PlaylistEntity;
@@ -11,16 +9,12 @@ import com.example.YouTube.entity.VideoEntity;
 import com.example.YouTube.enums.AppLanguage;
 import com.example.YouTube.exp.AppBadException;
 import com.example.YouTube.mapper.PlaylistVideoInfoMapper;
-
 import com.example.YouTube.repository.PlaylistVideoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-
-import java.util.List;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +30,7 @@ public class PlaylistVideoService {
     private final ResourceBundleService resourceBundleService;
     private final AttachService attachService;
     @Autowired
+    @Lazy
     public PlaylistVideoService(PlaylistVideoRepository playlistVideoRepository, PlaylistService playlistService,
                                 VideoService videoService, ChannelService channelService,
                                 ResourceBundleService resourceBundleService, AttachService attachService) {
@@ -45,30 +40,6 @@ public class PlaylistVideoService {
         this.channelService = channelService;
         this.resourceBundleService = resourceBundleService;
         this.attachService = attachService;
-    }
-
-    public String create(Integer profileId, PlaylistVideoDTO dto, AppLanguage language) {
-        PlaylistVideoEntity entity = new PlaylistVideoEntity();
-
-        PlaylistEntity playlist = playlistService.get(dto.getPlaylistId(), language);
-        ChannelDTO channel = channelService.getById(playlist.getChannelId(), language);
-
-        if (!channel.getProfileId().equals(profileId)) {
-            log.warn("Profile not found{}", profileId);
-            throw new AppBadException(resourceBundleService.getMessage("playlist.not.allowed", language) + "-->>" + profileId);
-        }
-
-        VideoEntity videoEntity = videoService.get(dto.getVideoId(), language);
-
-        entity.setOrderNumber(dto.getOrderNumber());
-        entity.setPlaylistId(playlist.getId());
-        entity.setVideoId(videoEntity.getId());
-        entity.setCreatedDate(LocalDateTime.now());
-
-        playlistVideoRepository.save(entity);
-
-        return "Build success";
-
     }
 
     public String update(Integer profileId, PlaylistVideoDTO dto, AppLanguage language) {
@@ -140,6 +111,7 @@ public class PlaylistVideoService {
 
         dto.setCreatedDate(mapper.getPlaylistVideoCreatedDate());
         dto.setOrderNumber(mapper.getPlaylistVideoOrderNumber());
+        return dto;}
 
 
     public void create(String videoId, List<Integer> playListVideo) {
@@ -154,7 +126,7 @@ public class PlaylistVideoService {
         entity.setPlaylistId(playListVideoId);
         playlistVideoRepository.save(entity);
 
-        return dto;
+
     }
 
 

@@ -15,10 +15,6 @@ import java.util.Optional;
 public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer> {
     Optional<ProfileEntity> findByEmail(String username);
 
-
-//    @NotNull
-//    Optional<ProfileEntity> findById(@NotNull Integer id);
-
     @Transactional
     @Modifying
     @Query("update ProfileEntity set password=?2 where id=?1")

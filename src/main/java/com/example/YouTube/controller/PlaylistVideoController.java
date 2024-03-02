@@ -30,16 +30,6 @@ public class PlaylistVideoController {
         this.playlistVideoService = playlistVideoService;
     }
 
-    @PostMapping("/create")
-    @Operation(summary = "Api for create", description = "this api is used to create playlist-video ")
-    @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> create(@Valid @RequestBody PlaylistVideoDTO dto,
-                                    @RequestParam(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-        log.info("Create playlist_video {}");
-        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
-        return ResponseEntity.ok(playlistVideoService.create(currentUser.getId(), dto, language));
-    }
-
     @PutMapping("/update")
     @Operation(summary = "Api for update", description = "this api is used to update playlist-video ")
     @PreAuthorize("hasRole('USER')")
